@@ -1,0 +1,706 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		171735E1274B4E4500D73990 /* AddPlayerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */; };
+		171735E3274B4E9000D73990 /* YakushokuSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171735E2274B4E9000D73990 /* YakushokuSettingView.swift */; };
+		17927E45274100C4006AAACE /* PlayerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17927E44274100C4006AAACE /* PlayerSettingView.swift */; };
+		1793D82C2753859B00076C84 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D82B2753859B00076C84 /* SettingViewModel.swift */; };
+		1793D82E275391C300076C84 /* KakuninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D82D275391C300076C84 /* KakuninView.swift */; };
+		17B440AC279BD676001A5F2C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B440AB279BD676001A5F2C /* BaseViewModel.swift */; };
+		17B440B2279BD7E2001A5F2C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B440B1279BD7E2001A5F2C /* BaseView.swift */; };
+		7B43E254279C1D8400E3CBE7 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43E253279C1D8400E3CBE7 /* CustomAlertView.swift */; };
+		7BA07DC4273F9BD300717B9E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA07DC3273F9BD300717B9E /* Player.swift */; };
+		7BA07DC7273F9BEE00717B9E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA07DC6273F9BEE00717B9E /* Game.swift */; };
+		7BA07DC9273FA53D00717B9E /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA07DC8273FA53D00717B9E /* ActionView.swift */; };
+		7BA07DCE273FAD2700717B9E /* constFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA07DCD273FAD2700717B9E /* constFile.swift */; };
+		7BC20AD9273F8B5C00794A32 /* Zinrou_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20AD8273F8B5C00794A32 /* Zinrou_App.swift */; };
+		7BC20ADB273F8B5C00794A32 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20ADA273F8B5C00794A32 /* ContentView.swift */; };
+		7BC20ADD273F8B5D00794A32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BC20ADC273F8B5D00794A32 /* Assets.xcassets */; };
+		7BC20AE0273F8B5D00794A32 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BC20ADF273F8B5D00794A32 /* Preview Assets.xcassets */; };
+		7BC20AEA273F8B5D00794A32 /* Zinrou_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20AE9273F8B5D00794A32 /* Zinrou_AppTests.swift */; };
+		7BC20AF4273F8B5D00794A32 /* Zinrou_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20AF3273F8B5D00794A32 /* Zinrou_AppUITests.swift */; };
+		7BC20AF6273F8B5D00794A32 /* Zinrou_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20AF5273F8B5D00794A32 /* Zinrou_AppUITestsLaunchTests.swift */; };
+		7BC20B06273F8C3F00794A32 /* YakushokuProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B05273F8C3F00794A32 /* YakushokuProtocol.swift */; };
+		7BC20B08273F8C5E00794A32 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B07273F8C5E00794A32 /* GameViewModel.swift */; };
+		7BC20B0A273F90A400794A32 /* Simin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B09273F90A400794A32 /* Simin.swift */; };
+		7BC20B0C273F90AC00794A32 /* Zinrou.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B0B273F90AC00794A32 /* Zinrou.swift */; };
+		7BC20B0F273F911100794A32 /* Kishi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B0E273F911100794A32 /* Kishi.swift */; };
+		7BC20B11273F911800794A32 /* Uranaishi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B10273F911800794A32 /* Uranaishi.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7BC20AE6273F8B5D00794A32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BC20ACD273F8B5C00794A32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BC20AD4273F8B5C00794A32;
+			remoteInfo = Zinrou_App;
+		};
+		7BC20AF0273F8B5D00794A32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BC20ACD273F8B5C00794A32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BC20AD4273F8B5C00794A32;
+			remoteInfo = Zinrou_App;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerAlertView.swift; sourceTree = "<group>"; };
+		171735E2274B4E9000D73990 /* YakushokuSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YakushokuSettingView.swift; sourceTree = "<group>"; };
+		17927E44274100C4006AAACE /* PlayerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSettingView.swift; sourceTree = "<group>"; };
+		1793D82B2753859B00076C84 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		1793D82D275391C300076C84 /* KakuninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakuninView.swift; sourceTree = "<group>"; };
+		17B440AB279BD676001A5F2C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		17B440B1279BD7E2001A5F2C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		7B43E253279C1D8400E3CBE7 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		7BA07DC3273F9BD300717B9E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		7BA07DC6273F9BEE00717B9E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		7BA07DC8273FA53D00717B9E /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
+		7BA07DCD273FAD2700717B9E /* constFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constFile.swift; sourceTree = "<group>"; };
+		7BC20AD5273F8B5C00794A32 /* Zinrou_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zinrou_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BC20AD8273F8B5C00794A32 /* Zinrou_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zinrou_App.swift; sourceTree = "<group>"; };
+		7BC20ADA273F8B5C00794A32 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7BC20ADC273F8B5D00794A32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7BC20ADF273F8B5D00794A32 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7BC20AE5273F8B5D00794A32 /* Zinrou_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Zinrou_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BC20AE9273F8B5D00794A32 /* Zinrou_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zinrou_AppTests.swift; sourceTree = "<group>"; };
+		7BC20AEF273F8B5D00794A32 /* Zinrou_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Zinrou_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BC20AF3273F8B5D00794A32 /* Zinrou_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zinrou_AppUITests.swift; sourceTree = "<group>"; };
+		7BC20AF5273F8B5D00794A32 /* Zinrou_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zinrou_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7BC20B05273F8C3F00794A32 /* YakushokuProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YakushokuProtocol.swift; sourceTree = "<group>"; };
+		7BC20B07273F8C5E00794A32 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		7BC20B09273F90A400794A32 /* Simin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simin.swift; sourceTree = "<group>"; };
+		7BC20B0B273F90AC00794A32 /* Zinrou.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zinrou.swift; sourceTree = "<group>"; };
+		7BC20B0E273F911100794A32 /* Kishi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kishi.swift; sourceTree = "<group>"; };
+		7BC20B10273F911800794A32 /* Uranaishi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uranaishi.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7BC20AD2273F8B5C00794A32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BC20AE2273F8B5D00794A32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BC20AEC273F8B5D00794A32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7BC20ACC273F8B5C00794A32 = {
+			isa = PBXGroup;
+			children = (
+				7BC20AD7273F8B5C00794A32 /* Zinrou_App */,
+				7BC20AE8273F8B5D00794A32 /* Zinrou_AppTests */,
+				7BC20AF2273F8B5D00794A32 /* Zinrou_AppUITests */,
+				7BC20AD6273F8B5C00794A32 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7BC20AD6273F8B5C00794A32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7BC20AD5273F8B5C00794A32 /* Zinrou_App.app */,
+				7BC20AE5273F8B5D00794A32 /* Zinrou_AppTests.xctest */,
+				7BC20AEF273F8B5D00794A32 /* Zinrou_AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7BC20AD7273F8B5C00794A32 /* Zinrou_App */ = {
+			isa = PBXGroup;
+			children = (
+				7BA07DCD273FAD2700717B9E /* constFile.swift */,
+				7BC20B04273F8BD100794A32 /* Model */,
+				7BC20B03273F8BC600794A32 /* ViewModel */,
+				7BC20B02273F8BAF00794A32 /* View */,
+				7BC20AD8273F8B5C00794A32 /* Zinrou_App.swift */,
+				7BC20ADA273F8B5C00794A32 /* ContentView.swift */,
+				7BC20ADC273F8B5D00794A32 /* Assets.xcassets */,
+				7BC20ADE273F8B5D00794A32 /* Preview Content */,
+			);
+			path = Zinrou_App;
+			sourceTree = "<group>";
+		};
+		7BC20ADE273F8B5D00794A32 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7BC20ADF273F8B5D00794A32 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7BC20AE8273F8B5D00794A32 /* Zinrou_AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				7BC20AE9273F8B5D00794A32 /* Zinrou_AppTests.swift */,
+			);
+			path = Zinrou_AppTests;
+			sourceTree = "<group>";
+		};
+		7BC20AF2273F8B5D00794A32 /* Zinrou_AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7BC20AF3273F8B5D00794A32 /* Zinrou_AppUITests.swift */,
+				7BC20AF5273F8B5D00794A32 /* Zinrou_AppUITestsLaunchTests.swift */,
+			);
+			path = Zinrou_AppUITests;
+			sourceTree = "<group>";
+		};
+		7BC20B02273F8BAF00794A32 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17B440B1279BD7E2001A5F2C /* BaseView.swift */,
+				17927E44274100C4006AAACE /* PlayerSettingView.swift */,
+				171735E2274B4E9000D73990 /* YakushokuSettingView.swift */,
+				7B43E253279C1D8400E3CBE7 /* CustomAlertView.swift */,
+				1793D82D275391C300076C84 /* KakuninView.swift */,
+				171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */,
+				7BA07DC8273FA53D00717B9E /* ActionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BC20B03273F8BC600794A32 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				17B440AB279BD676001A5F2C /* BaseViewModel.swift */,
+				7BC20B07273F8C5E00794A32 /* GameViewModel.swift */,
+				1793D82B2753859B00076C84 /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7BC20B04273F8BD100794A32 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BC20B05273F8C3F00794A32 /* YakushokuProtocol.swift */,
+				7BC20B09273F90A400794A32 /* Simin.swift */,
+				7BC20B0B273F90AC00794A32 /* Zinrou.swift */,
+				7BC20B0E273F911100794A32 /* Kishi.swift */,
+				7BC20B10273F911800794A32 /* Uranaishi.swift */,
+				7BA07DC3273F9BD300717B9E /* Player.swift */,
+				7BA07DC6273F9BEE00717B9E /* Game.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7BC20AD4273F8B5C00794A32 /* Zinrou_App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BC20AF9273F8B5D00794A32 /* Build configuration list for PBXNativeTarget "Zinrou_App" */;
+			buildPhases = (
+				7BC20AD1273F8B5C00794A32 /* Sources */,
+				7BC20AD2273F8B5C00794A32 /* Frameworks */,
+				7BC20AD3273F8B5C00794A32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Zinrou_App;
+			productName = Zinrou_App;
+			productReference = 7BC20AD5273F8B5C00794A32 /* Zinrou_App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7BC20AE4273F8B5D00794A32 /* Zinrou_AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BC20AFC273F8B5D00794A32 /* Build configuration list for PBXNativeTarget "Zinrou_AppTests" */;
+			buildPhases = (
+				7BC20AE1273F8B5D00794A32 /* Sources */,
+				7BC20AE2273F8B5D00794A32 /* Frameworks */,
+				7BC20AE3273F8B5D00794A32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7BC20AE7273F8B5D00794A32 /* PBXTargetDependency */,
+			);
+			name = Zinrou_AppTests;
+			productName = Zinrou_AppTests;
+			productReference = 7BC20AE5273F8B5D00794A32 /* Zinrou_AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7BC20AEE273F8B5D00794A32 /* Zinrou_AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BC20AFF273F8B5D00794A32 /* Build configuration list for PBXNativeTarget "Zinrou_AppUITests" */;
+			buildPhases = (
+				7BC20AEB273F8B5D00794A32 /* Sources */,
+				7BC20AEC273F8B5D00794A32 /* Frameworks */,
+				7BC20AED273F8B5D00794A32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7BC20AF1273F8B5D00794A32 /* PBXTargetDependency */,
+			);
+			name = Zinrou_AppUITests;
+			productName = Zinrou_AppUITests;
+			productReference = 7BC20AEF273F8B5D00794A32 /* Zinrou_AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7BC20ACD273F8B5C00794A32 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					7BC20AD4273F8B5C00794A32 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					7BC20AE4273F8B5D00794A32 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 7BC20AD4273F8B5C00794A32;
+					};
+					7BC20AEE273F8B5D00794A32 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 7BC20AD4273F8B5C00794A32;
+					};
+				};
+			};
+			buildConfigurationList = 7BC20AD0273F8B5C00794A32 /* Build configuration list for PBXProject "Zinrou_App" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7BC20ACC273F8B5C00794A32;
+			productRefGroup = 7BC20AD6273F8B5C00794A32 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7BC20AD4273F8B5C00794A32 /* Zinrou_App */,
+				7BC20AE4273F8B5D00794A32 /* Zinrou_AppTests */,
+				7BC20AEE273F8B5D00794A32 /* Zinrou_AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7BC20AD3273F8B5C00794A32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BC20AE0273F8B5D00794A32 /* Preview Assets.xcassets in Resources */,
+				7BC20ADD273F8B5D00794A32 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BC20AE3273F8B5D00794A32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BC20AED273F8B5D00794A32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7BC20AD1273F8B5C00794A32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BC20B0C273F90AC00794A32 /* Zinrou.swift in Sources */,
+				171735E1274B4E4500D73990 /* AddPlayerAlertView.swift in Sources */,
+				7BA07DC7273F9BEE00717B9E /* Game.swift in Sources */,
+				1793D82E275391C300076C84 /* KakuninView.swift in Sources */,
+				7BC20B0A273F90A400794A32 /* Simin.swift in Sources */,
+				17B440AC279BD676001A5F2C /* BaseViewModel.swift in Sources */,
+				7BC20B08273F8C5E00794A32 /* GameViewModel.swift in Sources */,
+				7BC20B06273F8C3F00794A32 /* YakushokuProtocol.swift in Sources */,
+				7BA07DC9273FA53D00717B9E /* ActionView.swift in Sources */,
+				7BC20ADB273F8B5C00794A32 /* ContentView.swift in Sources */,
+				171735E3274B4E9000D73990 /* YakushokuSettingView.swift in Sources */,
+				7BA07DCE273FAD2700717B9E /* constFile.swift in Sources */,
+				7B43E254279C1D8400E3CBE7 /* CustomAlertView.swift in Sources */,
+				7BC20B11273F911800794A32 /* Uranaishi.swift in Sources */,
+				17927E45274100C4006AAACE /* PlayerSettingView.swift in Sources */,
+				7BC20B0F273F911100794A32 /* Kishi.swift in Sources */,
+				7BA07DC4273F9BD300717B9E /* Player.swift in Sources */,
+				17B440B2279BD7E2001A5F2C /* BaseView.swift in Sources */,
+				1793D82C2753859B00076C84 /* SettingViewModel.swift in Sources */,
+				7BC20AD9273F8B5C00794A32 /* Zinrou_App.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BC20AE1273F8B5D00794A32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BC20AEA273F8B5D00794A32 /* Zinrou_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BC20AEB273F8B5D00794A32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BC20AF4273F8B5D00794A32 /* Zinrou_AppUITests.swift in Sources */,
+				7BC20AF6273F8B5D00794A32 /* Zinrou_AppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7BC20AE7273F8B5D00794A32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7BC20AD4273F8B5C00794A32 /* Zinrou_App */;
+			targetProxy = 7BC20AE6273F8B5D00794A32 /* PBXContainerItemProxy */;
+		};
+		7BC20AF1273F8B5D00794A32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7BC20AD4273F8B5C00794A32 /* Zinrou_App */;
+			targetProxy = 7BC20AF0273F8B5D00794A32 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7BC20AF7273F8B5D00794A32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7BC20AF8273F8B5D00794A32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7BC20AFA273F8B5D00794A32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Zinrou_App/Preview Content\"";
+				DEVELOPMENT_TEAM = CU767L7FT4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "iriekenta.Zinrou-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7BC20AFB273F8B5D00794A32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Zinrou_App/Preview Content\"";
+				DEVELOPMENT_TEAM = CU767L7FT4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "iriekenta.Zinrou-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7BC20AFD273F8B5D00794A32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CU767L7FT4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "iriekenta.Zinrou-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zinrou_App.app/Zinrou_App";
+			};
+			name = Debug;
+		};
+		7BC20AFE273F8B5D00794A32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CU767L7FT4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "iriekenta.Zinrou-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zinrou_App.app/Zinrou_App";
+			};
+			name = Release;
+		};
+		7BC20B00273F8B5D00794A32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CU767L7FT4;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "iriekenta.Zinrou-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Zinrou_App;
+			};
+			name = Debug;
+		};
+		7BC20B01273F8B5D00794A32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CU767L7FT4;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "iriekenta.Zinrou-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Zinrou_App;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7BC20AD0273F8B5C00794A32 /* Build configuration list for PBXProject "Zinrou_App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BC20AF7273F8B5D00794A32 /* Debug */,
+				7BC20AF8273F8B5D00794A32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7BC20AF9273F8B5D00794A32 /* Build configuration list for PBXNativeTarget "Zinrou_App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BC20AFA273F8B5D00794A32 /* Debug */,
+				7BC20AFB273F8B5D00794A32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7BC20AFC273F8B5D00794A32 /* Build configuration list for PBXNativeTarget "Zinrou_AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BC20AFD273F8B5D00794A32 /* Debug */,
+				7BC20AFE273F8B5D00794A32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7BC20AFF273F8B5D00794A32 /* Build configuration list for PBXNativeTarget "Zinrou_AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BC20B00273F8B5D00794A32 /* Debug */,
+				7BC20B01273F8B5D00794A32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7BC20ACD273F8B5C00794A32 /* Project object */;
+}
