@@ -25,11 +25,7 @@ struct PlayerSettingView: View {
                                         .foregroundColor(Color(.white))
                                     HStack{
                                         Button(action: {
-                                            withAnimation {
-                                        baseData.playerDeleteAlert.toggle()
-                                    }
-                                        print("削除")
-                                        baseData.deletePlayerIndex = index
+                                            print("編集")
                                         }){
                                             Text("編集")
                                                 .font(.system(size: 22, design: .serif))
@@ -44,7 +40,11 @@ struct PlayerSettingView: View {
                                                 )
                                         }
                                         Button(action: {
+                                            withAnimation {
+                                                baseData.playerDeleteAlert.toggle()
+                                            }
                                             print("削除")
+                                            baseData.deletePlayerIndex = index
                                         }){
                                             Text("削除")
                                                 .font(.system(size: 22, design: .serif))
