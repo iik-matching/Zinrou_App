@@ -25,7 +25,11 @@ struct PlayerSettingView: View {
                                         .foregroundColor(Color(.white))
                                     HStack{
                                         Button(action: {
-                                            print("編集")
+                                            withAnimation {
+                                        baseData.playerDeleteAlert.toggle()
+                                    }
+                                        print("削除")
+                                        baseData.deletePlayerIndex = index
                                         }){
                                             Text("編集")
                                                 .font(.system(size: 22, design: .serif))
@@ -65,7 +69,7 @@ struct PlayerSettingView: View {
                 VStack(spacing:10){
                     Button(action: {
                         withAnimation{
-                            baseData.customAlert.toggle()
+                            baseData.addPlayerAlert.toggle()
                         }
                     }){
                         Text("プレイヤー追加")

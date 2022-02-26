@@ -1,26 +1,31 @@
+//
+//  DeletePlayerAlertView.swift
+//  Zinrou_App
+//
+//  Created by 糸島光 on 2022/02/26.
+//
+
 import SwiftUI
 
-struct CustomAlertView:View{
+struct DeletePlayerAlertView:View{
     
     @State var inputText = ""
     @EnvironmentObject var baseData: BaseViewModel
     @FocusState var isFieldFocused: Bool
     
     var body: some View{
-        if baseData.addPlayerAlert{
-            Text("プレイヤーの追加")
+        if baseData.playerDeleteAlert{
             ZStack{
                 Color.brown.opacity(0.3).ignoresSafeArea()
                 VStack{
-                    Text("プレイヤーの追加")
-                    TextField("名前",text:$inputText)
-                        .background(Color.white).frame(width:200)
-                        .focused($isFieldFocused, equals: true)
+                    if let i = baseData.deletePlayerIndex{
+                        Text("\(baseData.game.players[i].name)を削除しますか？")
+                    }
                     Divider()
                     HStack{
                         Button(action:{
                             withAnimation{
-                                baseData.addPlayerAlert.toggle()
+                                baseData.playerDeleteAlert.toggle()
                             }
                         }){
                             Spacer()
@@ -28,9 +33,9 @@ struct CustomAlertView:View{
                             Spacer()
                         }
                         Button(action:{
-                            baseData.addPlayer(playersName: inputText)
+                            baseData.deletePlayer()
                             withAnimation{
-                                baseData.addPlayerAlert.toggle()
+                                baseData.playerDeleteAlert.toggle()
                             }
                         }){
                             Spacer()
@@ -50,15 +55,3 @@ struct CustomAlertView:View{
         }
     }
 }
-
-//
-//struct CustomAlertView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CustomAlertView()
-//            .environmentObject({ () -> BaseViewModel in
-//                let baseData = BaseViewModel()
-//                baseData.customAlert = true
-//                return baseData
-//            }())
-//    }
-//}

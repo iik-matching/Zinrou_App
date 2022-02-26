@@ -14,6 +14,7 @@
 		1793D82E275391C300076C84 /* KakuninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D82D275391C300076C84 /* KakuninView.swift */; };
 		17B440AC279BD676001A5F2C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B440AB279BD676001A5F2C /* BaseViewModel.swift */; };
 		17B440B2279BD7E2001A5F2C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B440B1279BD7E2001A5F2C /* BaseView.swift */; };
+		17D4E80927CA0F9100E8A54A /* DeletePlayerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4E80827CA0F9100E8A54A /* DeletePlayerAlertView.swift */; };
 		7B43E254279C1D8400E3CBE7 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43E253279C1D8400E3CBE7 /* CustomAlertView.swift */; };
 		7BA07DC4273F9BD300717B9E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA07DC3273F9BD300717B9E /* Player.swift */; };
 		7BA07DC7273F9BEE00717B9E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA07DC6273F9BEE00717B9E /* Game.swift */; };
@@ -59,6 +60,7 @@
 		1793D82D275391C300076C84 /* KakuninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakuninView.swift; sourceTree = "<group>"; };
 		17B440AB279BD676001A5F2C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		17B440B1279BD7E2001A5F2C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		17D4E80827CA0F9100E8A54A /* DeletePlayerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePlayerAlertView.swift; sourceTree = "<group>"; };
 		7B43E253279C1D8400E3CBE7 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		7BA07DC3273F9BD300717B9E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7BA07DC6273F9BEE00717B9E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				1793D82D275391C300076C84 /* KakuninView.swift */,
 				171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */,
 				7BA07DC8273FA53D00717B9E /* ActionView.swift */,
+				17D4E80827CA0F9100E8A54A /* DeletePlayerAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				171735E3274B4E9000D73990 /* YakushokuSettingView.swift in Sources */,
 				7BA07DCE273FAD2700717B9E /* constFile.swift in Sources */,
 				7B43E254279C1D8400E3CBE7 /* CustomAlertView.swift in Sources */,
+				17D4E80927CA0F9100E8A54A /* DeletePlayerAlertView.swift in Sources */,
 				7BC20B11273F911800794A32 /* Uranaishi.swift in Sources */,
 				17927E45274100C4006AAACE /* PlayerSettingView.swift in Sources */,
 				7BC20B0F273F911100794A32 /* Kishi.swift in Sources */,
