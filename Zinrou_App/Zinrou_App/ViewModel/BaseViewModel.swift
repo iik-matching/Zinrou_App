@@ -37,10 +37,20 @@ class BaseViewModel: ObservableObject {
     
     //役職を割り振る
     func allocateJobTitle(){
+        //４人で決め打ちしているのが問題
         var yakushoku_array : [String] = [YakushokuConst.SIMIN,
                                           YakushokuConst.ZINROU,
                                           YakushokuConst.URANAISI,
                                           YakushokuConst.KISHI]
+        //市民を追加するしように変更　いずれ人狼の数、占い師の数、騎士の数、設定画面が必要
+        //５人以上の場合は、追加人数分市民を追加。
+        if(game.players.count >= 5){
+            let AddCount = game.players.count - 4;
+            for _ in 0...AddCount - 1  {
+                yakushoku_array.append(YakushokuConst.SIMIN)
+            }
+        }
+        
         yakushoku_array = yakushoku_array.shuffled()
         for i in 0...game.players.count - 1 {
             game.players[i].yakushoku = getYakushoku(yakushokuName: yakushoku_array[i])
