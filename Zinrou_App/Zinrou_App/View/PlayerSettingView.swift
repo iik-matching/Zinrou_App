@@ -18,7 +18,7 @@ struct PlayerSettingView: View {
                                     Text("編集").font(.largeTitle)
                                 }
                                 Button(action: {
-                                    print("削除")
+                                    print("削除") 
                                 }){
                                     Text("削除").font(.largeTitle)
                                 }
