@@ -18,7 +18,11 @@ struct PlayerSettingView: View {
                                     Text("編集").font(.largeTitle)
                                 }
                                 Button(action: {
+                                    withAnimation {
+                                        baseData.playerDeleteAlert.toggle()
+                                    }
                                     print("削除")
+                                    baseData.deletePlayerIndex = index
                                 }){
                                     Text("削除").font(.largeTitle)
                                 }
@@ -32,7 +36,7 @@ struct PlayerSettingView: View {
                 Button(action: {
                     print("プレイヤー追加")
                     withAnimation{
-                        baseData.customAlert.toggle()
+                        baseData.addPlayerAlert.toggle()
                     }
                 }){
                     Text("プレイヤー追加").font(.largeTitle)

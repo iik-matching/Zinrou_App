@@ -3,13 +3,15 @@ import SwiftUI
 class BaseViewModel: ObservableObject {
     @Published var game = Game(players: [])
     @Published var nowIndex = 0
+    @Published var deletePlayerIndex:Int? = nil
     @Published var uranaikekka = ""
     @Published var addPlayerAlert = false
     @Published var playersCount = 0
     @Published var playersName: [String] = []
     @Published var yakushokuArray: [YakushokuProtocol] = []
     //アラート１
-    @Published var customAlert = false
+    @Published var playerAddAlert = false
+    @Published var playerDeleteAlert = false
     @Published var isShowYakushokuView = false
     
     
@@ -27,6 +29,12 @@ class BaseViewModel: ObservableObject {
     func addPlayer(playersName: String){
         game.players.append(Player(name: playersName, yakushoku: nil))
     }
+    
+    func deletePlayer(){
+        game.players.remove(at: deletePlayerIndex!)
+        deletePlayerIndex = nil
+    }
+    
     //役職を割り振る
     func allocateJobTitle(){
         var yakushoku_array : [String] = [YakushokuConst.SIMIN,
