@@ -8,7 +8,7 @@ class BaseViewModel: ObservableObject {
     @Published var playersCount = 0
     @Published var playersName: [String] = []
     @Published var yakushokuArray: [YakushokuProtocol] = []
-    //アラート１
+    //アラート１ コメントを追加しました。irie
     @Published var customAlert = false
     @Published var isShowYakushokuView = false
     
