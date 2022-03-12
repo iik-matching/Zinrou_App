@@ -33,6 +33,8 @@
 		7BC20B0C273F90AC00794A32 /* Zinrou.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B0B273F90AC00794A32 /* Zinrou.swift */; };
 		7BC20B0F273F911100794A32 /* Kishi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B0E273F911100794A32 /* Kishi.swift */; };
 		7BC20B11273F911800794A32 /* Uranaishi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B10273F911800794A32 /* Uranaishi.swift */; };
+		7BE620D627DCCB4300855C13 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE620D527DCCB4300855C13 /* GameView.swift */; };
+		7BE620DA27DCCB7900855C13 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE620D927DCCB7900855C13 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		7BC20B0B273F90AC00794A32 /* Zinrou.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zinrou.swift; sourceTree = "<group>"; };
 		7BC20B0E273F911100794A32 /* Kishi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kishi.swift; sourceTree = "<group>"; };
 		7BC20B10273F911800794A32 /* Uranaishi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uranaishi.swift; sourceTree = "<group>"; };
+		7BE620D527DCCB4300855C13 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		7BE620D927DCCB7900855C13 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,8 @@
 				171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */,
 				7BA07DC8273FA53D00717B9E /* ActionView.swift */,
 				17D4E80827CA0F9100E8A54A /* DeletePlayerAlertView.swift */,
+				7BE620D527DCCB4300855C13 /* GameView.swift */,
+				7BE620D927DCCB7900855C13 /* ResultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,6 +346,7 @@
 			files = (
 				7BC20B0C273F90AC00794A32 /* Zinrou.swift in Sources */,
 				171735E1274B4E4500D73990 /* AddPlayerAlertView.swift in Sources */,
+				7BE620DA27DCCB7900855C13 /* ResultView.swift in Sources */,
 				7BA07DC7273F9BEE00717B9E /* Game.swift in Sources */,
 				1793D82E275391C300076C84 /* KakuninView.swift in Sources */,
 				7BC20B0A273F90A400794A32 /* Simin.swift in Sources */,
@@ -354,6 +361,7 @@
 				17D4E80927CA0F9100E8A54A /* DeletePlayerAlertView.swift in Sources */,
 				7BC20B11273F911800794A32 /* Uranaishi.swift in Sources */,
 				17927E45274100C4006AAACE /* PlayerSettingView.swift in Sources */,
+				7BE620D627DCCB4300855C13 /* GameView.swift in Sources */,
 				7BC20B0F273F911100794A32 /* Kishi.swift in Sources */,
 				7BA07DC4273F9BD300717B9E /* Player.swift in Sources */,
 				17B440B2279BD7E2001A5F2C /* BaseView.swift in Sources */,
