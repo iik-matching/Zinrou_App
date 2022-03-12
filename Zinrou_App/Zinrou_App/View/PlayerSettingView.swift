@@ -84,10 +84,11 @@ struct PlayerSettingView: View {
                     Button(action: {
                         baseData.allocateJobTitle()
                         withAnimation{
-                            baseData.isShowYakushokuView.toggle()
+                            //ゲーム画面へ
+                            baseData.isShowGameView.toggle()
                         }
                     }){
-                        Text("役職設定画面へ")
+                        Text("ゲーム画面へ")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
                             .frame(width: 320, height: 48)
