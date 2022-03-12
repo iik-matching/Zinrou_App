@@ -13,7 +13,7 @@ struct PlayerSettingView: View {
             VStack{
                     Text("【 プレイヤー追加画面 】")
                         .font(.largeTitle)
-                        .frame(width: 400)
+                        .frame(width: 500)
                         .foregroundColor(Color(.white))
                         .background(
                             // 線形グラデーション（青→黒）を生成
@@ -21,12 +21,6 @@ struct PlayerSettingView: View {
                          ).padding(.top, 20)
                 
                 ScrollView {
-                    ZStack {
-                        // 放射状グラデーション（赤→黒）を生成
-                            RadialGradient(gradient: Gradient(colors: [.red, .black]), center: .center, startRadius: 1, endRadius: 300)
-                                  .ignoresSafeArea()      // フレームサイズをセーフエリア外まで広げる
-                          
-                    
                         VStack(spacing:15){
                             ForEach(0..<baseData.game.players.count, id: \.self) { index in
                                 VStack{     
@@ -92,11 +86,13 @@ struct PlayerSettingView: View {
                                     }
                                 }.padding()
                             }
-                        }
+                        }.padding()
                         .frame(width: 350.0)
-                    }.padding(.horizontal,44.0).border(Color.black, width: 3)
+                        .background(   //放射状グラデーション（赤→黒）を生成
+                               RadialGradient(gradient: Gradient(colors: [.red, .black]), center: .center, startRadius: 1, endRadius: 300)
+                           )
                 }
-            
+                
                 VStack(spacing:10){
                     Button(action: {
                         withAnimation{
