@@ -2,6 +2,8 @@ import SwiftUI
 
 struct PlayerSettingView: View {
     @EnvironmentObject var baseData: BaseViewModel
+//    @FocusState var isFieldFocused: Bool = false
+    @State var inputText = ""
     
     var body: some View {
         // Created by 北里優宜    2022/2/26
@@ -27,13 +29,33 @@ struct PlayerSettingView: View {
                     
                         VStack(spacing:15){
                             ForEach(0..<baseData.game.players.count, id: \.self) { index in
-                                VStack{
-                                    Text(baseData.game.players[index].name)
-                                        .font(.system(size: 34, design: .serif))
-                                        .foregroundColor(Color(.white))
+                                VStack{     
+                                    if (baseData.playerEditAlert &&  index == baseData.getEditPlayerIndex()){
+                                        TextField("",text:$inputText,onCommit:{
+                                            if inputText != ""{
+                                                baseData.game.players[index].name = inputText
+                                            }
+                                            baseData.playerEditAlert.toggle()
+                                        })
+                                            .background(Color.white).frame(width:200)
+                                            .keyboardType(UIKeyboardType.default)
+//                                            .focused($isFieldFocused, equals: true)
+                                        Divider()
+                                    }else{
+                                        Text(baseData.game.players[index].name)
+                                            .font(.system(size: 34, design: .serif))
+                                       　　　　　　　　 .foregroundColor(Color(.white))
+                                    }
                                     HStack{
                                         Button(action: {
-                                            print("編集")
+                                            withAnimation {
+                                                baseData.playerEditAlert.toggle()
+                                            }
+                                            baseData.setEditPlayerIndex(index: index)
+                                            inputText = baseData.game.players[index].name
+//                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {  /// Anything over 0.5 seems to work
+//                                                isFieldFocused = true
+//                                             }
                                         }){
                                             Text("編集")
                                                 .font(.system(size: 22, design: .serif))
@@ -93,10 +115,11 @@ struct PlayerSettingView: View {
                     Button(action: {
                         baseData.allocateJobTitle()
                         withAnimation{
-                            baseData.isShowYakushokuView.toggle()
+                            //ゲーム画面へ
+                            baseData.isShowGameView.toggle()
                         }
                     }){
-                        Text("役職設定画面へ")
+                        Text("ゲーム画面へ")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
                             .frame(width: 320, height: 48)
@@ -112,10 +135,16 @@ struct PlayerSettingView: View {
 }
 
 struct PlayerSettingView_Previews: PreviewProvider {
-    @State static var base = BaseViewModel()
+   
     static var previews: some View {
         PlayerSettingView()
-            .environmentObject(base)
+            .environmentObject({ () -> BaseViewModel in
+                let baseData = BaseViewModel()
+
+                baseData.allocateJobTitle()
+                baseData.playerEditAlert = false
+                return baseData
+            }())
         
     }
 }

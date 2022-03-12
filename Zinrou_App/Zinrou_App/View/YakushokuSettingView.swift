@@ -5,8 +5,8 @@ struct YakushokuSettingView: View {
     @EnvironmentObject var baseData: BaseViewModel
     var body: some View {
         if baseData.isShowYakushokuView {
-            ZStack {
-                Image(decorative:"人狼背景画像")     // 画像指定
+            ZStack{
+               Image(decorative:"人狼背景画像")     // 画像指定
                     .resizable()    // 画像サイズをフレームサイズに合わせる
                 
                 VStack(){
@@ -18,7 +18,25 @@ struct YakushokuSettingView: View {
                             // 線形グラデーション（青→黒）を生成
                             LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
                         ).padding(.top, 20)
-                    
+                  
+                VStack{
+                    Text(baseData.resultMessage)
+                    ForEach(0..<baseData.game.players.count, id: \.self) { index in
+                        HStack{
+                            Text(baseData.game.players[index].name)
+                                .font(.largeTitle)
+                            //人狼を赤くする
+                            if(baseData.game.players[index].yakushoku!.name == YakushokuConst.ZINROU){
+                                Text(baseData.game.players[index].yakushoku!.name)
+                                    .font(.largeTitle)
+                                    .foregroundColor(.red)
+                            }else{
+                                Text(baseData.game.players[index].yakushoku!.name)
+                                    .font(.largeTitle)
+                            }
+                            
+                        }
+                    }.padding()
                     ScrollView {
                         VStack{
                                 ForEach(0..<baseData.game.players.count, id: \.self) { index in
