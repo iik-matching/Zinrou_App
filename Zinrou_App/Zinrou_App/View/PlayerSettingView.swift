@@ -10,8 +10,16 @@ struct PlayerSettingView: View {
         ZStack {
             Image(decorative:"人狼背景画像")     // 画像指定
                 .resizable()    // 画像サイズをフレームサイズに合わせる
-
             VStack{
+                    Text("【 プレイヤー追加画面 】")
+                        .font(.largeTitle)
+                        .frame(width: 400)
+                        .foregroundColor(Color(.white))
+                        .background(
+                            // 線形グラデーション（青→黒）を生成
+                            LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
+                         ).padding(.top, 20)
+                
                 ScrollView {
                     ZStack {
                         // 放射状グラデーション（赤→黒）を生成
@@ -21,7 +29,7 @@ struct PlayerSettingView: View {
                     
                         VStack(spacing:15){
                             ForEach(0..<baseData.game.players.count, id: \.self) { index in
-                                VStack{
+                                VStack{     
                                     if (baseData.playerEditAlert &&  index == baseData.getEditPlayerIndex()){
                                         TextField("",text:$inputText,onCommit:{
                                             if inputText != ""{
@@ -35,8 +43,8 @@ struct PlayerSettingView: View {
                                         Divider()
                                     }else{
                                         Text(baseData.game.players[index].name)
-                                            .font(.largeTitle)
-                                            .foregroundColor(Color(.white))
+                                            .font(.system(size: 34, design: .serif))
+                                       　　　　　　　　 .foregroundColor(Color(.white))
                                     }
                                     HStack{
                                         Button(action: {
@@ -85,7 +93,8 @@ struct PlayerSettingView: View {
                                 }.padding()
                             }
                         }
-                   }.padding(.horizontal,50).border(Color.black, width: 3)
+                        .frame(width: 350.0)
+                    }.padding(.horizontal,44.0).border(Color.black, width: 3)
                 }
             
                 VStack(spacing:10){
