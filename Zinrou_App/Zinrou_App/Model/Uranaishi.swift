@@ -9,11 +9,9 @@ struct Uranaishi:YakushokuProtocol{
     var actionText: String = ActionTextConst.URANAISI
     
     func action1(name:String, delegate:SelectProtocol){
-        print("怪しい人を指名する")
         delegate.select(name: name)
     }
     func action2(name:String, delegate:SelectProtocol){
-        print("占う")
         delegate.uranau(name: name)
         
     }

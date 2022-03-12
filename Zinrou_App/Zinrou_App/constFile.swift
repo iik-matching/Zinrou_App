@@ -23,4 +23,7 @@ struct GameConst{
     static let KAIGI_TIME = 100
     static let ASA = "朝"
     static let YORU = "夜"
+    static let KEIZOKU = "継続"
+    static let ZINROUSHOURI = "人狼勝利"
+    static let SIMINSHOURI = "市民勝利"
 }

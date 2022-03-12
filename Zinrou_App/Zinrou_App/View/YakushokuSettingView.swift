@@ -8,6 +8,7 @@ struct YakushokuSettingView: View {
             ZStack{
                 Color.brown.ignoresSafeArea()
                 VStack{
+                    Text(baseData.resultMessage)
                     ForEach(0..<baseData.game.players.count, id: \.self) { index in
                         HStack{
                             Text(baseData.game.players[index].name)
