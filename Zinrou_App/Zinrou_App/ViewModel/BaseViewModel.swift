@@ -4,6 +4,7 @@ class BaseViewModel: ObservableObject {
     @Published var game = Game(players: [])
     @Published var nowIndex = 0
     @Published var deletePlayerIndex:Int? = nil
+    @Published var editPlayerIndex:Int = 0
     @Published var uranaikekka = ""
     @Published var addPlayerAlert = false
     @Published var playersCount = 0
@@ -12,6 +13,7 @@ class BaseViewModel: ObservableObject {
     //アラート１
     @Published var playerAddAlert = false
     @Published var playerDeleteAlert = false
+    @Published var playerEditAlert = false
     @Published var isShowYakushokuView = false
     
     
@@ -35,6 +37,18 @@ class BaseViewModel: ObservableObject {
         deletePlayerIndex = nil
     }
     
+    func getPlayerName(index: Int) -> String{
+        return game.players[index].name
+    }
+    
+    func setEditPlayerIndex(index: Int){
+        editPlayerIndex = index
+    }
+    
+    func getEditPlayerIndex() -> Int{
+        return editPlayerIndex
+    }
+    
     //役職を割り振る
     func allocateJobTitle(){
         //４人で決め打ちしているのが問題
@@ -46,7 +60,7 @@ class BaseViewModel: ObservableObject {
         //５人以上の場合は、追加人数分市民を追加。
         if(game.players.count >= 5){
             let AddCount = game.players.count - 4;
-            for _ in 0...AddCount - 1  {
+            for _ in 0...AddCount - 1 {
                 yakushoku_array.append(YakushokuConst.SIMIN)
             }
         }
