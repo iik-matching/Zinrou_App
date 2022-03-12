@@ -44,7 +44,7 @@ struct PlayerSettingView: View {
                                     }else{
                                         Text(baseData.game.players[index].name)
                                             .font(.system(size: 34, design: .serif))
-                                       　　　　　　　　 .foregroundColor(Color(.white))
+                                            .foregroundColor(Color(.white))
                                     }
                                     HStack{
                                         Button(action: {
