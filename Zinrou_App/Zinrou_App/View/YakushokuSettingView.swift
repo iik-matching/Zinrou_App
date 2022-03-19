@@ -60,9 +60,7 @@ struct YakushokuSettingView: View {
                         }
                         .frame(width: nil)
                         Button(action: {
-                            withAnimation{
-                                baseData.isShowYakushokuView.toggle()
-                            }
+                            baseData.initializeGame()
                         }){
                             Text("ホーム画面へ")
                                 .font(.largeTitle)
@@ -72,7 +70,6 @@ struct YakushokuSettingView: View {
                                 .background(Color(.purple))
                                 .cornerRadius(20)
                         }.padding(.vertical,15)
-                    
                 }
             }
         }

@@ -23,12 +23,13 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     
     
     init(){
-        //初期４人をセット
-        game.players.append(Player(name: "Aさん", yakushoku: nil))
-        game.players.append(Player(name: "Bさん", yakushoku: nil))
-        game.players.append(Player(name: "Cさん", yakushoku: nil))
-        game.players.append(Player(name: "Dさん", yakushoku: nil))
-        
+        if game.players.count < 4 {
+          //初期４人をセット
+            game.players.append(Player(name: "Aさん", yakushoku: nil))
+            game.players.append(Player(name: "Bさん", yakushoku: nil))
+            game.players.append(Player(name: "Cさん", yakushoku: nil))
+            game.players.append(Player(name: "Dさん", yakushoku: nil))
+        }
     }
     
     //プレイヤー追加
@@ -227,6 +228,36 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         for player in game.players{
             print(player.name+" \(player.isDeath)")
         }
+    }
+    
+    func initializePlayer()->[Player]{
+        var nextPlayers:[Player] = []
+        for i in 0...game.players.count-1{
+            nextPlayers.append(Player(name: game.players[i].name, yakushoku: nil))
+        }
+        game.players = nextPlayers
+        return game.players
+    }
+    
+    func initializeGame(){
+        game = Game(players:initializePlayer())
+        nowIndex = 0
+        deletePlayerIndex = nil
+        editPlayerIndex = 0
+        uranaikekka = ""
+        addPlayerAlert = false
+        playersCount = 0
+        playersName = []
+        yakushokuArray = []
+        didAction = false
+        resultMessage = ""
+        //アラート１
+        playerAddAlert = false
+        playerDeleteAlert = false
+        playerEditAlert = false
+        isShowYakushokuView = false
+        isShowGameView = false
+        isShowResultView = false
     }
 }
 
