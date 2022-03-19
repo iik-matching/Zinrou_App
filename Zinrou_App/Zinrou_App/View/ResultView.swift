@@ -12,29 +12,38 @@ struct ResultView: View {
     var body: some View {
         if baseData.isShowResultView{
             ZStack{
-                Color.white.ignoresSafeArea()
+                Color.black.ignoresSafeArea()
+                
                 VStack(spacing:15){
                     
-                    Text(baseData.resultMessage)
+                    VStack{
+                        Image(decorative:"村人画像")     // 画像指定
+                            .resizable()
+                            .frame(width: 300.0, height: 300.0)
+                    }
                     
-                    Button(action: {
-                        baseData.isShowResultView.toggle()
-                    }){
-                        Text("閉じる")
-                            .font(.system(size: 22, design: .serif))
+                    VStack(spacing:15){
+                        Text(baseData.resultMessage)
+                            .font(.system(size: 28, design: .serif))
                             .fontWeight(.semibold)
-                            .frame(width: 120, height: 32)
-                            .foregroundColor(Color(.black))
-                            .background(Color(.white))
-                            .cornerRadius(18)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 24)
-                                    .stroke(Color(.orange), lineWidth: 2.0)
-                            )
+                            .foregroundColor(Color(.white))
                         
+                        Button(action: {
+                            baseData.isShowResultView.toggle()
+                        }){
+                            Text("閉じる")
+                                .font(.system(size: 22, design: .serif))
+                                .fontWeight(.semibold)
+                                .frame(width: 120, height: 32)
+                                .foregroundColor(Color(.white))
+                                .background(
+                                    // 線形グラデーション（青→黒）を生成
+                                    LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
+                                )
+                                .cornerRadius(18)
+                        }
                     }
                 }
-                
             }
         }
     }
