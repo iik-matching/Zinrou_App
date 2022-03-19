@@ -91,7 +91,7 @@ struct GameView: View {
                                             Text("死亡").font(.system(size: 22, design: .serif))
                                                 .fontWeight(.semibold)
                                                 .frame(width: 120, height: 32)
-                                                .foregroundColor(Color(.white))
+                                                .foregroundColor(Color(.red))
                                         }
                                     }
                                 }
