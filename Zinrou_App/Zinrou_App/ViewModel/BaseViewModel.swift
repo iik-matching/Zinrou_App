@@ -207,7 +207,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     
         func uranau(name: String) {
             print(name+"を占う")
-            resultMessage = "占い結果\n"
+            resultMessage = "  [占い結果]\n"
             isShowResultView.toggle()
             
             for i in 0...game.players.count-1{
