@@ -13,6 +13,8 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var yakushokuArray: [YakushokuProtocol] = []
     @Published var didAction = false
     @Published var resultMessage = ""
+    @Published var selectindex:Int? = nil
+
     //アラート１
     @Published var playerAddAlert = false
     @Published var playerDeleteAlert = false
