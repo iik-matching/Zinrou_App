@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		171735E1274B4E4500D73990 /* AddPlayerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */; };
 		171735E3274B4E9000D73990 /* YakushokuSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171735E2274B4E9000D73990 /* YakushokuSettingView.swift */; };
+		1778994F2801BED300232BAE /* MeetingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1778994E2801BED300232BAE /* MeetingAlertView.swift */; };
 		17927E45274100C4006AAACE /* PlayerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17927E44274100C4006AAACE /* PlayerSettingView.swift */; };
 		1793D82C2753859B00076C84 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D82B2753859B00076C84 /* SettingViewModel.swift */; };
 		1793D82E275391C300076C84 /* KakuninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D82D275391C300076C84 /* KakuninView.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerAlertView.swift; sourceTree = "<group>"; };
 		171735E2274B4E9000D73990 /* YakushokuSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YakushokuSettingView.swift; sourceTree = "<group>"; };
+		1778994E2801BED300232BAE /* MeetingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAlertView.swift; sourceTree = "<group>"; };
 		17927E44274100C4006AAACE /* PlayerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSettingView.swift; sourceTree = "<group>"; };
 		1793D82B2753859B00076C84 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		1793D82D275391C300076C84 /* KakuninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakuninView.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				17D4E80827CA0F9100E8A54A /* DeletePlayerAlertView.swift */,
 				7BE620D527DCCB4300855C13 /* GameView.swift */,
 				7BE620D927DCCB7900855C13 /* ResultView.swift */,
+				1778994E2801BED300232BAE /* MeetingAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				7BC20B0F273F911100794A32 /* Kishi.swift in Sources */,
 				7BA07DC4273F9BD300717B9E /* Player.swift in Sources */,
 				17B440B2279BD7E2001A5F2C /* BaseView.swift in Sources */,
+				1778994F2801BED300232BAE /* MeetingAlertView.swift in Sources */,
 				1793D82C2753859B00076C84 /* SettingViewModel.swift in Sources */,
 				7BC20AD9273F8B5C00794A32 /* Zinrou_App.swift in Sources */,
 			);

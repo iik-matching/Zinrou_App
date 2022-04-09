@@ -13,12 +13,14 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var yakushokuArray: [YakushokuProtocol] = []
     @Published var didAction = false
     @Published var resultMessage = ""
+    @Published var timeCount = 0
     @Published var selectindex:Int? = nil
 
     //アラート１
     @Published var playerAddAlert = false
     @Published var playerDeleteAlert = false
     @Published var playerEditAlert = false
+    @Published var meetingAlert = false
     @Published var isShowYakushokuView = false
     @Published var isShowGameView = false
     @Published var isShowResultView = false
@@ -127,6 +129,8 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                         }
                     }
                 }
+                timeCount = 10
+                meetingAlert.toggle()
             }
             
             //朝夜チェンジ
@@ -293,4 +297,8 @@ protocol SelectProtocol{
     func kill(name:String)
     func gurde(name:String)
     func uranau(name:String)
+}
+
+protocol NextPageProtocol{
+    func nextPage()
 }

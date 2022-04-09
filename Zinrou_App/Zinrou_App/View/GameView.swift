@@ -16,7 +16,7 @@ struct GameView: View {
                 if(baseData.getasaOryoru() == GameConst.ASA){
                     Image(decorative:"朝画像")     // 画像指定
                         .resizable()    // 画像サイズをフレームサイズに合わせる
-                    
+                        .ignoresSafeArea()                 
                 }else{
                     Color.black.ignoresSafeArea()
                 }
