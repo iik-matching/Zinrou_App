@@ -185,7 +185,7 @@ struct GameView: View {
                             baseData.isKakuninFrag.toggle()
                             //次の人物へ
                             baseData.next()
-                          　　　　baseData.selectindex = nil
+                            baseData.selectindex = nil
                         }){
                             Text("次へ")
                                 .font(.system(size: 22, design: .serif))
@@ -204,10 +204,9 @@ struct GameView: View {
             //ゲームビュー表示状態　かつ　未確認の場合
         }else if baseData.isShowGameView && baseData.isKakuninFrag == false{
             //確認画面を表示
-            KakuninView(inputText:"貴方は\(baseData.game.players[baseData.nowIndex].name)さんですか？")
+            KakuninView(inputText:"貴方は「\(baseData.game.players[baseData.nowIndex].name)」ですか？")
         }
     }
-  }
 }
 
 struct GameView_Previews: PreviewProvider {
