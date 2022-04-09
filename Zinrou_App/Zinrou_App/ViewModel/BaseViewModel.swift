@@ -223,6 +223,20 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
             }
         }
     
+    //同じ名前チェック
+    func PlayerNameCheak(name: String) -> Bool{
+        
+        for i in 0...game.players.count-1{
+            //同じ名前が存在する場合
+            if game.players[i].name == name{
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    
     func log(){
         for player in game.players{
             print(player.count)
