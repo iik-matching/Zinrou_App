@@ -5,6 +5,8 @@ struct KakuninView:View{
     @State var inputText = ""
     @EnvironmentObject var baseData: BaseViewModel
     
+    @State var delegate : NextPageProtocol? = nil
+    
     var body: some View{
         ZStack{
             Color.brown.ignoresSafeArea()
@@ -13,6 +15,9 @@ struct KakuninView:View{
 
                 Button(action:{
                     baseData.isKakuninFrag.toggle()
+                    if delegate != nil{
+                        delegate!.nextPage()
+                    }
                 }){
                     Spacer()
                     Text("OK")
@@ -25,15 +30,15 @@ struct KakuninView:View{
 
 
 
-struct KakuninView_Previews: PreviewProvider {
-    static var previews: some View {
-        KakuninView()
-            .environmentObject({ () -> BaseViewModel in
-                let baseData = BaseViewModel()
-
-                baseData.allocateJobTitle()
-                return baseData
-            }())
-    }
-}
+//struct KakuninView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        KakuninView()
+//            .environmentObject({ () -> BaseViewModel in
+//                let baseData = BaseViewModel()
+//
+//                baseData.allocateJobTitle()
+//                return baseData
+//            }())
+//    }
+//}
 

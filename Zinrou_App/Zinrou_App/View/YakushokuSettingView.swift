@@ -8,6 +8,7 @@ struct YakushokuSettingView: View {
             ZStack{
                 Image(decorative:"人狼背景画像")     // 画像指定
                     .resizable()    // 画像サイズをフレームサイズに合わせる
+                    .ignoresSafeArea()
                 
                 VStack(){
                     Text("【 役職公開画面 】")
