@@ -20,8 +20,11 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var isShowYakushokuView = false
     @Published var isShowGameView = false
     @Published var isShowResultView = false
+    @Published var isMyAlertView = false
     
-    @Published var isKakuninFrag = false
+
+    @Published var MyAlertMessage = "" //確認を終えたかのフラグ
+    @Published var isKakuninFrag = false //確認を終えたかのフラグ
     
     init(){
         if game.players.count < 4 {

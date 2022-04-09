@@ -8,7 +8,6 @@ struct CustomAlertView:View{
     
     var body: some View{
         if baseData.addPlayerAlert{
-            Text("プレイヤーの追加")
             ZStack{
                 Color.brown.opacity(0.3).ignoresSafeArea()
                 VStack{
