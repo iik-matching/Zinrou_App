@@ -14,6 +14,8 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var didAction = false
     @Published var resultMessage = ""
     @Published var timeCount = 0
+    @Published var selectindex:Int? = nil
+
     //アラート１
     @Published var playerAddAlert = false
     @Published var playerDeleteAlert = false

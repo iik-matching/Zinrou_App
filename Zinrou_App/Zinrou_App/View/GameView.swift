@@ -16,7 +16,7 @@ struct GameView: View {
                 if(baseData.getasaOryoru() == GameConst.ASA){
                     Image(decorative:"朝画像")     // 画像指定
                         .resizable()    // 画像サイズをフレームサイズに合わせる
-                        .ignoresSafeArea()
+                        .ignoresSafeArea()                 
                 }else{
                     Color.black.ignoresSafeArea()
                 }
@@ -51,7 +51,7 @@ struct GameView: View {
                     }
                     
                     if(baseData.getasaOryoru() == GameConst.ASA){
-                
+                        
                         Text(/*@START_MENU_TOKEN@*/"人狼だと疑わしい人を選んでください。"/*@END_MENU_TOKEN@*/).frame(maxWidth:350, maxHeight:50)
                             .font(.system(size: 16, design: .serif))
                             .background(Color(.white))
@@ -69,11 +69,10 @@ struct GameView: View {
                                                     if baseData.didAction == false{
                                                         //選択した人を疑う
                                                         baseData.game.players[baseData.nowIndex].yakushoku!.action1(name:baseData.game.players[index].name, delegate:baseData )
-                                                        //次にの人物へ
-                                                        //baseData.next()
-                                                        
+                                                    
                                                         baseData.didAction = true
                                                     }
+                                                    baseData.selectindex = index
                                                 }){
                                                     Text("疑う")
                                                         .font(.system(size: 22, design: .serif))
@@ -82,8 +81,15 @@ struct GameView: View {
                                                         .foregroundColor(Color(.white))
                                                         .cornerRadius(18)
                                                         .background(
-                                                            // 線形グラデーション（緑→黒）を生成
-                                                            LinearGradient(gradient: Gradient(colors: [.green, .black]), startPoint: .bottom, endPoint: .top)
+                                                            VStack{
+                                                                if baseData.selectindex == index{
+                                                                    // 線形グラデーション（赤→黒）を生成
+                                                                    LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
+                                                                }else{
+                                                                    // 線形グラデーション（緑→黒）を生成
+                                                                    LinearGradient(gradient: Gradient(colors: [.gray, .black]), startPoint: .bottom, endPoint: .top)
+                                                                }
+                                                            }
                                                         )
                                                         .cornerRadius(18)
                                                     
@@ -103,7 +109,7 @@ struct GameView: View {
                         Text("貴方は「"+baseData.game.players[baseData.nowIndex].yakushoku!.name+"」です。").font(.title).padding()
                             .foregroundColor(Color(.white))
                             .font(.system(size: 28, design: .rounded))
-                            
+                        
                         VStack{
                             //夜のアクション説明欄
                             switch baseData.game.players[baseData.nowIndex].yakushoku!.name {
@@ -121,7 +127,7 @@ struct GameView: View {
                         }.frame(maxWidth:350, maxHeight:50)
                             .font(.system(size: 12, design: .serif))
                             .background(Color(.white))
-                     
+                        
                         ScrollView {
                             VStack(spacing:15){
                                 ForEach(0..<baseData.game.players.count, id: \.self) { index in
@@ -136,12 +142,10 @@ struct GameView: View {
                                                 Button(action: {
                                                     if baseData.didAction == false{
                                                         baseData.game.players[baseData.nowIndex].yakushoku!.action2(name:baseData.game.players[index].name, delegate:baseData )
-                                                        //次にの人物へ
-                                                        //baseData.next()
                                                         
-                                                        //baseData.selectPlayer = baseData.game.players[index].name
                                                         baseData.didAction = true
                                                     }
+                                                    baseData.selectindex = index
                                                 }){
                                                     Text(baseData.game.players[baseData.nowIndex].yakushoku!.actionText)
                                                         .font(.system(size: 22, design: .serif))
@@ -149,30 +153,39 @@ struct GameView: View {
                                                         .frame(width: 120, height: 32)
                                                         .foregroundColor(Color(.white))
                                                         .background(
-                                                            // 線形グラデーション（赤→黒）を生成
-                                                            LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
-                                                        )
+                                                            VStack{
+                                                                if baseData.selectindex == index{
+                                                                    // 線形グラデーション（緑→黒）を生成
+                                                                    LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
+                                                                }else{
+                                                                    // 線形グラデーション（赤→黒）を生成
+                                                                    LinearGradient(gradient: Gradient(colors: [.gray, .black]), startPoint: .bottom, endPoint: .top)
+                                                                }
+                                                            }
+                                                       )
                                                         .cornerRadius(18)
                                                 }
-                                            }else{
-                                                Text("死亡")
-                                                    .font(.system(size: 22, design: .serif))
-                                                    .fontWeight(.semibold)
-                                                    .frame(width: 120, height: 32)
-                                                    .foregroundColor(Color(.white))
-                                            }
-                                            
+                                                .buttonStyle(TapButtonStyle())
+                                        }else{
+                                            Text("死亡")
+                                                .font(.system(size: 22, design: .serif))
+                                                .fontWeight(.semibold)
+                                                .frame(width: 120, height: 32)
+                                                .foregroundColor(Color(.white))
                                         }
+                                        
                                     }
                                 }
-                            }.padding()
-                        }
+                            }
+                        }.padding()
                     }
-                    if(baseData.didAction == true){
+                } 
+                   if(baseData.didAction == true){
                         Button(action: {
                             baseData.isKakuninFrag.toggle()
                             //次の人物へ
                             baseData.next()
+                          　　　　baseData.selectindex = nil
                         }){
                             Text("次へ")
                                 .font(.system(size: 22, design: .serif))
@@ -183,8 +196,7 @@ struct GameView: View {
                                     // 線形グラデーション（青→黒）を生成
                                     LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
                                 )
-                                .cornerRadius(18)
-                            
+                                .cornerRadius(18)        
                         }
                     }
                 }
@@ -195,6 +207,7 @@ struct GameView: View {
             KakuninView(inputText:"貴方は\(baseData.game.players[baseData.nowIndex].name)さんですか？")
         }
     }
+  }
 }
 
 struct GameView_Previews: PreviewProvider {
@@ -209,3 +222,14 @@ struct GameView_Previews: PreviewProvider {
             }())
     }
 }
+
+
+//ボタンを押している間ボタンの色を変更する
+struct TapButtonStyle:ButtonStyle{
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 1.4 : 1)
+        
+    }
+}
+
