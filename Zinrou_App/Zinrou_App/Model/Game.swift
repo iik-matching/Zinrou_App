@@ -10,7 +10,7 @@ struct Game{
     var asaOrYoru:String = GameConst.YORU
     
     //終了判定　終了ならtrue 　継続ならfalse
-    func endHantei()->Bool{
+    func endHantei()->String{
         var siminCount = 0
         var zinrouCount = 0
         for player in players{
@@ -25,11 +25,14 @@ struct Game{
             }
         }
         if (siminCount == zinrouCount){
-            return true
+            return GameConst.ZINROUSHOURI
+        }else if(zinrouCount == 0){
+            return GameConst.SIMINSHOURI
         }else{
-            return false
+            return GameConst.KEIZOKU
         }
     }
+    
     
     mutating func switchAsaYoru(){
         if asaOrYoru == GameConst.YORU{

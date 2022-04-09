@@ -2,30 +2,54 @@ import SwiftUI
 
 struct PlayerSettingView: View {
     @EnvironmentObject var baseData: BaseViewModel
+//    @FocusState var isFieldFocused: Bool = false
+    @State var inputText = ""
     
     var body: some View {
         // Created by 北里優宜    2022/2/26
         ZStack {
             Image(decorative:"人狼背景画像")     // 画像指定
                 .resizable()    // 画像サイズをフレームサイズに合わせる
-
             VStack{
+                    Text("【 プレイヤー追加画面 】")
+                        .font(.largeTitle)
+                        .frame(width: 500)
+                        .foregroundColor(Color(.white))
+                        .background(
+                            // 線形グラデーション（青→黒）を生成
+                            LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
+                         ).padding(.top, 20)
+                
                 ScrollView {
-                    ZStack {
-                        // 放射状グラデーション（赤→黒）を生成
-                            RadialGradient(gradient: Gradient(colors: [.red, .black]), center: .center, startRadius: 1, endRadius: 300)
-                                  .ignoresSafeArea()      // フレームサイズをセーフエリア外まで広げる
-                          
-                    
                         VStack(spacing:15){
                             ForEach(0..<baseData.game.players.count, id: \.self) { index in
-                                VStack{
-                                    Text(baseData.game.players[index].name)
-                                        .font(.largeTitle)
-                                        .foregroundColor(Color(.white))
+                                VStack{     
+                                    if (baseData.playerEditAlert &&  index == baseData.getEditPlayerIndex()){
+                                        TextField("",text:$inputText,onCommit:{
+                                            if inputText != ""{
+                                                baseData.game.players[index].name = inputText
+                                            }
+                                            baseData.playerEditAlert.toggle()
+                                        })
+                                            .background(Color.white).frame(width:200)
+                                            .keyboardType(UIKeyboardType.default)
+//                                            .focused($isFieldFocused, equals: true)
+                                        Divider()
+                                    }else{
+                                        Text(baseData.game.players[index].name)
+                                            .font(.system(size: 34, design: .serif))
+                                            .foregroundColor(Color(.white))
+                                    }
                                     HStack{
                                         Button(action: {
-                                            print("編集")
+                                            withAnimation {
+                                                baseData.playerEditAlert.toggle()
+                                            }
+                                            baseData.setEditPlayerIndex(index: index)
+                                            inputText = baseData.game.players[index].name
+//                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {  /// Anything over 0.5 seems to work
+//                                                isFieldFocused = true
+//                                             }
                                         }){
                                             Text("編集")
                                                 .font(.system(size: 22, design: .serif))
@@ -40,11 +64,19 @@ struct PlayerSettingView: View {
                                                 )
                                         }
                                         Button(action: {
-                                            withAnimation {
-                                                baseData.playerDeleteAlert.toggle()
+                                            if(baseData.game.players.count <= 4){
+                                                withAnimation {
+                                                    baseData.MyAlertMessage = "４人以下にはできません"
+                                                    baseData.isMyAlertView.toggle()
+                                                }
+                                            }else{
+                                                withAnimation {
+                                                    baseData.playerDeleteAlert.toggle()
+                                                }
+                                                print("削除")
+                                                baseData.deletePlayerIndex = index
                                             }
-                                            print("削除")
-                                            baseData.deletePlayerIndex = index
+
                                         }){
                                             Text("削除")
                                                 .font(.system(size: 22, design: .serif))
@@ -62,10 +94,13 @@ struct PlayerSettingView: View {
                                     }
                                 }.padding()
                             }
-                        }
-                   }.padding(.horizontal,50).border(Color.black, width: 3)
+                        }.padding()
+                        .frame(width: 350.0)
+                        .background(   //放射状グラデーション（赤→黒）を生成
+                               RadialGradient(gradient: Gradient(colors: [.red, .black]), center: .center, startRadius: 1, endRadius: 300)
+                           )
                 }
-            
+                
                 VStack(spacing:10){
                     Button(action: {
                         withAnimation{
@@ -83,11 +118,13 @@ struct PlayerSettingView: View {
                     }
                     Button(action: {
                         baseData.allocateJobTitle()
+
                         withAnimation{
-                            baseData.isShowYakushokuView.toggle()
+                            //ゲーム画面へ
+                            baseData.isShowGameView.toggle()
                         }
                     }){
-                        Text("役職設定画面へ")
+                        Text("ゲーム画面へ")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
                             .frame(width: 320, height: 48)
@@ -103,10 +140,16 @@ struct PlayerSettingView: View {
 }
 
 struct PlayerSettingView_Previews: PreviewProvider {
-    @State static var base = BaseViewModel()
+   
     static var previews: some View {
         PlayerSettingView()
-            .environmentObject(base)
+            .environmentObject({ () -> BaseViewModel in
+                let baseData = BaseViewModel()
+
+                baseData.allocateJobTitle()
+                baseData.playerEditAlert = false
+                return baseData
+            }())
         
     }
 }
