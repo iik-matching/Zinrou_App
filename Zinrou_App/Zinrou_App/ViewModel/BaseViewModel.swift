@@ -21,6 +21,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var isShowGameView = false
     @Published var isShowResultView = false
     
+    @Published var isKakuninFrag = false
     
     init(){
         if game.players.count < 4 {

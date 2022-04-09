@@ -9,8 +9,9 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var baseData: BaseViewModel
+    
     var body: some View {
-        if baseData.isShowGameView{
+        if baseData.isShowGameView && baseData.isKakuninFrag{
             ZStack{
                 if(baseData.getasaOryoru() == GameConst.ASA){
                     Image(decorative:"朝画像")     // 画像指定
@@ -169,10 +170,9 @@ struct GameView: View {
                     }
                     if(baseData.didAction == true){
                         Button(action: {
-                            
-                            //次にの人物へ
+                            baseData.isKakuninFrag.toggle()
+                            //次の人物へ
                             baseData.next()
-                            
                         }){
                             Text("次へ")
                                 .font(.system(size: 22, design: .serif))
@@ -189,6 +189,8 @@ struct GameView: View {
                     }
                 }
             }
+        }else if baseData.isShowGameView && baseData.isKakuninFrag == false{
+            KakuninView()
         }
     }
 }

@@ -110,6 +110,7 @@ struct PlayerSettingView: View {
                     }
                     Button(action: {
                         baseData.allocateJobTitle()
+
                         withAnimation{
                             //ゲーム画面へ
                             baseData.isShowGameView.toggle()
