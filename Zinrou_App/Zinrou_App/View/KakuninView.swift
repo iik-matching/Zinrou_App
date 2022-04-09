@@ -9,7 +9,7 @@ struct KakuninView:View{
         ZStack{
             Color.brown.ignoresSafeArea()
             VStack{
-                Text("貴方は\(baseData.game.players[baseData.nowIndex].name)さんですか？")
+                Text(inputText)
 
                 Button(action:{
                     baseData.isKakuninFrag.toggle()

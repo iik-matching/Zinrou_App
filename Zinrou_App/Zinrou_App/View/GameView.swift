@@ -189,8 +189,10 @@ struct GameView: View {
                     }
                 }
             }
+            //ゲームビュー表示状態　かつ　未確認の場合
         }else if baseData.isShowGameView && baseData.isKakuninFrag == false{
-            KakuninView()
+            //確認画面を表示
+            KakuninView(inputText:"貴方は\(baseData.game.players[baseData.nowIndex].name)さんですか？")
         }
     }
 }

@@ -23,7 +23,10 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var isMyAlertView = false
     
 
-    @Published var MyAlertMessage = "" //確認を終えたかのフラグ
+    @Published var KakuninViewMessage = "" //自作アラートのメッセージ
+    
+    @Published var MyAlertMessage = "" //自作アラートのメッセージ
+    
     @Published var isKakuninFrag = false //確認を終えたかのフラグ
     
     init(){
