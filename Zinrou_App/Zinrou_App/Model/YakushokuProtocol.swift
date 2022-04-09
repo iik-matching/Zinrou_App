@@ -12,7 +12,5 @@ protocol YakushokuProtocol {
     func action1(name:String, delegate:SelectProtocol)
     //夜のアクション
     func action2(name:String, delegate:SelectProtocol)
-    
-    
 }
 

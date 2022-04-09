@@ -1,29 +1,62 @@
-////
-//  KakuninView.swift
-////  Zinrou_App
-////
-////  Created by 糸島光 on 2021/11/28.
-////
-//
-//import Foundation
-//import SwiftUI
-//
-//struct KakuninView: View {
-//    @StateObject var gameViewData = GameViewModel()
-//    
-//    var body: some View {
-//        VStack(spacing:20){
-//            Text(gameViewData.game.asaOrYoru)
-//            Text("あなたは"+gameViewData.getNowName()+"ですか？")
-//
-//            NavigationLink(destination: ActionView(player: gameViewData.game.players[gameViewData.nowIndex],delegate:gameViewData).environmentObject(gameViewData), label: {           Text("はい。次へ").font(.largeTitle)}
-//            ).frame(height: 80)
-//        }.font(.system(size: 30))
-//    }
-//}
-//
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+import SwiftUI
+
+struct KakuninView:View{
+    
+    @State var inputText = ""
+    @EnvironmentObject var baseData: BaseViewModel
+    
+    var body: some View{
+        ZStack{
+            if(baseData.getasaOryoru() == GameConst.ASA){
+                Image(decorative:"確認画面_朝")     // 画像指定
+                    .resizable()    // 画像サイズをフレームサイズに合わせる
+                    .ignoresSafeArea()
+            }else{
+                Image(decorative:"人狼確認画面背景画像")     // 画像指定
+                    .resizable()    // 画像サイズをフレームサイズに合わせる
+                    .ignoresSafeArea()
+            }
+            VStack(alignment: .center){
+                Text(inputText)
+                    .foregroundColor(Color(.white))
+                    .font(.system(size: 22, design: .rounded))
+                    .fontWeight(.semibold)
+                    .background(Color.black)
+                    .padding()
+
+
+                Button(action:{
+                    baseData.isKakuninFrag.toggle()
+                }){
+                    Spacer()
+                    Text("OK")
+                        .font(.system(size: 26, design: .serif))
+                        .fontWeight(.semibold)
+                        .frame(width: 100, height: 36)
+                        .foregroundColor(Color(.white))
+                        .background(
+                            // 線形グラデーション（青→黒）を生成
+                            LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
+                        )
+                        .cornerRadius(18)
+                    Spacer()
+                }
+            }
+        }
+    }
+}
+
+
+
+struct KakuninView_Previews: PreviewProvider {
+    static var previews: some View {
+        KakuninView()
+            .environmentObject({ () -> BaseViewModel in
+                let baseData = BaseViewModel()
+
+                baseData.allocateJobTitle()
+                return baseData
+            }())
+    }
+}
+

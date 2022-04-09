@@ -1,28 +1,44 @@
 import SwiftUI
 
-class BaseViewModel: ObservableObject {
+class BaseViewModel: ObservableObject ,SelectProtocol{
+    
     @Published var game = Game(players: [])
     @Published var nowIndex = 0
     @Published var deletePlayerIndex:Int? = nil
+    @Published var editPlayerIndex:Int = 0
     @Published var uranaikekka = ""
     @Published var addPlayerAlert = false
     @Published var playersCount = 0
     @Published var playersName: [String] = []
     @Published var yakushokuArray: [YakushokuProtocol] = []
+    @Published var didAction = false
+    @Published var resultMessage = ""
+    @Published var selectindex:Int? = nil
+
     //アラート１
     @Published var playerAddAlert = false
     @Published var playerDeleteAlert = false
+    @Published var playerEditAlert = false
     @Published var isShowYakushokuView = false
+    @Published var isShowGameView = false
+    @Published var isShowResultView = false
+    @Published var isMyAlertView = false
     
+
+    @Published var KakuninViewMessage = "" //自作アラートのメッセージ
     
+    @Published var MyAlertMessage = "" //自作アラートのメッセージ
+    
+    @Published var isKakuninFrag = false //確認を終えたかのフラグ
     
     init(){
-        //初期４人をセット
-        game.players.append(Player(name: "Aさん", yakushoku: nil))
-        game.players.append(Player(name: "Bさん", yakushoku: nil))
-        game.players.append(Player(name: "Cさん", yakushoku: nil))
-        game.players.append(Player(name: "Dさん", yakushoku: nil))
-        
+        if game.players.count < 4 {
+          //初期４人をセット
+            game.players.append(Player(name: "Aさん", yakushoku: nil))
+            game.players.append(Player(name: "Bさん", yakushoku: nil))
+            game.players.append(Player(name: "Cさん", yakushoku: nil))
+            game.players.append(Player(name: "Dさん", yakushoku: nil))
+        }
     }
     
     //プレイヤー追加
@@ -35,8 +51,21 @@ class BaseViewModel: ObservableObject {
         deletePlayerIndex = nil
     }
     
+    func getPlayerName(index: Int) -> String{
+        return game.players[index].name
+    }
+    
+    func setEditPlayerIndex(index: Int){
+        editPlayerIndex = index
+    }
+    
+    func getEditPlayerIndex() -> Int{
+        return editPlayerIndex
+    }
+    
     //役職を割り振る
     func allocateJobTitle(){
+        
         //４人で決め打ちしているのが問題
         var yakushoku_array : [String] = [YakushokuConst.SIMIN,
                                           YakushokuConst.ZINROU,
@@ -46,7 +75,7 @@ class BaseViewModel: ObservableObject {
         //５人以上の場合は、追加人数分市民を追加。
         if(game.players.count >= 5){
             let AddCount = game.players.count - 4;
-            for _ in 0...AddCount - 1  {
+            for _ in 0...AddCount - 1 {
                 yakushoku_array.append(YakushokuConst.SIMIN)
             }
         }
@@ -61,9 +90,10 @@ class BaseViewModel: ObservableObject {
         return game.players[nowIndex].name
     }
     
-
+    
     
     func next(){
+        didAction = false
         if nowIndex < game.players.count - 1{
             nowIndex += 1
         }else{
@@ -82,6 +112,7 @@ class BaseViewModel: ObservableObject {
                 for i in 0...game.players.count-1{
                     if killname == game.players[i].name{
                         game.players[i].isDeath = true
+                        print("\(game.players[i].name)が投票により死亡しました。")
                     }
                 }
                 //夜の場合
@@ -97,22 +128,45 @@ class BaseViewModel: ObservableObject {
                     }
                 }
             }
-
+            
             //朝夜チェンジ
             game.switchAsaYoru()
             //カウントリセット
             for i in 0...game.players.count-1{
                 game.players[i].count = 0
+                game.players[i].isGuard = false
+                game.players[i].isShuugeki = false
             }
             
-            if game.endHantei(){
-                print("人狼が勝ちました")
-            }else{
-                print("まだゲームは続きます")
+            //継続判定
+            let HANTEI = game.endHantei()
+            if HANTEI == GameConst.ZINROUSHOURI {
+                print(GameConst.ZINROUSHOURI)
+                //isShowResultView.toggle()
+                resultMessage = GameConst.ZINROUSHOURI
+                isShowYakushokuView.toggle()
+            }else if(HANTEI == GameConst.SIMINSHOURI){
+                //print(GameConst.SIMINSHOURI)
+                //isShowResultView.toggle()
+                resultMessage = GameConst.SIMINSHOURI
+                isShowYakushokuView.toggle()
+            }else if HANTEI == GameConst.KEIZOKU {
+                print(GameConst.KEIZOKU)
+                var count = 0;
+                for i in 0...game.players.count-1{
+                    if(game.players[i].isDeath == false){
+                        count += 1;
+                    }
+                }
+                print("残り\(count)人")
             }
-            
             
             log1()
+        }
+        
+        //もし次に人が死んでいたらさらに次に行く
+        if(game.players[nowIndex].isDeath == true){
+            next()
         }
     }
     func getYakushoku(yakushokuName:String)->YakushokuProtocol{
@@ -135,6 +189,7 @@ class BaseViewModel: ObservableObject {
     }
     
     func select(name: String) {
+        print(name+"を怪しむ")
         for i in 0...game.players.count-1{
             if game.players[i].name == name{
                 game.players[i].count += 1
@@ -143,6 +198,7 @@ class BaseViewModel: ObservableObject {
     }
     
     func kill(name: String) {
+        print(name+"を食ベる")
         for i in 0...game.players.count-1{
             if game.players[i].name == name{
                 game.players[i].isShuugeki = true
@@ -151,6 +207,7 @@ class BaseViewModel: ObservableObject {
     }
     
     func gurde(name: String) {
+        print(name+"を守る")
         for i in 0...game.players.count-1{
             if game.players[i].name == name{
                 game.players[i].isGuard = true
@@ -158,14 +215,32 @@ class BaseViewModel: ObservableObject {
         }
     }
     
-//    func uranau(name: String) {
-//        for i in 0...game.players.count-1{
-//            if game.players[i].name == name{
-//                print(game.players[i].yakushoku.name)
-//                uranaikekka = game.players[i].name+"は"+game.players[i].yakushoku.zinnei
-//            }
-//        }
-//    }
+        func uranau(name: String) {
+            print(name+"を占う")
+            resultMessage = "  [占い結果]\n"
+            isShowResultView.toggle()
+            
+            for i in 0...game.players.count-1{
+                if game.players[i].name == name{
+                    print(game.players[i].yakushoku!.name)
+                    resultMessage += game.players[i].name+"は"+game.players[i].yakushoku!.name
+                }
+            }
+        }
+    
+    //同じ名前チェック
+    func PlayerNameCheak(name: String) -> Bool{
+        
+        for i in 0...game.players.count-1{
+            //同じ名前が存在する場合
+            if game.players[i].name == name{
+                return false
+            }
+        }
+        
+        return true
+    }
+    
     
     func log(){
         for player in game.players{
@@ -176,6 +251,36 @@ class BaseViewModel: ObservableObject {
         for player in game.players{
             print(player.name+" \(player.isDeath)")
         }
+    }
+    
+    func initializePlayer()->[Player]{
+        var nextPlayers:[Player] = []
+        for i in 0...game.players.count-1{
+            nextPlayers.append(Player(name: game.players[i].name, yakushoku: nil))
+        }
+        game.players = nextPlayers
+        return game.players
+    }
+    
+    func initializeGame(){
+        game = Game(players:initializePlayer())
+        nowIndex = 0
+        deletePlayerIndex = nil
+        editPlayerIndex = 0
+        uranaikekka = ""
+        addPlayerAlert = false
+        playersCount = 0
+        playersName = []
+        yakushokuArray = []
+        didAction = false
+        resultMessage = ""
+        //アラート１
+        playerAddAlert = false
+        playerDeleteAlert = false
+        playerEditAlert = false
+        isShowYakushokuView = false
+        isShowGameView = false
+        isShowResultView = false
     }
 }
 
