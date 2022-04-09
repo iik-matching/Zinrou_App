@@ -9,8 +9,9 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var baseData: BaseViewModel
+    
     var body: some View {
-        if baseData.isShowGameView{
+        if baseData.isShowGameView && baseData.isKakuninFrag{
             ZStack{
                 if(baseData.getasaOryoru() == GameConst.ASA){
                     Image(decorative:"朝画像")     // 画像指定
@@ -178,28 +179,32 @@ struct GameView: View {
                             }
                         }.padding()
                     }
-                }
-                if(baseData.didAction == true){
-                    Button(action: {
-                        //次にの人物へ
-                        baseData.next()
-                        baseData.selectindex = nil
-                        
-                    }){
-                        Text("次へ")
-                            .font(.system(size: 22, design: .serif))
-                            .fontWeight(.semibold)
-                            .frame(width: 80, height: 32)
-                            .foregroundColor(Color(.white))
-                            .background(
-                                // 線形グラデーション（青→黒）を生成
-                                LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
-                            )
-                            .cornerRadius(18)
-                        
+                } 
+                   if(baseData.didAction == true){
+                        Button(action: {
+                            baseData.isKakuninFrag.toggle()
+                            //次の人物へ
+                            baseData.next()
+                          　　　　baseData.selectindex = nil
+                        }){
+                            Text("次へ")
+                                .font(.system(size: 22, design: .serif))
+                                .fontWeight(.semibold)
+                                .frame(width: 80, height: 32)
+                                .foregroundColor(Color(.white))
+                                .background(
+                                    // 線形グラデーション（青→黒）を生成
+                                    LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
+                                )
+                                .cornerRadius(18)        
+                        }
                     }
                 }
             }
+            //ゲームビュー表示状態　かつ　未確認の場合
+        }else if baseData.isShowGameView && baseData.isKakuninFrag == false{
+            //確認画面を表示
+            KakuninView(inputText:"貴方は\(baseData.game.players[baseData.nowIndex].name)さんですか？")
         }
     }
   }

@@ -22,7 +22,14 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var isShowYakushokuView = false
     @Published var isShowGameView = false
     @Published var isShowResultView = false
+    @Published var isMyAlertView = false
     
+
+    @Published var KakuninViewMessage = "" //自作アラートのメッセージ
+    
+    @Published var MyAlertMessage = "" //自作アラートのメッセージ
+    
+    @Published var isKakuninFrag = false //確認を終えたかのフラグ
     
     init(){
         if game.players.count < 4 {
@@ -220,6 +227,20 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 }
             }
         }
+    
+    //同じ名前チェック
+    func PlayerNameCheak(name: String) -> Bool{
+        
+        for i in 0...game.players.count-1{
+            //同じ名前が存在する場合
+            if game.players[i].name == name{
+                return false
+            }
+        }
+        
+        return true
+    }
+    
     
     func log(){
         for player in game.players{

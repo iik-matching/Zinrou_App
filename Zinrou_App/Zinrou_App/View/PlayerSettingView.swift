@@ -64,11 +64,19 @@ struct PlayerSettingView: View {
                                                 )
                                         }
                                         Button(action: {
-                                            withAnimation {
-                                                baseData.playerDeleteAlert.toggle()
+                                            if(baseData.game.players.count <= 4){
+                                                withAnimation {
+                                                    baseData.MyAlertMessage = "４人以下にはできません"
+                                                    baseData.isMyAlertView.toggle()
+                                                }
+                                            }else{
+                                                withAnimation {
+                                                    baseData.playerDeleteAlert.toggle()
+                                                }
+                                                print("削除")
+                                                baseData.deletePlayerIndex = index
                                             }
-                                            print("削除")
-                                            baseData.deletePlayerIndex = index
+
                                         }){
                                             Text("削除")
                                                 .font(.system(size: 22, design: .serif))
@@ -110,6 +118,7 @@ struct PlayerSettingView: View {
                     }
                     Button(action: {
                         baseData.allocateJobTitle()
+
                         withAnimation{
                             //ゲーム画面へ
                             baseData.isShowGameView.toggle()

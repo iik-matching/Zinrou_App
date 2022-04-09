@@ -8,7 +8,6 @@ struct CustomAlertView:View{
     
     var body: some View{
         if baseData.addPlayerAlert{
-            Text("プレイヤーの追加")
             ZStack{
                 Color.brown.opacity(0.3).ignoresSafeArea()
                 VStack{
@@ -28,9 +27,17 @@ struct CustomAlertView:View{
                             Spacer()
                         }
                         Button(action:{
-                            baseData.addPlayer(playersName: inputText)
-                            withAnimation{
-                                baseData.addPlayerAlert.toggle()
+                            //同じ名前が存在する場合
+                            if(baseData.PlayerNameCheak(name: inputText) == false){
+                                withAnimation {
+                                    baseData.MyAlertMessage = "同じ名前は追加できません"
+                                    baseData.isMyAlertView.toggle()
+                                }
+                            }else{
+                                baseData.addPlayer(playersName: inputText)
+                                withAnimation{
+                                    baseData.addPlayerAlert.toggle()
+                                }
                             }
                         }){
                             Spacer()
