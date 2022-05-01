@@ -66,7 +66,7 @@ struct YakushokuSettingView: View {
                             Text("ホーム画面へ")
                                 .font(.largeTitle)
                                 .fontWeight(.semibold)
-                                .frame(width: 200, height: 50)
+                                .frame(width: 240, height: 50)
                                 .foregroundColor(Color(.white))
                                 .background(Color(.purple))
                                 .cornerRadius(20)
