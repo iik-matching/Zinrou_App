@@ -11,8 +11,9 @@ struct BaseView: View {
     @StateObject var baseData = BaseViewModel()
     
     var body: some View {
-        PlayerSettingView()
+        HomeView(stories: stories)
             .environmentObject(baseData)
+            .overlay(PlayerSettingView().environmentObject(baseData))
             .overlay(CustomAlertView().environmentObject(baseData))
             .overlay(DeletePlayerAlertView()
                 .environmentObject(baseData))
@@ -21,7 +22,6 @@ struct BaseView: View {
             .overlay(ResultView().environmentObject(baseData))
             .overlay(YakushokuSettingView().environmentObject(baseData))
             .overlay(MyAlertView().environmentObject(baseData))
-            
     }
 }
 

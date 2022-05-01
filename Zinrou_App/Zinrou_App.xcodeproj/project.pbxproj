@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B9F6A3D281E796D005A3123 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F6A3C281E796D005A3123 /* HomeView.swift */; };
 		171735E1274B4E4500D73990 /* AddPlayerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */; };
 		171735E3274B4E9000D73990 /* YakushokuSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171735E2274B4E9000D73990 /* YakushokuSettingView.swift */; };
 		1778994F2801BED300232BAE /* MeetingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1778994E2801BED300232BAE /* MeetingAlertView.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B9F6A3C281E796D005A3123 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerAlertView.swift; sourceTree = "<group>"; };
 		171735E2274B4E9000D73990 /* YakushokuSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YakushokuSettingView.swift; sourceTree = "<group>"; };
 		1778994E2801BED300232BAE /* MeetingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAlertView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				7BE620D527DCCB4300855C13 /* GameView.swift */,
 				7BE620D927DCCB7900855C13 /* ResultView.swift */,
 				1778994E2801BED300232BAE /* MeetingAlertView.swift */,
+				0B9F6A3C281E796D005A3123 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				7BC20B0C273F90AC00794A32 /* Zinrou.swift in Sources */,
 				171735E1274B4E4500D73990 /* AddPlayerAlertView.swift in Sources */,
 				7BE620DA27DCCB7900855C13 /* ResultView.swift in Sources */,
+				0B9F6A3D281E796D005A3123 /* HomeView.swift in Sources */,
 				7BA07DC7273F9BEE00717B9E /* Game.swift in Sources */,
 				1793D82E275391C300076C84 /* KakuninView.swift in Sources */,
 				7BC20B0A273F90A400794A32 /* Simin.swift in Sources */,
