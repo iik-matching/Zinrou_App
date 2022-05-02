@@ -46,22 +46,21 @@ struct HomeView: View {
                                                            switch story.id {
                                                                    case 0:
                                                                        //ゲーム説明画面へ
-                                                                       print()
+                                                                        baseData.isGameExplanationView.toggle()
                                                                    case 1:
                                                                        //役職説明画面へ
-                                                                       //baseData.isPlayerSettingView.toggle()
-                                                                       print()
+                                                                        baseData.isPositionExplanationView.toggle()
                                                                    case 2:
                                                                        //開発者画面へ
-                                                                       //baseData.isPlayerSettingView.toggle()
+                                                                        baseData.isDeveloperView.toggle()
                                                                        print()
                                                                    case 3:
                                                                        //アプリ概要画面へ
-                                                                       //baseData.isPlayerSettingView.toggle()
+                                                                        baseData.isAppInfoView.toggle()
                                                                        print()
                                                                    default: // .home
                                                                        //ゲーム説明画面へ
-                                                                       print()
+                                                                        baseData.isGameExplanationView.toggle()
                                                                 }
                                                      }) {
                                                          Image(story.image)

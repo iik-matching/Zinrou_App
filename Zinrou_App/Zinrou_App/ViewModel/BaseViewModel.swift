@@ -26,7 +26,11 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var isShowResultView = false
     @Published var isMyAlertView = false
     @Published var isPlayerSettingView = false
-
+    @Published var isGameExplanationView = false
+    @Published var isPositionExplanationView = false
+    @Published var isDeveloperView = false
+    @Published var isAppInfoView = false
+    
     @Published var KakuninViewMessage = "" //自作アラートのメッセージ
     
     @Published var MyAlertMessage = "" //自作アラートのメッセージ
@@ -286,6 +290,10 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         isShowGameView = false
         isShowResultView = false
         isPlayerSettingView = false
+        isGameExplanationView = false
+        isPositionExplanationView = false
+        isDeveloperView = false
+        isAppInfoView = false
     }
 }
 
