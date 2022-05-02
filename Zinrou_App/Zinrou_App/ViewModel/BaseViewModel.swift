@@ -129,7 +129,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                         }
                     }
                 }
-                timeCount = 10
+                timeCount = 100
                 meetingAlert.toggle()
             }
             
