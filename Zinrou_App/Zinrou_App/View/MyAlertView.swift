@@ -8,7 +8,10 @@ struct MyAlertView:View{
         if baseData.isMyAlertView{
 
             ZStack{
-                Color.brown.opacity(0.3).ignoresSafeArea()
+                Image(decorative:"会議時間画面")     // 画像指定
+                    .resizable()    // 画像サイズをフレームサイズに合わせる
+                    .ignoresSafeArea()
+                
                 VStack{
                     Text(baseData.MyAlertMessage)
                     Divider()
@@ -18,9 +21,17 @@ struct MyAlertView:View{
                         }
                     }){
                         Spacer()
-                        Text("OK")
+                        Text("OK").font(.system(size: 36, design: .serif))
+                            .fontWeight(.semibold)
+                            .frame(width: 300, height: 50)
+                            .foregroundColor(Color(.blue))
+                            .background(Color(.white))
+                            .cornerRadius(36)
+                            .transition(.move(edge: .leading))
+                        
                         Spacer()
-                    }
+                    }.padding(.vertical,15)
+                    
                 }.padding().fixedSize()
                     .background(Color.gray.brightness(0.5)).cornerRadius(20)
             }
