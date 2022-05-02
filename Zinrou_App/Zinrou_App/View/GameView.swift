@@ -11,7 +11,7 @@ struct GameView: View {
     @EnvironmentObject var baseData: BaseViewModel
     
     var body: some View {
-        if baseData.isShowGameView && baseData.isKakuninFrag{
+        if baseData.isShowGameView && baseData.isKakuninFrag {
             ZStack{
                 if(baseData.getasaOryoru() == GameConst.ASA){
                     Image(decorative:"朝画像")     // 画像指定
