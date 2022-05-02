@@ -53,9 +53,9 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         deletePlayerIndex = nil
     }
     
-    func getPlayerName(index: Int) -> String{
-        return game.players[index].name
-    }
+//    func getPlayerName(index: Int) -> String{
+//        return game.players[index].name
+//    }
     
     func setEditPlayerIndex(index: Int){
         editPlayerIndex = index

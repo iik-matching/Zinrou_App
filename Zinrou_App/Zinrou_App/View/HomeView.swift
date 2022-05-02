@@ -46,7 +46,7 @@ struct HomeView: View {
                                                            switch story.id {
                                                                    case 0:
                                                                        //ゲーム説明画面へ
-                                                                       baseData.isPlayerSettingView.toggle()
+                                                                       print()
                                                                    case 1:
                                                                        //役職説明画面へ
                                                                        //baseData.isPlayerSettingView.toggle()
@@ -61,7 +61,7 @@ struct HomeView: View {
                                                                        print()
                                                                    default: // .home
                                                                        //ゲーム説明画面へ
-                                                                       baseData.isPlayerSettingView.toggle()
+                                                                       print()
                                                                 }
                                                      }) {
                                                          Image(story.image)
