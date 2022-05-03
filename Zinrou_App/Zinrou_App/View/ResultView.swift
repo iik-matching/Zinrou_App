@@ -17,10 +17,18 @@ struct ResultView: View {
                 VStack(spacing:15){
                     
                     VStack{
-                        Image(decorative:"村人画像")     // 画像指定
-                            .resizable()
-                            .frame(width: 300.0, height: 300.0)
+                        
+                        if(baseData.game.players[baseData.nowIndex].yakushoku!.name == YakushokuConst.ZINROU){
+                                Image(decorative:"人狼画像")     // 画像指定
+                                    .resizable()
+                                    .frame(width: 300.0, height: 300.0)
+                            }else{
+                                Image(decorative:"村人画像")     // 画像指定
+                                    .resizable()
+                                    .frame(width: 300.0, height: 300.0)
+                            }
                     }
+                    
                     
                     VStack(spacing:15){
                         Text(baseData.resultMessage)

@@ -13,6 +13,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var yakushokuArray: [YakushokuProtocol] = []
     @Published var didAction = false
     @Published var resultMessage = ""
+    @Published var resultYakusyoku = ""
     @Published var timeCount = 0
     @Published var selectindex:Int? = nil
 
@@ -231,7 +232,13 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
             for i in 0...game.players.count-1{
                 if game.players[i].name == name{
                     print(game.players[i].yakushoku!.name)
-                    resultMessage += game.players[i].name+"は"+game.players[i].yakushoku!.name
+                    //占った結果で役職が人狼だったら人狼、人狼以外は全部市民にする
+                    if (game.players[i].yakushoku!.name == YakushokuConst.ZINROU){
+                        resultYakusyoku = "人狼"
+                    }else {
+                        resultYakusyoku = "市民"
+                    }
+                    resultMessage += game.players[i].name+"は"+resultYakusyoku
                 }
             }
         }
