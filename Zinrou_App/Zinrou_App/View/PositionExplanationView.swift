@@ -33,7 +33,7 @@ struct PositionExplanationView: View {
                         
                         ScrollView {
                                 VStack(spacing:8){
-                                    Text("役職一覧（市民陣営）")
+                                    Text("役職一覧（村人陣営）")
                                         .fontWeight(.semibold)
                                         .foregroundColor(Color(.red))
                                         .padding(3)

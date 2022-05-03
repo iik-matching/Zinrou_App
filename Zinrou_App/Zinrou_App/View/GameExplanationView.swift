@@ -33,7 +33,7 @@ struct GameExplanationView: View {
                         ScrollView {
                                 VStack(spacing:8){
                                     Text("人狼ゲームとは").foregroundColor(Color(.black)).padding(3).font(.largeTitle)
-                                    Text("人狼ゲームとは、村人陣営と人狼陣営に分かれて、自分の陣営の勝利を目指すゲームです。村人陣営は議論を重ね、誰が人狼なのかを推理していきます。人狼陣営は正体を隠しながら、村人陣営の議論を引っ掻き回します。各陣営の勝利条件人狼ゲームには、村人陣営と人狼陣営、2つの陣営があります。まずは、2つの陣営のやり方と、勝利条件について解説します。").foregroundColor(Color(.black)).padding(8)
+                                    Text("人狼ゲームとは、村人陣営と人狼陣営に分かれて、自分の陣営の勝利を目指すゲームです。村人陣営は議論を重ね、誰が人狼なのかを推理していきます。人狼陣営は正体を隠しながら、村人陣営の議論を引っ掻き回します。続いて、各陣営の勝利条件についてです。人狼ゲームには、大きく分けて「村人陣営」と「人狼陣営」2つの陣営があります。まずは、2つの陣営のやり方と、勝利条件について解説します。").foregroundColor(Color(.black)).padding(8)
                                     
                                     HStack{
                                          Text("【村人陣営】").foregroundColor(Color(.black)).padding(3).font(.largeTitle)
@@ -41,7 +41,7 @@ struct GameExplanationView: View {
                                             .resizable()
                                             .frame(width: 100.0, height: 100.0)
                                     }
-                                    Text("村人陣営の勝利条件は、全ての人狼を処刑することです。役職ごとのやり方を覚え、村人陣営で相談し合いながら、人狼を探していきましょう。").foregroundColor(Color(.black)).padding(8)
+                                    Text("「村人陣営」の勝利条件は、全ての人狼を処刑することです。役職ごとのやり方を覚え、村人陣営で相談し合いながら、人狼を探していきましょう。").foregroundColor(Color(.black)).padding(8)
                                     
                                     HStack{
                                          Text("【人狼陣営】").foregroundColor(Color(.black)).padding(3).font(.largeTitle)
@@ -49,7 +49,7 @@ struct GameExplanationView: View {
                                             .resizable()
                                             .frame(width: 100.0, height: 100.0)
                                     }
-                                    Text("人狼陣営の勝利条件は、村人と人狼の人数が同じになること。村人を人狼だと勘違いさせ、処刑させることで、数を減らしていきましょう。").foregroundColor(Color(.black)).padding(3)
+                                    Text("「人狼陣営」の勝利条件は、村人と人狼の人数が同じになること。村人を人狼だと勘違いさせ、処刑させることで、数を減らしていきましょう。").foregroundColor(Color(.black)).padding(3)
                                     
                                 }.padding()
                                 .frame(width: 350.0)
