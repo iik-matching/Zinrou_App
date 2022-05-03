@@ -236,7 +236,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                     if (game.players[i].yakushoku!.name == YakushokuConst.ZINROU){
                         resultYakusyoku = "人狼"
                     }else {
-                        resultYakusyoku = "市民"
+                        resultYakusyoku = "村人"
                     }
                     resultMessage += game.players[i].name+"は"+resultYakusyoku
                 }
