@@ -16,7 +16,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var resultYakusyoku = ""
     @Published var timeCount = 0
     @Published var selectindex:Int? = nil
-
+    
     //アラート１
     @Published var playerAddAlert = false
     @Published var playerDeleteAlert = false
@@ -50,7 +50,13 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     
     //プレイヤー追加
     func addPlayer(playersName: String){
-        game.players.append(Player(name: playersName, yakushoku: nil))
+        if (playersName != ""){
+            game.players.append(Player(name: playersName, yakushoku: nil))
+        }else{
+            //名前が未記入だった場合追加されない
+            MyAlertMessage = "名前を入力してください"
+            isMyAlertView.toggle()
+        }
     }
     
     func deletePlayer(){

@@ -8,7 +8,7 @@ struct MyAlertView:View{
         if baseData.isMyAlertView{
 
             ZStack{
-                Image(decorative:"会議時間画面")     // 画像指定
+                Image(decorative:"ゲーム説明画面")     // 画像指定
                     .resizable()    // 画像サイズをフレームサイズに合わせる
                     .ignoresSafeArea()
                 
