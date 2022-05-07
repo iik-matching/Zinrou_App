@@ -78,7 +78,11 @@ struct MeetingAlertView: View {
                     }
                 }
             }else{
-                KakuninView(inputText: "追放会議を終了します",delegate: test(d: baseData))
+                if baseData.getasaOryoru() == GameConst.ASA {
+                   KakuninView(inputText: "追放会議を終了します",delegate: test(d: baseData))
+                }else{
+                   KakuninView(inputText: "ゲームが続きます。宜しいですか？",delegate: test(d: baseData))
+                }
             }
         }
         

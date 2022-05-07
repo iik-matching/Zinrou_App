@@ -29,8 +29,13 @@ struct KakuninView:View{
 
                 Button(action:{
                     baseData.isKakuninFrag.toggle()
+                    print("isKakuninFrag", baseData.isKakuninFrag)
                     if delegate != nil{
                         delegate!.nextPage()
+                        baseData.isActionResultView1.toggle()
+                        print("isActionResultView1", baseData.isActionResultView1)
+                        baseData.isActionResultView2.toggle()
+                        print("isActionResultView2", baseData.isActionResultView2)
                     }
                 }){
                     Spacer()
