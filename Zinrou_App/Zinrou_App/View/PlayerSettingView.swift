@@ -78,21 +78,31 @@ struct PlayerSettingView: View {
                                                     print("削除")
                                                     baseData.deletePlayerIndex = index
                                                 }
+                                                  }) {
+                                                      //見た目
+                                                      Text("削除")
+                                                          .font(.system(size: 22, design: .serif))
+                                                          .fontWeight(.semibold)
+                                                          .frame(width: 120, height: 32)
+                                                          .foregroundColor(Color(.white))
+                                                          .background(
+                                                            LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
+                                                          )
+                                                          .cornerRadius(18)
+                                                  }.alert("削除確認", isPresented: $baseData.playerDeleteAlert){
+                                                      Button("Cancel"){
 
-                                            }){
-                                                Text("削除")
-                                                    .font(.system(size: 22, design: .serif))
-                                                    .fontWeight(.semibold)
-                                                    .frame(width: 80, height: 32)
-                                                    .foregroundColor(Color(.black))
-                                                    .background(Color(.white))
-                                                    .cornerRadius(18)
-                                                    .overlay(
-                                                        RoundedRectangle(cornerRadius: 24)
-                                                            .stroke(Color(.orange), lineWidth: 2.0)
-                                                    )
-
-                                            }
+                                                      }
+                                                      Button("削除"){
+                                                          baseData.deletePlayer()
+                                                      }
+                                                  } message: {
+                                                      //詳細メッセージ
+                                                      if let i = baseData.deletePlayerIndex{
+                                                          Text("\(baseData.game.players[i].name)を削除しますか？")
+                                                      }
+                                                      //                                                    Text("\(baseData.game.players[selectIndex].name)\(baseData.game.players[baseData.nowIndex].yakushoku!.yoruActionMessage)")
+                                                  }
                                         }
                                     }.padding()
                                 }
@@ -116,7 +126,7 @@ struct PlayerSettingView: View {
                                 .foregroundColor(Color(.white))
                                 .background(Color(.blue))
                                 .cornerRadius(24)
-                            
+
                         }
                         Button(action: {
                                 baseData.allocateJobTitle()
