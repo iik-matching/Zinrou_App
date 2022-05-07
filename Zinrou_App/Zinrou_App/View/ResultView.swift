@@ -15,10 +15,8 @@ struct ResultView: View {
                 Color.black.ignoresSafeArea()
                 
                 VStack(spacing:15){
-                    
                     VStack{
-                        
-                        if(baseData.game.players[baseData.nowIndex].yakushoku!.name == YakushokuConst.ZINROU){
+                        if(baseData.resultYakusyoku == YakushokuConst.ZINROU){
                                 Image(decorative:"人狼画像")     // 画像指定
                                     .resizable()
                                     .frame(width: 300.0, height: 300.0)

@@ -41,7 +41,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     
     init(){
         if game.players.count < 4 {
-          //初期４人をセット
+            //初期４人をセット
             game.players.append(Player(name: "Aさん", yakushoku: nil))
             game.players.append(Player(name: "Bさん", yakushoku: nil))
             game.players.append(Player(name: "Cさん", yakushoku: nil))
@@ -65,9 +65,9 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         deletePlayerIndex = nil
     }
     
-//    func getPlayerName(index: Int) -> String{
-//        return game.players[index].name
-//    }
+    //    func getPlayerName(index: Int) -> String{
+    //        return game.players[index].name
+    //    }
     
     func setEditPlayerIndex(index: Int){
         editPlayerIndex = index
@@ -231,24 +231,27 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         }
     }
     
-        func uranau(name: String) {
-            print(name+"を占う")
-            resultMessage = "  [占い結果]\n"
-            isShowResultView.toggle()
-            
-            for i in 0...game.players.count-1{
-                if game.players[i].name == name{
-                    print(game.players[i].yakushoku!.name)
-                    //占った結果で役職が人狼だったら人狼、人狼以外は全部市民にする
-                    if (game.players[i].yakushoku!.name == YakushokuConst.ZINROU){
-                        resultYakusyoku = "人狼"
-                    }else {
-                        resultYakusyoku = "村人"
-                    }
-                    resultMessage += game.players[i].name+"は"+resultYakusyoku
+    
+    
+    func uranau(name: String) {
+        print(name+"を占う")
+        resultMessage = "  [占い結果]\n"
+        isShowResultView.toggle()
+        
+        for i in 0...game.players.count-1{
+            if game.players[i].name == name{
+                print(game.players[i].yakushoku!.name)
+                //占った結果で役職が人狼だったら人狼、人狼以外は全部市民にする
+                if (game.players[i].yakushoku!.name == YakushokuConst.ZINROU){
+                    
+                    resultYakusyoku = YakushokuConst.ZINROU
+                }else {
+                    resultYakusyoku = YakushokuConst.SIMIN
                 }
+                resultMessage += game.players[i].name+"は"+resultYakusyoku
             }
         }
+    }
     
     //同じ名前チェック
     func PlayerNameCheak(name: String) -> Bool{
