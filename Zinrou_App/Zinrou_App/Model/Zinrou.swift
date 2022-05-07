@@ -15,7 +15,12 @@ struct Zinrou:YakushokuProtocol{
     func action1(name:String, delegate:SelectProtocol) {
         delegate.select(name: name)
     }
+    
     func action2(name:String, delegate:SelectProtocol){
         delegate.kill(name: name)
+    }
+
+    func action3(name:String, delegate:SelectProtocol) {
+        delegate.select(name: name)
     }
 }

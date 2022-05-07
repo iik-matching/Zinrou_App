@@ -16,14 +16,14 @@ struct ResultView: View {
                 
                 VStack(spacing:15){
                     VStack{
-                        Image(decorative:"\(baseData.resultZinnei)画像")     // 画像指定
+                        Image(decorative:"\(baseData.uranattaPlayer!.zinnei)画像")     // 画像指定
                                 .resizable()
                                 .frame(width: 300.0, height: 300.0)
                     }
                     
                     
                     VStack(spacing:15){
-                        Text(baseData.uranaiResultMessage)
+                        Text("  [占い結果]\n\(baseData.uranattaPlayer!.name)さんは\(baseData.uranattaPlayer!.yakushoku!.zinnei)")
                             .font(.system(size: 28, design: .serif))
                             .fontWeight(.semibold)
                             .foregroundColor(Color(.white))

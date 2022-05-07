@@ -19,7 +19,6 @@
 		171735E3274B4E9000D73990 /* YakushokuConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171735E2274B4E9000D73990 /* YakushokuConfirmationView.swift */; };
 		1778994F2801BED300232BAE /* MeetingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1778994E2801BED300232BAE /* MeetingAlertView.swift */; };
 		17927E45274100C4006AAACE /* PlayerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17927E44274100C4006AAACE /* PlayerSettingView.swift */; };
-		1793D82C2753859B00076C84 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D82B2753859B00076C84 /* SettingViewModel.swift */; };
 		1793D82E275391C300076C84 /* KakuninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D82D275391C300076C84 /* KakuninView.swift */; };
 		17B440AC279BD676001A5F2C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B440AB279BD676001A5F2C /* BaseViewModel.swift */; };
 		17B440B2279BD7E2001A5F2C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B440B1279BD7E2001A5F2C /* BaseView.swift */; };
@@ -36,7 +35,6 @@
 		7BC20AF4273F8B5D00794A32 /* Zinrou_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20AF3273F8B5D00794A32 /* Zinrou_AppUITests.swift */; };
 		7BC20AF6273F8B5D00794A32 /* Zinrou_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20AF5273F8B5D00794A32 /* Zinrou_AppUITestsLaunchTests.swift */; };
 		7BC20B06273F8C3F00794A32 /* YakushokuProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B05273F8C3F00794A32 /* YakushokuProtocol.swift */; };
-		7BC20B08273F8C5E00794A32 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B07273F8C5E00794A32 /* GameViewModel.swift */; };
 		7BC20B0A273F90A400794A32 /* Simin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B09273F90A400794A32 /* Simin.swift */; };
 		7BC20B0C273F90AC00794A32 /* Zinrou.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B0B273F90AC00794A32 /* Zinrou.swift */; };
 		7BC20B0F273F911100794A32 /* Kishi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC20B0E273F911100794A32 /* Kishi.swift */; };
@@ -75,7 +73,6 @@
 		171735E2274B4E9000D73990 /* YakushokuConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YakushokuConfirmationView.swift; sourceTree = "<group>"; };
 		1778994E2801BED300232BAE /* MeetingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAlertView.swift; sourceTree = "<group>"; };
 		17927E44274100C4006AAACE /* PlayerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSettingView.swift; sourceTree = "<group>"; };
-		1793D82B2753859B00076C84 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		1793D82D275391C300076C84 /* KakuninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakuninView.swift; sourceTree = "<group>"; };
 		17B440AB279BD676001A5F2C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		17B440B1279BD7E2001A5F2C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -95,7 +92,6 @@
 		7BC20AF3273F8B5D00794A32 /* Zinrou_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zinrou_AppUITests.swift; sourceTree = "<group>"; };
 		7BC20AF5273F8B5D00794A32 /* Zinrou_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zinrou_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7BC20B05273F8C3F00794A32 /* YakushokuProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YakushokuProtocol.swift; sourceTree = "<group>"; };
-		7BC20B07273F8C5E00794A32 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		7BC20B09273F90A400794A32 /* Simin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simin.swift; sourceTree = "<group>"; };
 		7BC20B0B273F90AC00794A32 /* Zinrou.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zinrou.swift; sourceTree = "<group>"; };
 		7BC20B0E273F911100794A32 /* Kishi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kishi.swift; sourceTree = "<group>"; };
@@ -218,8 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				17B440AB279BD676001A5F2C /* BaseViewModel.swift */,
-				7BC20B07273F8C5E00794A32 /* GameViewModel.swift */,
-				1793D82B2753859B00076C84 /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -377,7 +371,6 @@
 				7BC20B0A273F90A400794A32 /* Simin.swift in Sources */,
 				17B440AC279BD676001A5F2C /* BaseViewModel.swift in Sources */,
 				0B808DFC281F8B61005BBD08 /* GameExplanationView.swift in Sources */,
-				7BC20B08273F8C5E00794A32 /* GameViewModel.swift in Sources */,
 				7BC20B06273F8C3F00794A32 /* YakushokuProtocol.swift in Sources */,
 				7BA07DC9273FA53D00717B9E /* MyAlertView.swift in Sources */,
 				0B808DFE281F94FC005BBD08 /* PositionExplanationView.swift in Sources */,
@@ -396,7 +389,6 @@
 				0B85F4CF282645C000E9B656 /* ActionResultView1.swift in Sources */,
 				1778994F2801BED300232BAE /* MeetingAlertView.swift in Sources */,
 				0B85F4D12826497900E9B656 /* ActionResultView2.swift in Sources */,
-				1793D82C2753859B00076C84 /* SettingViewModel.swift in Sources */,
 				7BC20AD9273F8B5C00794A32 /* Zinrou_App.swift in Sources */,
 				0B808E02281FA41B005BBD08 /* AppInfoView.swift in Sources */,
 			);
