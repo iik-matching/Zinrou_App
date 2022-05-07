@@ -31,17 +31,17 @@ struct GameView: View {
                         .foregroundColor(Color(.white))
                         .font(.system(size: 28, design: .rounded))
                     
-                    //役職ごとに画像を切り替える
-                    Image(decorative:"\(baseData.game.players[baseData.nowIndex].yakushoku!.name)画像")     // 画像指定
-                        .resizable()
-                        .frame(width: 300.0, height: 300.0)
-                    
                     //その他説明
                     if(baseData.getasaOryoru() == GameConst.ASA){
                         Text(/*@START_MENU_TOKEN@*/"人狼だと疑わしい人を選んでください。"/*@END_MENU_TOKEN@*/).frame(maxWidth:350, maxHeight:50)
                             .font(.system(size: 16, design: .serif))
                             .background(Color(.white))
                     }else{
+                        //役職ごとに画像を切り替える
+                        Image(decorative:"\(baseData.game.players[baseData.nowIndex].yakushoku!.name)画像")     // 画像指定
+                            .resizable()
+                            .frame(width: 300.0, height: 300.0)
+                        
                         Text("貴方は「"+baseData.game.players[baseData.nowIndex].yakushoku!.name+"」です。").font(.title).padding()
                             .foregroundColor(Color(.white))
                             .font(.system(size: 28, design: .rounded))
@@ -68,7 +68,7 @@ struct GameView: View {
                                                     self.showingAlert = true
                                                     selectIndex = index
                                                 }) {
-                                                    Text(baseData.game.players[baseData.nowIndex].yakushoku!.actionText)
+                                                    Text("投票する")
                                                         .font(.system(size: 22, design: .serif))
                                                         .fontWeight(.semibold)
                                                         .frame(width: 120, height: 32)
@@ -91,7 +91,7 @@ struct GameView: View {
                                                         baseData.selectindex = nil
                                                     }
                                                 } message: {
-                                                    Text(baseData.game.players[selectIndex].name+"を人狼だと疑いますか？")
+                                                    Text(baseData.game.players[selectIndex].name+"さんに投票しますか？")
                                                 }
                                             }else{
                                                 Text("死亡").font(.system(size: 22, design: .serif))
