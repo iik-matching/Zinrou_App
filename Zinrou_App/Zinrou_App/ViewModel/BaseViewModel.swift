@@ -257,9 +257,9 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 //占った結果で役職が人狼だったら人狼、人狼以外は全部市民にする
                 if (game.players[i].yakushoku!.name == YakushokuConst.ZINROU){
                     
-                    resultYakusyoku = YakushokuConst.ZINROU
+                    resultYakusyoku = ZinneiConst.ZINROU
                 }else {
-                    resultYakusyoku = YakushokuConst.SIMIN
+                    resultYakusyoku = ZinneiConst.Murabito
                 }
                 resultMessage += game.players[i].name+"は"+resultYakusyoku
             }

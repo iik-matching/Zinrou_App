@@ -16,15 +16,9 @@ struct ResultView: View {
                 
                 VStack(spacing:15){
                     VStack{
-                        if(baseData.resultYakusyoku == YakushokuConst.ZINROU){
-                                Image(decorative:"人狼画像")     // 画像指定
-                                    .resizable()
-                                    .frame(width: 300.0, height: 300.0)
-                            }else{
-                                Image(decorative:"村人画像")     // 画像指定
-                                    .resizable()
-                                    .frame(width: 300.0, height: 300.0)
-                            }
+                        Image(decorative:"\(baseData.resultYakusyoku)画像")     // 画像指定
+                                .resizable()
+                                .frame(width: 300.0, height: 300.0)
                     }
                     
                     

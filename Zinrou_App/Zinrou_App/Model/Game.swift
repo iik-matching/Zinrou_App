@@ -14,7 +14,7 @@ struct Game{
         var siminCount = 0
         var zinrouCount = 0
         for player in players{
-            if player.zinnei == ZinneiConst.SIMIN{
+            if player.zinnei == ZinneiConst.Murabito{
                 if player.isDeath == false{
                     siminCount = siminCount + 1
                 }
