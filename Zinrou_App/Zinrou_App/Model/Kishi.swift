@@ -7,6 +7,10 @@ struct Kishi:YakushokuProtocol{
     var zinnei: String = ZinneiConst.SIMIN
     //アクションテキスト
     var actionText: String = ActionTextConst.KISHI
+    //夜のアクション確認メッセージ
+    var yoruActionMessage: String = YoruActionMessageConst.KISHI
+    //アクションの説明文
+    var extentionMessage:String = ExtentionMessageConst.KISHI
     
     func action1(name:String, delegate:SelectProtocol){
         delegate.select(name: name)

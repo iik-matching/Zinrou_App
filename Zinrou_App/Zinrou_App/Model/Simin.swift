@@ -8,6 +8,10 @@ struct Simin:YakushokuProtocol{
     var zinnei: String = ZinneiConst.SIMIN
     //アクションテキスト
     var actionText: String = ActionTextConst.SIMIN
+    //夜のアクション確認メッセージ
+    var yoruActionMessage: String = YoruActionMessageConst.SIMIN
+    //アクションの説明文
+    var extentionMessage:String = ExtentionMessageConst.SIMIN
     //朝のアクション
     func action1(name:String, delegate:SelectProtocol){
         delegate.select(name: name)

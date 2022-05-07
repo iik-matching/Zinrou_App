@@ -10,89 +10,130 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var baseData: BaseViewModel
     
+    @State private var showingAlert = false
+    @State private var selectIndex = 0
+    
     var body: some View {
         if baseData.isShowGameView && baseData.isKakuninFrag {
             ZStack{
+                //背景画像
                 if(baseData.getasaOryoru() == GameConst.ASA){
                     Image(decorative:"朝画像")     // 画像指定
                         .resizable()    // 画像サイズをフレームサイズに合わせる
-                        .ignoresSafeArea()                 
+                        .ignoresSafeArea()
                 }else{
                     Color.black.ignoresSafeArea()
                 }
                 
                 VStack{
+                    //朝のアクション or 夜のアクション
                     Text(baseData.game.players[baseData.nowIndex].name+" "+baseData.getasaOryoru()+"のアクション").padding()
                         .foregroundColor(Color(.white))
                         .font(.system(size: 28, design: .rounded))
                     
                     //役職ごとに画像を切り替える
-                    VStack{
-                        switch baseData.game.players[baseData.nowIndex].yakushoku!.name {
-                        case "市民":
-                            Image(decorative:"市民画像")     // 画像指定
-                                .resizable()
-                                .frame(width: 300.0, height: 300.0)
-                        case "人狼":
-                            Image(decorative:"人狼画像")     // 画像指定
-                                .resizable()
-                                .frame(width: 300.0, height: 300.0)
-                        case "占い師":
-                            Image(decorative:"占い師画像")     // 画像指定
-                                .resizable()
-                                .frame(width: 300.0, height: 300.0)
-                        case "騎士":
-                            Image(decorative:"騎士画像")     // 画像指定
-                                .resizable()
-                                .frame(width: 300.0, height: 300.0)
-                        default: // .home
-                            Image(decorative:"無画像")     // 画像指定
-                        }
-                    }
+                    Image(decorative:"\(baseData.game.players[baseData.nowIndex].yakushoku!.name)画像")     // 画像指定
+                        .resizable()
+                        .frame(width: 300.0, height: 300.0)
                     
+                    //その他説明
                     if(baseData.getasaOryoru() == GameConst.ASA){
-                        
                         Text(/*@START_MENU_TOKEN@*/"人狼だと疑わしい人を選んでください。"/*@END_MENU_TOKEN@*/).frame(maxWidth:350, maxHeight:50)
                             .font(.system(size: 16, design: .serif))
                             .background(Color(.white))
-                        ScrollView {
-                            VStack(spacing:15){
-                                
-                                ForEach(0..<baseData.game.players.count, id: \.self) { index in
-                                    if(baseData.nowIndex != index){
+                    }else{
+                        Text("貴方は「"+baseData.game.players[baseData.nowIndex].yakushoku!.name+"」です。").font(.title).padding()
+                            .foregroundColor(Color(.white))
+                            .font(.system(size: 28, design: .rounded))
+                        //夜のアクション説明欄
+                        VStack{
+                            Text(baseData.game.players[baseData.nowIndex].yakushoku!.extentionMessage)
+                        }.frame(maxWidth:350, maxHeight:50)
+                            .font(.system(size: 12, design: .serif))
+                            .background(Color(.white))
+                    }
+                    
+                    //プレイヤー選択エリア
+                    ScrollView {
+                        VStack(spacing:15){
+                            ForEach(0..<baseData.game.players.count, id: \.self) { index in
+                                if(baseData.nowIndex != index){
+                                    if(baseData.getasaOryoru() == GameConst.ASA){
                                         HStack{
                                             Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.black))
                                                 .fontWeight(.semibold)
                                             
                                             if(baseData.game.players[index].isDeath==false){
                                                 Button(action: {
-                                                    if baseData.didAction == false{
-                                                        //選択した人を疑う
-                                                        baseData.game.players[baseData.nowIndex].yakushoku!.action1(name:baseData.game.players[index].name, delegate:baseData )
-                                                    
-                                                        baseData.didAction = true
-                                                    }
-                                                    baseData.selectindex = index
-                                                }){
-                                                    Text("疑う")
+                                                    self.showingAlert = true
+                                                    selectIndex = index
+                                                }) {
+                                                    Text(baseData.game.players[baseData.nowIndex].yakushoku!.actionText)
                                                         .font(.system(size: 22, design: .serif))
                                                         .fontWeight(.semibold)
-                                                        .frame(width: 80, height: 32)
+                                                        .frame(width: 120, height: 32)
                                                         .foregroundColor(Color(.white))
-                                                        .cornerRadius(18)
                                                         .background(
-                                                            VStack{
-                                                                if baseData.selectindex == index{
-                                                                    // 線形グラデーション（赤→黒）を生成
-                                                                    LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
-                                                                }else{
-                                                                    // 線形グラデーション（緑→黒）を生成
-                                                                    LinearGradient(gradient: Gradient(colors: [.gray, .black]), startPoint: .bottom, endPoint: .top)
-                                                                }
-                                                            }
+                                                            LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
                                                         )
                                                         .cornerRadius(18)
-                                                    
+                                                }.alert("アクション確認", isPresented: $showingAlert){
+                                                    Button("キャンセル"){
+                                                        //何もしない
+                                                    }
+                                                    Button("OK"){
+                                                        //アクション実行
+                                                        baseData.game.players[baseData.nowIndex].yakushoku!.action1(name:baseData.game.players[selectIndex].name, delegate:baseData )
+                                                        
+                                                        //次の人物へ
+                                                        baseData.isKakuninFrag.toggle()
+                                                        baseData.next()
+                                                        baseData.selectindex = nil
+                                                    }
+                                                } message: {
+                                                    Text(baseData.game.players[selectIndex].name+"を人狼だと疑いますか？")
+                                                }
+                                            }else{
+                                                Text("死亡").font(.system(size: 22, design: .serif))
+                                                    .fontWeight(.semibold)
+                                                    .frame(width: 120, height: 32)
+                                                    .foregroundColor(Color(.red))
+                                            }
+                                        }
+                                    }else{
+                                        HStack{
+                                            Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.white))
+                                                .fontWeight(.semibold)
+                                            
+                                            if(baseData.game.players[index].isDeath==false){
+                                                Button(action: {
+                                                    self.showingAlert = true
+                                                    selectIndex = index
+                                                }) {
+                                                    Text(baseData.game.players[baseData.nowIndex].yakushoku!.actionText)
+                                                        .font(.system(size: 22, design: .serif))
+                                                        .fontWeight(.semibold)
+                                                        .frame(width: 120, height: 32)
+                                                        .foregroundColor(Color(.white))
+                                                        .background(
+                                                            LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
+                                                        )
+                                                        .cornerRadius(18)
+                                                }.alert("アクション確認", isPresented: $showingAlert){
+                                                    Button("キャンセル"){
+                                                        //何もしない
+                                                    }
+                                                    Button("OK"){
+                                                        //アクション実行
+                                                        baseData.game.players[baseData.nowIndex].yakushoku!.action2(name:baseData.game.players[selectIndex].name, delegate:baseData )
+                                                        
+                                                        //次の人物へ
+                                                        baseData.isKakuninFrag.toggle()
+                                                        baseData.next()
+                                                        baseData.selectindex = nil
+                                                    }
+                                                } message: {
+                                                    Text("\(baseData.game.players[selectIndex].name)\(baseData.game.players[baseData.nowIndex].yakushoku!.yoruActionMessage)")
                                                 }
                                             }else{
                                                 Text("死亡").font(.system(size: 22, design: .serif))
@@ -102,103 +143,14 @@ struct GameView: View {
                                             }
                                         }
                                     }
-                                }
-                            }.padding()
-                        }
-                    }else{
-                        Text("貴方は「"+baseData.game.players[baseData.nowIndex].yakushoku!.name+"」です。").font(.title).padding()
-                            .foregroundColor(Color(.white))
-                            .font(.system(size: 28, design: .rounded))
-                        
-                        VStack{
-                            //夜のアクション説明欄
-                            switch baseData.game.players[baseData.nowIndex].yakushoku!.name {
-                            case "市民":
-                                Text("この中で人狼だと疑わしいプレイヤーを1人選んでください")
-                            case "人狼":
-                                Text("今夜殺害するプレイヤーを１人選んでください")
-                            case "占い師":
-                                Text("あなたが人狼か人間か、確認したいプレイヤーを1人選んでください")
-                            case "騎士":
-                                Text("あなたが人狼の襲撃から守りたいプレイヤーを1人選んでください")
-                            default: // .home
-                                Text("")
-                            }
-                        }.frame(maxWidth:350, maxHeight:50)
-                            .font(.system(size: 12, design: .serif))
-                            .background(Color(.white))
-                        
-                        ScrollView {
-                            VStack(spacing:15){
-                                ForEach(0..<baseData.game.players.count, id: \.self) { index in
-                                    if(baseData.nowIndex != index){
-                                        HStack{
-                                            
-                                            Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.red))
-                                                .fontWeight(.semibold)
-                                            
-                                            if(baseData.game.players[index].isDeath==false){
-                                                
-                                                Button(action: {
-                                                    if baseData.didAction == false{
-                                                        baseData.game.players[baseData.nowIndex].yakushoku!.action2(name:baseData.game.players[index].name, delegate:baseData )
-                                                        
-                                                        baseData.didAction = true
-                                                    }
-                                                    baseData.selectindex = index
-                                                }){
-                                                    Text(baseData.game.players[baseData.nowIndex].yakushoku!.actionText)
-                                                        .font(.system(size: 22, design: .serif))
-                                                        .fontWeight(.semibold)
-                                                        .frame(width: 120, height: 32)
-                                                        .foregroundColor(Color(.white))
-                                                        .background(
-                                                            VStack{
-                                                                if baseData.selectindex == index{
-                                                                    // 線形グラデーション（緑→黒）を生成
-                                                                    LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
-                                                                }else{
-                                                                    // 線形グラデーション（赤→黒）を生成
-                                                                    LinearGradient(gradient: Gradient(colors: [.gray, .black]), startPoint: .bottom, endPoint: .top)
-                                                                }
-                                                            }
-                                                       )
-                                                        .cornerRadius(18)
-                                                }
-                                                .buttonStyle(TapButtonStyle())
-                                        }else{
-                                            Text("死亡")
-                                                .font(.system(size: 22, design: .serif))
-                                                .fontWeight(.semibold)
-                                                .frame(width: 120, height: 32)
-                                                .foregroundColor(Color(.white))
-                                        }
-                                        
-                                    }
+                                    
+                                    
+                    
                                 }
                             }
                         }.padding()
                     }
-                } 
-                   if(baseData.didAction == true){
-                        Button(action: {
-                            baseData.isKakuninFrag.toggle()
-                            //次の人物へ
-                            baseData.next()
-                            baseData.selectindex = nil
-                        }){
-                            Text("次へ")
-                                .font(.system(size: 22, design: .serif))
-                                .fontWeight(.semibold)
-                                .frame(width: 80, height: 32)
-                                .foregroundColor(Color(.white))
-                                .background(
-                                    // 線形グラデーション（青→黒）を生成
-                                    LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
-                                )
-                                .cornerRadius(18)        
-                        }
-                    }
+                    
                 }
             }
             //ゲームビュー表示状態　かつ　未確認の場合

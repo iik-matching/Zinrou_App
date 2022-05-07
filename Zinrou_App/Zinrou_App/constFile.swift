@@ -27,3 +27,18 @@ struct GameConst{
     static let ZINROUSHOURI = "人狼勝利"
     static let SIMINSHOURI = "市民勝利"
 }
+
+
+struct YoruActionMessageConst{
+    static let SIMIN = "さんを人狼だと疑いますか？"
+    static let ZINROU = "さんを襲撃しますか？"
+    static let URANAISI = "さんを人狼かどうか調べますか？"
+    static let KISHI = "さんを今夜守りますか？"
+}
+
+struct ExtentionMessageConst{
+    static let SIMIN = "この中で人狼だと疑わしいプレイヤーを1人選んでください"
+    static let ZINROU = "今夜襲撃するプレイヤーを１人選んでください"
+    static let URANAISI = "あなたが人狼か人間か、確認したいプレイヤーを1人選んでください"
+    static let KISHI = "あなたが人狼の襲撃から守りたいプレイヤーを1人選んでください"
+}

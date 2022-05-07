@@ -8,6 +8,11 @@ protocol YakushokuProtocol {
     var zinnei: String { get set }
     //アクションテキスト
     var actionText:String{get set}
+    //夜のアクションの確認メッセージ
+    var yoruActionMessage:String{get set}
+    //アクションの説明文
+    var extentionMessage:String{get set}
+    
     //朝のアクション
     func action1(name:String, delegate:SelectProtocol)
     //夜のアクション
