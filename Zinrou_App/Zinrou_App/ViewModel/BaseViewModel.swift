@@ -141,8 +141,10 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                         }
                     }
                 }
-                timeCount = 100
-                meetingAlert.toggle()
+                if game.endHantei() == GameConst.KEIZOKU {
+                    timeCount = 100
+                    meetingAlert.toggle()
+                }
             }
             
             //朝夜チェンジ
