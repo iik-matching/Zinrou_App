@@ -13,9 +13,10 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var yakushokuArray: [YakushokuProtocol] = []
     @Published var didAction = false
     @Published var resultMessage = ""
-    @Published var resultYakusyoku = ""
+    @Published var resultZinnei = ""
     @Published var timeCount = 0
     @Published var selectindex:Int? = nil
+    @Published var uranaiResultMessage = ""
     
     //アラート１
     @Published var playerAddAlert = false
@@ -248,7 +249,6 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     
     func uranau(name: String) {
         print(name+"を占う")
-        resultMessage = "  [占い結果]\n"
         isShowResultView.toggle()
         
         for i in 0...game.players.count-1{
@@ -256,12 +256,11 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 print(game.players[i].yakushoku!.name)
                 //占った結果で役職が人狼だったら人狼、人狼以外は全部市民にする
                 if (game.players[i].yakushoku!.name == YakushokuConst.ZINROU){
-                    
-                    resultYakusyoku = ZinneiConst.ZINROU
+                    resultZinnei = ZinneiConst.ZINROU
                 }else {
-                    resultYakusyoku = ZinneiConst.Murabito
+                    resultZinnei = ZinneiConst.Murabito
                 }
-                resultMessage += game.players[i].name+"は"+resultYakusyoku
+                uranaiResultMessage += "  [占い結果]\n" + game.players[i].name+"は"+resultZinnei
             }
         }
     }

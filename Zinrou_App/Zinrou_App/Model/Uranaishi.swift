@@ -15,8 +15,8 @@ struct Uranaishi:YakushokuProtocol{
     func action1(name:String, delegate:SelectProtocol){
         delegate.select(name: name)
     }
+    
     func action2(name:String, delegate:SelectProtocol){
         delegate.uranau(name: name)
-        
     }
 }

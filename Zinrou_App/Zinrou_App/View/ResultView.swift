@@ -16,14 +16,14 @@ struct ResultView: View {
                 
                 VStack(spacing:15){
                     VStack{
-                        Image(decorative:"\(baseData.resultYakusyoku)画像")     // 画像指定
+                        Image(decorative:"\(baseData.resultZinnei)画像")     // 画像指定
                                 .resizable()
                                 .frame(width: 300.0, height: 300.0)
                     }
                     
                     
                     VStack(spacing:15){
-                        Text(baseData.resultMessage)
+                        Text(baseData.uranaiResultMessage)
                             .font(.system(size: 28, design: .serif))
                             .fontWeight(.semibold)
                             .foregroundColor(Color(.white))
