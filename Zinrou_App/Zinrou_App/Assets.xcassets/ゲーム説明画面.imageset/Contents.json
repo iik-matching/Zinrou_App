@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ゲーム説明画面.png",
+      "filename" : "ゲーム説明画面-3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ゲーム説明画面-1.png",
+      "filename" : "ゲーム説明画面-4.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ゲーム説明画面-2.png",
+      "filename" : "ゲーム説明画面.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

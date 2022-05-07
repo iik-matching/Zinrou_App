@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "アプリ概要画像.jpeg",
+      "filename" : "アプリ概要画像-3.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "アプリ概要画像-1.jpeg",
+      "filename" : "アプリ概要画像-4.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "アプリ概要画像-2.jpeg",
+      "filename" : "アプリ概要画像.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }
