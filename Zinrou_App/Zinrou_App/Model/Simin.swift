@@ -20,4 +20,8 @@ struct Simin:YakushokuProtocol{
     func action2(name:String, delegate:SelectProtocol) {
         delegate.select(name: name)
     }
+    //夜のアクション
+    func action3(name:String, delegate:SelectProtocol) {
+        delegate.select(name: name)
+    }
 }

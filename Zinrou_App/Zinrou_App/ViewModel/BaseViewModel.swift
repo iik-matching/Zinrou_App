@@ -16,7 +16,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var resultZinnei = ""
     @Published var timeCount = 0
     @Published var selectindex:Int? = nil
-    @Published var uranaiResultMessage = ""
+    @Published var uranattaPlayer:Player? = nil
     
     //アラート１
     @Published var playerAddAlert = false
@@ -140,6 +140,11 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 
                 //夜の場合
             }else{
+                //初夜の場合
+                if(CheckShoya()){
+                    resultMessage = "いませんでした。\n(第１夜は襲撃されません)"
+                }
+                
                 for i in 0...game.players.count-1{
                     if game.players[i].isShuugeki == true{
                         if game.players[i].isGuard == false{
@@ -152,6 +157,8 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                         }
                     }
                 }
+            
+                
                 if game.endHantei() == GameConst.KEIZOKU {
                     timeCount = 100
                     isActionResultView1.toggle()
@@ -249,20 +256,17 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     
     func uranau(name: String) {
         print(name+"を占う")
-        isShowResultView.toggle()
         
         for i in 0...game.players.count-1{
             if game.players[i].name == name{
+                
+                uranattaPlayer = game.players[i]
+                
                 print(game.players[i].yakushoku!.name)
-                //占った結果で役職が人狼だったら人狼、人狼以外は全部市民にする
-                if (game.players[i].yakushoku!.name == YakushokuConst.ZINROU){
-                    resultZinnei = ZinneiConst.ZINROU
-                }else {
-                    resultZinnei = ZinneiConst.Murabito
-                }
-                uranaiResultMessage += "  [占い結果]\n" + game.players[i].name+"は"+resultZinnei
             }
         }
+        
+        isShowResultView.toggle()
     }
     
     //同じ名前チェック
@@ -297,6 +301,14 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         }
         game.players = nextPlayers
         return game.players
+    }
+    
+    func CheckShoya()->Bool{
+        if (game.turnCount == 1 && getasaOryoru() == GameConst.YORU){
+            return true
+        }else{
+            return false
+        }
     }
     
     func initializeGame(){

@@ -33,7 +33,7 @@ struct GameView: View {
                     
                     //その他説明
                     if(baseData.getasaOryoru() == GameConst.ASA){
-                        Text(/*@START_MENU_TOKEN@*/"人狼だと疑わしい人を選んでください。"/*@END_MENU_TOKEN@*/).frame(maxWidth:350, maxHeight:50)
+                        Text(ExtentionMessageConst.SIMIN).frame(maxWidth:350, maxHeight:50)
                             .font(.system(size: 16, design: .serif))
                             .background(Color(.white))
                     }else{
@@ -46,13 +46,18 @@ struct GameView: View {
                             .foregroundColor(Color(.white))
                             .font(.system(size: 28, design: .rounded))
                         //夜のアクション説明欄
-                        VStack{
+                        if(baseData.CheckShoya()){
+                            Text(ExtentionMessageConst.SIMIN)
+                                .frame(maxWidth:350, maxHeight:50)
+                                .font(.system(size: 12, design: .serif))
+                                .background(Color(.white))
+                        }else{
                             Text(baseData.game.players[baseData.nowIndex].yakushoku!.extentionMessage)
-                        }.frame(maxWidth:350, maxHeight:50)
-                            .font(.system(size: 12, design: .serif))
-                            .background(Color(.white))
+                                .frame(maxWidth:350, maxHeight:50)
+                                .font(.system(size: 12, design: .serif))
+                                .background(Color(.white))
+                        }
                     }
-                    
                     //プレイヤー選択エリア
                     ScrollView {
                         VStack(spacing:15){
@@ -100,7 +105,7 @@ struct GameView: View {
                                                     .foregroundColor(Color(.red))
                                             }
                                         }
-                                    }else{
+                                    }else if(baseData.getasaOryoru() == GameConst.YORU && baseData.game.turnCount != 1){
                                         HStack{
                                             Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.white))
                                                 .fontWeight(.semibold)
@@ -127,6 +132,7 @@ struct GameView: View {
                                                         //アクション実行
                                                         baseData.game.players[baseData.nowIndex].yakushoku!.action2(name:baseData.game.players[selectIndex].name, delegate:baseData )
                                                         
+                                                        
                                                         //次の人物へ
                                                         baseData.isKakuninFrag.toggle()
                                                         baseData.next()
@@ -142,10 +148,50 @@ struct GameView: View {
                                                     .foregroundColor(Color(.red))
                                             }
                                         }
+                                    }else if(baseData.getasaOryoru() == GameConst.YORU && baseData.game.turnCount == 1){
+                                        HStack{
+                                            Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.white))
+                                                .fontWeight(.semibold)
+                                            
+                                            if(baseData.game.players[index].isDeath==false){
+                                                Button(action: {
+                                                    self.showingAlert = true
+                                                    selectIndex = index
+                                                }) {
+                                                    Text(ActionTextConst.SIMIN)
+                                                        .font(.system(size: 22, design: .serif))
+                                                        .fontWeight(.semibold)
+                                                        .frame(width: 120, height: 32)
+                                                        .foregroundColor(Color(.white))
+                                                        .background(
+                                                            LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
+                                                        )
+                                                        .cornerRadius(18)
+                                                }.alert("アクション確認", isPresented: $showingAlert){
+                                                    Button("キャンセル"){
+                                                        //何もしない
+                                                    }
+                                                    Button("OK"){
+                                                        //アクション実行
+                                                        baseData.game.players[baseData.nowIndex].yakushoku!.action3(name:baseData.game.players[selectIndex].name, delegate:baseData )
+                                                        
+                                                        
+                                                        //次の人物へ
+                                                        baseData.isKakuninFrag.toggle()
+                                                        baseData.next()
+                                                        baseData.selectindex = nil
+                                                    }
+                                                } message: {
+                                                    Text("\(baseData.game.players[selectIndex].name)\(YoruActionMessageConst.SIMIN)")
+                                                }
+                                            }else{
+                                                Text("死亡").font(.system(size: 22, design: .serif))
+                                                    .fontWeight(.semibold)
+                                                    .frame(width: 120, height: 32)
+                                                    .foregroundColor(Color(.red))
+                                            }
+                                        }
                                     }
-                                    
-                                    
-                    
                                 }
                             }
                         }.padding()

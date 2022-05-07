@@ -8,6 +8,8 @@ struct Game{
     var kaigizikan:Int = GameConst.KAIGI_TIME
     //朝か夜
     var asaOrYoru:String = GameConst.YORU
+    //ターン数
+    var turnCount:Int = 1
     
     //終了判定　終了ならtrue 　継続ならfalse
     func endHantei()->String{
@@ -33,12 +35,18 @@ struct Game{
         }
     }
     
+    //ターン数を増やす
+    mutating func turnIncrement(){
+        turnCount += 1
+    }
     
     mutating func switchAsaYoru(){
         if asaOrYoru == GameConst.YORU{
             asaOrYoru = GameConst.ASA
         }else{
             asaOrYoru = GameConst.YORU
+            
+            turnIncrement() //ターン数を増やす
         }
     }
 }
