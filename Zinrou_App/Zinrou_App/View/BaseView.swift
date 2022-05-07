@@ -23,6 +23,8 @@ struct BaseView: View {
                 .environmentObject(baseData))
             .overlay(YakusyokuSettingView().environmentObject(baseData))
             .overlay(GameView().environmentObject(baseData))
+            .overlay(ActionResultView1().environmentObject(baseData))
+            .overlay(ActionResultView2().environmentObject(baseData))
             .overlay(MeetingAlertView().environmentObject(baseData))
             .overlay(ResultView().environmentObject(baseData))
             .overlay(YakushokuConfirmationView().environmentObject(baseData))

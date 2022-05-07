@@ -32,6 +32,8 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var isDeveloperView = false
     @Published var isAppInfoView = false
     @Published var isShowYakusyokuSettingView = false
+    @Published var isActionResultView1 = false
+    @Published var isActionResultView2 = false
     
     @Published var KakuninViewMessage = "" //自作アラートのメッセージ
     
@@ -126,23 +128,34 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 for i in 0...game.players.count-1{
                     if killname == game.players[i].name{
                         game.players[i].isDeath = true
-                        print("\(game.players[i].name)が投票により死亡しました。")
+                        resultMessage = "\(game.players[i].name)さんです。"
+                        print("\(game.players[i].name)が投票により処刑されました。")
                     }
                 }
+                
+                if game.endHantei() == GameConst.KEIZOKU {
+                     isActionResultView2.toggle()
+                }
+                
                 //夜の場合
             }else{
                 for i in 0...game.players.count-1{
                     if game.players[i].isShuugeki == true{
                         if game.players[i].isGuard == false{
+                            resultMessage = game.players[i].name+"さんです。"
                             print(game.players[i].name+"が食べられました。")
                             game.players[i].isDeath = true
                         }else{
+                            resultMessage = "いませんでした。"
                             print("騎士が守りました。")
                         }
                     }
                 }
-                timeCount = 100
-                meetingAlert.toggle()
+                if game.endHantei() == GameConst.KEIZOKU {
+                    timeCount = 100
+                    isActionResultView1.toggle()
+                    //meetingAlert.toggle()
+                }
             }
             
             //朝夜チェンジ

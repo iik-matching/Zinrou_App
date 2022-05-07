@@ -146,7 +146,6 @@ struct GameView: View {
                                                         baseData.didAction = true
                                                     }
                                                     baseData.selectindex = index
-                                                    print(baseData.selectindex)
                                                 }){
                                                     Text(baseData.game.players[baseData.nowIndex].yakushoku!.actionText)
                                                         .font(.system(size: 22, design: .serif))
