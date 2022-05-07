@@ -15,7 +15,7 @@ struct ActionTextConst{
 }
 
 struct ZinneiConst{
-    static let SIMIN = "村人"
+    static let Murabito = "村人"
     static let ZINROU = "人狼"
 }
 

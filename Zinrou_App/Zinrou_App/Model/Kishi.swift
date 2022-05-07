@@ -4,7 +4,7 @@ struct Kishi:YakushokuProtocol{
     //名前
     var name: String = YakushokuConst.KISHI
     //陣営
-    var zinnei: String = ZinneiConst.SIMIN
+    var zinnei: String = ZinneiConst.Murabito
     //アクションテキスト
     var actionText: String = ActionTextConst.KISHI
     //夜のアクション確認メッセージ

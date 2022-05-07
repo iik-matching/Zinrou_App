@@ -4,7 +4,7 @@ struct Uranaishi:YakushokuProtocol{
     //名前
     var name: String = YakushokuConst.URANAISI
     //陣営
-    var zinnei: String = ZinneiConst.SIMIN
+    var zinnei: String = ZinneiConst.Murabito
     //アクションテキスト
     var actionText: String = ActionTextConst.URANAISI
     //夜のアクション確認メッセージ
