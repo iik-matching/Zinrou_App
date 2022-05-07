@@ -31,6 +31,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var isPositionExplanationView = false
     @Published var isDeveloperView = false
     @Published var isAppInfoView = false
+    @Published var isShowYakusyokuSettingView = false
     
     @Published var KakuninViewMessage = "" //自作アラートのメッセージ
     
@@ -307,6 +308,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         isPositionExplanationView = false
         isDeveloperView = false
         isAppInfoView = false
+        isShowYakusyokuSettingView = false
     }
 }
 

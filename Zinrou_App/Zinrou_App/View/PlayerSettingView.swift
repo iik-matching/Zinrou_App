@@ -13,7 +13,7 @@ struct PlayerSettingView: View {
                     .resizable()    // 画像サイズをフレームサイズに合わせる
                     .ignoresSafeArea()
                 VStack{
-                        Text("【 プレイヤー追加画面 】")
+                        Text("【 プレイヤー設定画面 】")
                             .font(.largeTitle)
                             .frame(width: 500)
                             .foregroundColor(Color(.white))
@@ -119,13 +119,14 @@ struct PlayerSettingView: View {
                             
                         }
                         Button(action: {
-                              baseData.allocateJobTitle()
+                                baseData.allocateJobTitle()
                             withAnimation{
                                 //ゲーム画面へ
-                                baseData.isShowGameView.toggle()
+                                //baseData.isShowGameView.toggle()
+                                baseData.isShowYakusyokuSettingView.toggle()
                             }
                         }){
-                            Text("GAME START")
+                            Text("役職設定画面へ")
                                 .font(.largeTitle)
                                 .fontWeight(.semibold)
                                 .frame(width: 320, height: 48)
@@ -135,7 +136,7 @@ struct PlayerSettingView: View {
                         }
                         Button(action: {
                             withAnimation{
-                                baseData.initializeGame()
+                                baseData.isPlayerSettingView.toggle()
                             }
                         }){
                             Text("ホーム画面へ")

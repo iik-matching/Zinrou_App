@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct YakushokuSettingView: View {
+struct YakushokuConfirmationView: View {
     @EnvironmentObject var baseData: BaseViewModel
     var body: some View {
         if baseData.isShowYakushokuView {
@@ -77,9 +77,9 @@ struct YakushokuSettingView: View {
     }
 }
 
-struct YakushokuSettingView_Previews: PreviewProvider {
+struct YakushokuConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
-        YakushokuSettingView()
+        YakushokuConfirmationView()
             .environmentObject({ () -> BaseViewModel in
                 let baseData = BaseViewModel()
                 baseData.isShowYakushokuView = true

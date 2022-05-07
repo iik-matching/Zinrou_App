@@ -11,9 +11,10 @@
 		0B808DFE281F94FC005BBD08 /* PositionExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B808DFD281F94FC005BBD08 /* PositionExplanationView.swift */; };
 		0B808E00281F9FA1005BBD08 /* DeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B808DFF281F9FA1005BBD08 /* DeveloperView.swift */; };
 		0B808E02281FA41B005BBD08 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B808E01281FA41B005BBD08 /* AppInfoView.swift */; };
+		0B9E3B00282275B20041AC76 /* YakusyokuSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E3AFF282275B20041AC76 /* YakusyokuSettingView.swift */; };
 		0B9F6A3D281E796D005A3123 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F6A3C281E796D005A3123 /* HomeView.swift */; };
 		171735E1274B4E4500D73990 /* AddPlayerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */; };
-		171735E3274B4E9000D73990 /* YakushokuSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171735E2274B4E9000D73990 /* YakushokuSettingView.swift */; };
+		171735E3274B4E9000D73990 /* YakushokuConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171735E2274B4E9000D73990 /* YakushokuConfirmationView.swift */; };
 		1778994F2801BED300232BAE /* MeetingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1778994E2801BED300232BAE /* MeetingAlertView.swift */; };
 		17927E45274100C4006AAACE /* PlayerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17927E44274100C4006AAACE /* PlayerSettingView.swift */; };
 		1793D82C2753859B00076C84 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D82B2753859B00076C84 /* SettingViewModel.swift */; };
@@ -65,9 +66,10 @@
 		0B808DFD281F94FC005BBD08 /* PositionExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionExplanationView.swift; sourceTree = "<group>"; };
 		0B808DFF281F9FA1005BBD08 /* DeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperView.swift; sourceTree = "<group>"; };
 		0B808E01281FA41B005BBD08 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
+		0B9E3AFF282275B20041AC76 /* YakusyokuSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YakusyokuSettingView.swift; sourceTree = "<group>"; };
 		0B9F6A3C281E796D005A3123 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerAlertView.swift; sourceTree = "<group>"; };
-		171735E2274B4E9000D73990 /* YakushokuSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YakushokuSettingView.swift; sourceTree = "<group>"; };
+		171735E2274B4E9000D73990 /* YakushokuConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YakushokuConfirmationView.swift; sourceTree = "<group>"; };
 		1778994E2801BED300232BAE /* MeetingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAlertView.swift; sourceTree = "<group>"; };
 		17927E44274100C4006AAACE /* PlayerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSettingView.swift; sourceTree = "<group>"; };
 		1793D82B2753859B00076C84 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
@@ -190,7 +192,7 @@
 			children = (
 				17B440B1279BD7E2001A5F2C /* BaseView.swift */,
 				17927E44274100C4006AAACE /* PlayerSettingView.swift */,
-				171735E2274B4E9000D73990 /* YakushokuSettingView.swift */,
+				171735E2274B4E9000D73990 /* YakushokuConfirmationView.swift */,
 				7B43E253279C1D8400E3CBE7 /* CustomAlertView.swift */,
 				1793D82D275391C300076C84 /* KakuninView.swift */,
 				171735E0274B4E4500D73990 /* AddPlayerAlertView.swift */,
@@ -204,6 +206,7 @@
 				0B808DFD281F94FC005BBD08 /* PositionExplanationView.swift */,
 				0B808DFF281F9FA1005BBD08 /* DeveloperView.swift */,
 				0B808E01281FA41B005BBD08 /* AppInfoView.swift */,
+				0B9E3AFF282275B20041AC76 /* YakusyokuSettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -375,8 +378,9 @@
 				7BC20B06273F8C3F00794A32 /* YakushokuProtocol.swift in Sources */,
 				7BA07DC9273FA53D00717B9E /* MyAlertView.swift in Sources */,
 				0B808DFE281F94FC005BBD08 /* PositionExplanationView.swift in Sources */,
+				0B9E3B00282275B20041AC76 /* YakusyokuSettingView.swift in Sources */,
 				7BC20ADB273F8B5C00794A32 /* ContentView.swift in Sources */,
-				171735E3274B4E9000D73990 /* YakushokuSettingView.swift in Sources */,
+				171735E3274B4E9000D73990 /* YakushokuConfirmationView.swift in Sources */,
 				7BA07DCE273FAD2700717B9E /* constFile.swift in Sources */,
 				7B43E254279C1D8400E3CBE7 /* CustomAlertView.swift in Sources */,
 				17D4E80927CA0F9100E8A54A /* DeletePlayerAlertView.swift in Sources */,
