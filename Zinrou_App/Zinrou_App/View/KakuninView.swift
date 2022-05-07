@@ -30,13 +30,22 @@ struct KakuninView:View{
                 Button(action:{
                     baseData.isKakuninFrag.toggle()
                     print("isKakuninFrag", baseData.isKakuninFrag)
-                    if delegate != nil{
+                    if delegate != nil {
                         delegate!.nextPage()
-                        baseData.isActionResultView1.toggle()
-                        print("isActionResultView1", baseData.isActionResultView1)
-                        baseData.isActionResultView2.toggle()
-                        print("isActionResultView2", baseData.isActionResultView2)
+                        if baseData.finalVoteFlg==false {
+                            baseData.isActionResultView1.toggle()
+                            print("isActionResultView1", baseData.isActionResultView1)
+                        }
+                            baseData.isActionResultView2.toggle()
+                            print("isActionResultView2", baseData.isActionResultView2)
+                        
+                        baseData.finalVoteFlg = false
+                        
+                       if baseData.finalVoteFlg==true {
+                         baseData.game.asaOrYoru = GameConst.YORU
+                       }
                     }
+                    
                 }){
                     Spacer()
                     Text("OK")

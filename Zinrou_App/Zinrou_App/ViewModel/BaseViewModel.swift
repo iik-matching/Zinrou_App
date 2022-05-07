@@ -16,6 +16,8 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var resultYakusyoku = ""
     @Published var timeCount = 0
     @Published var selectindex:Int? = nil
+    @Published var suspectNameList: [String] = []
+    @Published var finalVoteFlg = false
     
     //アラート１
     @Published var playerAddAlert = false
@@ -116,22 +118,33 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
             nowIndex = 0
             //朝のアクション後の場合
             if game.asaOrYoru == GameConst.ASA{
-                //一番多い人をきる
-                var max = 0
-                var killname = ""
-                for player in game.players{
-                    if player.count > max{
-                        max = player.count
-                        killname = player.name
+                suspectNameList = getSuspectName(max: getMaxCount())
+                var killname:[String]  = suspectNameList
+                
+                if killname.count < 2{
+                    for i in 0...killname.count-1{
+                        if killname[i] == game.players[i].name{
+                            game.players[i].isDeath = true
+                            resultMessage += "\(game.players[i].name)さんです。\n"
+                            print("\(game.players[i].name)が投票により処刑されました。")
+                        }
                     }
+                }else{
+                    finalVoteFlg = true
+                    isActionResultView2.toggle()
+                    print("決戦投票")
+//                    for i in 0...killname.count-1{
+//                        if killname[i] == game.players[i].name{
+//                            //game.players[i].isDeath = true
+//                            resultMessage += "\(game.players[i].name)さんです。\n"
+//                            print("\(game.players[i].name)が投票により処刑されました。")
+//                        }
+//                    }
+                    
+                    
+                    
                 }
-                for i in 0...game.players.count-1{
-                    if killname == game.players[i].name{
-                        game.players[i].isDeath = true
-                        resultMessage = "\(game.players[i].name)さんです。"
-                        print("\(game.players[i].name)が投票により処刑されました。")
-                    }
-                }
+                
                 
                 if game.endHantei() == GameConst.KEIZOKU {
                      isActionResultView2.toggle()
@@ -139,6 +152,9 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 
                 //夜の場合
             }else{
+                finalVoteFlg = false
+                suspectNameList = getSuspectName(max: getMaxCount())
+                
                 for i in 0...game.players.count-1{
                     if game.players[i].isShuugeki == true{
                         if game.players[i].isGuard == false{
@@ -151,6 +167,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                         }
                     }
                 }
+                
                 if game.endHantei() == GameConst.KEIZOKU {
                     timeCount = 100
                     isActionResultView1.toggle()
@@ -158,8 +175,14 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 }
             }
             
-            //朝夜チェンジ
-            game.switchAsaYoru()
+            if finalVoteFlg == false{
+                suspectNameList = []
+                print("suspectNameList",suspectNameList)
+                //朝夜チェンジ
+                game.switchAsaYoru()
+                
+            }
+                
             //カウントリセット
             for i in 0...game.players.count-1{
                 game.players[i].count = 0
@@ -194,10 +217,35 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         }
         
         //もし次に人が死んでいたらさらに次に行く
-        if(game.players[nowIndex].isDeath == true){
+        if(game.players[nowIndex].isDeath == true || finalVoteFlg == true && suspectNameList.contains(game.players[nowIndex].name)){
             next()
         }
     }
+    
+    func getMaxCount()->Int {
+        //一番多い人をきる
+        var max = 0
+        for player in game.players{
+            if player.count > max{
+                max = player.count
+            }
+        }
+        return max
+    }
+    
+    func getSuspectName(max:Int)->[String]{
+        var NameList:[String] = []
+        //一番多い人をきる
+        for player in game.players{
+            if player.count == max{
+                NameList.append(player.name)
+            }
+        }
+        print(NameList)
+        return NameList
+    }
+    
+    
     func getYakushoku(yakushokuName:String)->YakushokuProtocol{
         switch yakushokuName {
         case YakushokuConst.SIMIN:
