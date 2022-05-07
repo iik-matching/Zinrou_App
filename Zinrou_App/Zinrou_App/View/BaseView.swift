@@ -19,8 +19,6 @@ struct BaseView: View {
             .overlay(AppInfoView().environmentObject(baseData))
             .overlay(DeveloperView().environmentObject(baseData))
             .overlay(CustomAlertView().environmentObject(baseData))
-            .overlay(DeletePlayerAlertView()
-                .environmentObject(baseData))
             .overlay(YakusyokuSettingView().environmentObject(baseData))
             .overlay(GameView().environmentObject(baseData))
             .overlay(ActionResultView1().environmentObject(baseData))
