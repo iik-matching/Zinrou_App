@@ -13,11 +13,14 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var yakushokuArray: [YakushokuProtocol] = []
     @Published var didAction = false
     @Published var resultMessage = ""
+    @Published var attackDeathMessage = ""
+    @Published var boteDeathMessage = ""
     @Published var resultYakusyoku = ""
     @Published var timeCount = 0
     @Published var selectindex:Int? = nil
     @Published var suspectNameList: [String] = []
     @Published var finalVoteFlg = false
+    @Published var finalVoteCount = 0
     
     //アラート１
     @Published var playerAddAlert = false
@@ -36,6 +39,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
     @Published var isShowYakusyokuSettingView = false
     @Published var isActionResultView1 = false
     @Published var isActionResultView2 = false
+    @Published var isFinalVoteResultView = false
     
     @Published var KakuninViewMessage = "" //自作アラートのメッセージ
     
@@ -115,34 +119,42 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         if nowIndex < game.players.count - 1{
             nowIndex += 1
         }else{
+            suspectNameList = []
             nowIndex = 0
             //朝のアクション後の場合
             if game.asaOrYoru == GameConst.ASA{
+                boteDeathMessage = ""
                 suspectNameList = getSuspectName(max: getMaxCount())
-                var killname:[String]  = suspectNameList
-                
+                let killname:[String]  = suspectNameList
                 if killname.count < 2{
+                    print("game.players.count",game.players.count)
                     for i in 0...killname.count-1{
-                        if killname[i] == game.players[i].name{
-                            game.players[i].isDeath = true
-                            resultMessage += "\(game.players[i].name)さんです。\n"
-                            print("\(game.players[i].name)が投票により処刑されました。")
+                        for j in 0...game.players.count-1{
+                            print("killname[i]",killname[i])
+                            print("game.players[i].name",game.players[j].name)
+                            if killname[i] == game.players[j].name{
+                                game.players[j].isDeath = true
+                                boteDeathMessage += "\(game.players[j].name)さんです。\n"
+                                print("\(game.players[j].name)が投票により処刑されました。")
+                            }
                         }
                     }
                 }else{
                     finalVoteFlg = true
+                    finalVoteCount += 1
+                    print("決戦投票killname.count1",killname.count)
+                    print("決戦投票finalVoteCount1",finalVoteCount)
+                    if finalVoteCount == 2 && killname.count >= 2{
+                        print("決戦投票finalVoteCount2",finalVoteCount)
+                        let randomInt = Int.random(in: 0..<killname.count)   // 0からkillname.count分だけの範囲で整数（Int型）乱数を生成
+                        let deathPlayer:String = changePlayerIsDeath(index:randomInt)
+                        boteDeathMessage += "\(deathPlayer)さんです。\n"
+                        print("\(deathPlayer)が投票により処刑されました。")
+                        isActionResultView2.toggle()
+                        
+                    }
                     isActionResultView2.toggle()
                     print("決戦投票")
-//                    for i in 0...killname.count-1{
-//                        if killname[i] == game.players[i].name{
-//                            //game.players[i].isDeath = true
-//                            resultMessage += "\(game.players[i].name)さんです。\n"
-//                            print("\(game.players[i].name)が投票により処刑されました。")
-//                        }
-//                    }
-                    
-                    
-                    
                 }
                 
                 
@@ -152,17 +164,19 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 
                 //夜の場合
             }else{
+                finalVoteCount = 0
                 finalVoteFlg = false
                 suspectNameList = getSuspectName(max: getMaxCount())
+                print("suspectNameList 夜の場合",suspectNameList)
                 
                 for i in 0...game.players.count-1{
                     if game.players[i].isShuugeki == true{
                         if game.players[i].isGuard == false{
-                            resultMessage = game.players[i].name+"さんです。"
+                            attackDeathMessage = game.players[i].name+"さんです。"
                             print(game.players[i].name+"が食べられました。")
                             game.players[i].isDeath = true
                         }else{
-                            resultMessage = "いませんでした。"
+                            attackDeathMessage = "いませんでした。"
                             print("騎士が守りました。")
                         }
                     }
@@ -174,15 +188,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                     //meetingAlert.toggle()
                 }
             }
-            
-            if finalVoteFlg == false{
-                suspectNameList = []
-                print("suspectNameList",suspectNameList)
-                //朝夜チェンジ
-                game.switchAsaYoru()
-                
-            }
-                
+                            
             //カウントリセット
             for i in 0...game.players.count-1{
                 game.players[i].count = 0
@@ -241,10 +247,20 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 NameList.append(player.name)
             }
         }
-        print(NameList)
+        print("NameList",NameList)
         return NameList
     }
     
+    func changePlayerIsDeath(index:Int)->String{
+        for i in 0...game.players.count-1{
+            if suspectNameList[index] == game.players[i].name{
+                game.players[i].isDeath = true
+                return game.players[i].name
+            }
+        }
+        return ""
+    }
+
     
     func getYakushoku(yakushokuName:String)->YakushokuProtocol{
         switch yakushokuName {
@@ -373,7 +389,10 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         isDeveloperView = false
         isAppInfoView = false
         isShowYakusyokuSettingView = false
+        isFinalVoteResultView = false
     }
+    
+    
 }
 
 protocol NextProtocol{
@@ -390,3 +409,7 @@ protocol SelectProtocol{
 protocol NextPageProtocol{
     func nextPage()
 }
+
+
+
+

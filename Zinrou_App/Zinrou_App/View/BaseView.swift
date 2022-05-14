@@ -27,8 +27,6 @@ struct BaseView: View {
             .overlay(ResultView().environmentObject(baseData))
             .overlay(YakushokuConfirmationView().environmentObject(baseData))
             .overlay(MyAlertView().environmentObject(baseData))
-           
-        
     }
 }
 
