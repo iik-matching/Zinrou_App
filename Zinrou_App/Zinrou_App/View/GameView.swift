@@ -208,46 +208,48 @@ struct GameView: View {
                                         }
                                         //初夜の場合
                                     }else if(baseData.game.turnCount == 1){
-                                        HStack{
-                                            Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.white))
-                                                .fontWeight(.semibold)
-                                            
-                                            if(baseData.game.players[index].isDeath==false){
-                                                Button(action: {
-                                                    self.showingAlert = true
-                                                    selectIndex = index
-                                                }) {
-                                                    Text(ActionTextConst.SIMIN)
-                                                        .font(.system(size: 22, design: .serif))
+                                        if(baseData.nowIndex != index){
+                                            HStack{
+                                                Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.white))
+                                                    .fontWeight(.semibold)
+                                                
+                                                if(baseData.game.players[index].isDeath==false){
+                                                    Button(action: {
+                                                        self.showingAlert = true
+                                                        selectIndex = index
+                                                    }) {
+                                                        Text(ActionTextConst.SIMIN)
+                                                            .font(.system(size: 22, design: .serif))
+                                                            .fontWeight(.semibold)
+                                                            .frame(width: 120, height: 32)
+                                                            .foregroundColor(Color(.white))
+                                                            .background(
+                                                                LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
+                                                            )
+                                                            .cornerRadius(18)
+                                                    }.alert("アクション確認", isPresented: $showingAlert){
+                                                        Button("キャンセル"){
+                                                            //何もしない
+                                                        }
+                                                        Button("OK"){
+                                                            //アクション実行
+                                                            baseData.game.players[baseData.nowIndex].yakushoku!.action3(name:baseData.game.players[selectIndex].name, delegate:baseData )
+                                                            
+                                                            
+                                                            //次の人物へ
+                                                            baseData.isKakuninFrag.toggle()
+                                                            baseData.next()
+                                                            selectIndex = 0
+                                                        }
+                                                    } message: {
+                                                        Text("\(baseData.game.players[selectIndex].name)\(YoruActionMessageConst.SIMIN)")
+                                                    }
+                                                }else{
+                                                    Text("死亡").font(.system(size: 22, design: .serif))
                                                         .fontWeight(.semibold)
                                                         .frame(width: 120, height: 32)
-                                                        .foregroundColor(Color(.white))
-                                                        .background(
-                                                            LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
-                                                        )
-                                                        .cornerRadius(18)
-                                                }.alert("アクション確認", isPresented: $showingAlert){
-                                                    Button("キャンセル"){
-                                                        //何もしない
-                                                    }
-                                                    Button("OK"){
-                                                        //アクション実行
-                                                        baseData.game.players[baseData.nowIndex].yakushoku!.action3(name:baseData.game.players[selectIndex].name, delegate:baseData )
-                                                        
-                                                        
-                                                        //次の人物へ
-                                                        baseData.isKakuninFrag.toggle()
-                                                        baseData.next()
-                                                        selectIndex = 0
-                                                    }
-                                                } message: {
-                                                    Text("\(baseData.game.players[selectIndex].name)\(YoruActionMessageConst.SIMIN)")
+                                                        .foregroundColor(Color(.red))
                                                 }
-                                            }else{
-                                                Text("死亡").font(.system(size: 22, design: .serif))
-                                                    .fontWeight(.semibold)
-                                                    .frame(width: 120, height: 32)
-                                                    .foregroundColor(Color(.red))
                                             }
                                         }
                                     }
