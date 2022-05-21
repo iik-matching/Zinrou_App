@@ -81,7 +81,7 @@ struct MeetingAlertView: View {
                 if baseData.getasaOryoru() == GameConst.ASA {
                    KakuninView(inputText: "追放会議を終了します",delegate: test(d: baseData))
                 }else{
-                   KakuninView(inputText: "ゲームが続きます。宜しいですか？",delegate: test(d: baseData))
+                    KakuninView(inputText: "恐しい夜がやってきました。\n 貴方は「\(baseData.game.players[baseData.nowIndex].name)」ですか？",delegate: test(d: baseData))
                 }
             }
         }

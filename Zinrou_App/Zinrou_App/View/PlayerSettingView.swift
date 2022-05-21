@@ -128,20 +128,35 @@ struct PlayerSettingView: View {
                                 .cornerRadius(24)
 
                         }
+//                        Button(action: {
+//                                baseData.allocateJobTitle()
+//                            withAnimation{
+//                                //ゲーム画面へ
+//                                //baseData.isShowGameView.toggle()
+//                                baseData.isShowYakusyokuSettingView.toggle()
+//                            }
+//                        }){
+//                            Text("役職設定画面へ")
+//                                .font(.largeTitle)
+//                                .fontWeight(.semibold)
+//                                .frame(width: 320, height: 48)
+//                                .foregroundColor(Color(.white))
+//                                .background(Color(.purple))
+//                                .cornerRadius(24)
+//                        }
                         Button(action: {
                                 baseData.allocateJobTitle()
-                            withAnimation{
-                                //ゲーム画面へ
-                                //baseData.isShowGameView.toggle()
-                                baseData.isShowYakusyokuSettingView.toggle()
-                            }
+                          withAnimation{
+                              //ゲーム画面へ
+                                baseData.isShowGameView.toggle()
+                          }
                         }){
-                            Text("役職設定画面へ")
+                            Text("GAME START")
                                 .font(.largeTitle)
                                 .fontWeight(.semibold)
                                 .frame(width: 320, height: 48)
                                 .foregroundColor(Color(.white))
-                                .background(Color(.purple))
+                                .background(Color(.red))
                                 .cornerRadius(24)
                         }
                         Button(action: {
@@ -149,6 +164,7 @@ struct PlayerSettingView: View {
                                 baseData.isPlayerSettingView.toggle()
                             }
                         }){
+                        
                             Text("ホーム画面へ")
                                 .font(.largeTitle)
                                 .fontWeight(.semibold)

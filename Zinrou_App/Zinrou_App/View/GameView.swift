@@ -61,94 +61,153 @@ struct GameView: View {
                     //プレイヤー選択エリア
                     ScrollView {
                         VStack(spacing:15){
-                            ForEach(0..<baseData.game.players.count, id: \.self) { index in
-                                if(baseData.nowIndex != index){
-                                    if(baseData.getasaOryoru() == GameConst.ASA){
-                                        HStack{
-                                            Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.black))
-                                                .fontWeight(.semibold)
-                                            
-                                            if(baseData.game.players[index].isDeath==false){
-                                                Button(action: {
-                                                    self.showingAlert = true
-                                                    selectIndex = index
-                                                }) {
-                                                    Text("投票する")
-                                                        .font(.system(size: 22, design: .serif))
+                            if(baseData.getasaOryoru() == GameConst.ASA){
+                                if(baseData.finalVoteFlg == false){//朝かつ決選投票でない場合
+                                    ForEach(0..<baseData.game.players.count, id: \.self) { index in
+                                        if(baseData.nowIndex != index){
+                                            HStack{
+                                                Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.black))
+                                                    .fontWeight(.semibold)
+                                                
+                                                if(baseData.game.players[index].isDeath==false){
+                                                    Button(action: {
+                                                        self.showingAlert = true
+                                                        selectIndex = index
+                                                    }) {
+                                                        Text("投票する")
+                                                            .font(.system(size: 22, design: .serif))
+                                                            .fontWeight(.semibold)
+                                                            .frame(width: 120, height: 32)
+                                                            .foregroundColor(Color(.white))
+                                                            .background(
+                                                                LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
+                                                            )
+                                                            .cornerRadius(18)
+                                                    }.alert("アクション確認", isPresented: $showingAlert){
+                                                        Button("キャンセル"){
+                                                            //何もしない
+                                                        }
+                                                        Button("OK"){
+                                                            //アクション実行
+                                                            baseData.game.players[baseData.nowIndex].yakushoku!.action1(name:baseData.game.players[selectIndex].name, delegate:baseData )
+                                                            
+                                                            //次の人物へ
+                                                            baseData.isKakuninFrag.toggle()
+                                                            baseData.next()
+                                                            selectIndex = 0
+                                                        }
+                                                    } message: {
+                                                        Text(baseData.game.players[selectIndex].name+"さんに投票しますか？")
+                                                    }
+                                                }else{
+                                                    Text("死亡").font(.system(size: 22, design: .serif))
                                                         .fontWeight(.semibold)
                                                         .frame(width: 120, height: 32)
-                                                        .foregroundColor(Color(.white))
-                                                        .background(
-                                                            LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
-                                                        )
-                                                        .cornerRadius(18)
-                                                }.alert("アクション確認", isPresented: $showingAlert){
-                                                    Button("キャンセル"){
-                                                        //何もしない
-                                                    }
-                                                    Button("OK"){
-                                                        //アクション実行
-                                                        baseData.game.players[baseData.nowIndex].yakushoku!.action1(name:baseData.game.players[selectIndex].name, delegate:baseData )
-                                                        
-                                                        //次の人物へ
-                                                        baseData.isKakuninFrag.toggle()
-                                                        baseData.next()
-                                                        baseData.selectindex = nil
-                                                    }
-                                                } message: {
-                                                    Text(baseData.game.players[selectIndex].name+"さんに投票しますか？")
+                                                        .foregroundColor(Color(.red))
                                                 }
-                                            }else{
-                                                Text("死亡").font(.system(size: 22, design: .serif))
-                                                    .fontWeight(.semibold)
-                                                    .frame(width: 120, height: 32)
-                                                    .foregroundColor(Color(.red))
                                             }
                                         }
-                                    }else if(baseData.getasaOryoru() == GameConst.YORU && baseData.game.turnCount != 1){
-                                        HStack{
-                                            Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.white))
-                                                .fontWeight(.semibold)
-                                            
-                                            if(baseData.game.players[index].isDeath==false){
-                                                Button(action: {
-                                                    self.showingAlert = true
-                                                    selectIndex = index
-                                                }) {
-                                                    Text(baseData.game.players[baseData.nowIndex].yakushoku!.actionText)
-                                                        .font(.system(size: 22, design: .serif))
+                                    }
+                                }else{//朝かつ決選投票の場合
+                                    VStack(spacing:15){
+                                        Text("[決戦投票]").foregroundColor(Color(.white))
+                                            .font(.system(size: 22, design: .rounded))
+                                            .fontWeight(.semibold)
+                                            .background(Color.black)
+                                            .padding()
+                                        
+                                        
+                                        ForEach(0..<baseData.suspectNameList.count, id: \.self) { index in
+                                            //投票対象者でない場合
+                                            if(baseData.game.players[baseData.nowIndex].name != baseData.suspectNameList[index]){
+                                                HStack{
+                                                    Text(baseData.suspectNameList[index]).font(.system(size: 24, design: .serif)).foregroundColor(Color(.black))
+                                                        .fontWeight(.semibold)
+                                                    Button(action: {
+                                                        self.showingAlert = true
+                                                        selectIndex = index
+                                                    }) {
+                                                        Text("投票する")
+                                                            .font(.system(size: 22, design: .serif))
+                                                            .fontWeight(.semibold)
+                                                            .frame(width: 120, height: 32)
+                                                            .foregroundColor(Color(.white))
+                                                            .background(
+                                                                LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
+                                                            )
+                                                            .cornerRadius(18)
+                                                    }.alert("アクション確認", isPresented: $showingAlert){
+                                                        Button("キャンセル"){
+                                                            //何もしない
+                                                        }
+                                                        Button("OK"){
+                                                            //アクション実行
+                                                            baseData.game.players[baseData.nowIndex].yakushoku!.action1(name:baseData.suspectNameList[selectIndex], delegate:baseData )
+                                                            
+                                                            //次の人物へ
+                                                            baseData.isKakuninFrag.toggle()
+                                                            baseData.next()
+                                                            selectIndex = 0
+                                                        }
+                                                    } message: {
+                                                        Text("\(baseData.suspectNameList[selectIndex])さんに投票しますか？")
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                //夜の場合
+                            }else{
+                                ForEach(0..<baseData.game.players.count, id: \.self) { index in
+                                    //初夜でない場合
+                                    if(baseData.game.turnCount != 1){
+                                        if(baseData.nowIndex != index){
+                                            HStack{
+                                                Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.white))
+                                                    .fontWeight(.semibold)
+                                                
+                                                if(baseData.game.players[index].isDeath==false){
+                                                    Button(action: {
+                                                        self.showingAlert = true
+                                                        selectIndex = index
+                                                    }) {
+                                                        Text(baseData.game.players[baseData.nowIndex].yakushoku!.actionText)
+                                                            .font(.system(size: 22, design: .serif))
+                                                            .fontWeight(.semibold)
+                                                            .frame(width: 120, height: 32)
+                                                            .foregroundColor(Color(.white))
+                                                            .background(
+                                                                LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
+                                                            )
+                                                            .cornerRadius(18)
+                                                    }.alert("アクション確認", isPresented: $showingAlert){
+                                                        Button("キャンセル"){
+                                                            //何もしない
+                                                        }
+                                                        Button("OK"){
+                                                            //アクション実行
+                                                            baseData.game.players[baseData.nowIndex].yakushoku!.action2(name:baseData.game.players[selectIndex].name, delegate:baseData )
+                                                            
+                                                            
+                                                            //次の人物へ
+                                                            baseData.isKakuninFrag.toggle()
+                                                            baseData.next()
+                                                            selectIndex = 0
+                                                        }
+                                                    } message: {
+                                                        Text("\(baseData.game.players[selectIndex].name)\(baseData.game.players[baseData.nowIndex].yakushoku!.yoruActionMessage)")
+                                                    }
+                                                }else{
+                                                    Text("死亡").font(.system(size: 22, design: .serif))
                                                         .fontWeight(.semibold)
                                                         .frame(width: 120, height: 32)
-                                                        .foregroundColor(Color(.white))
-                                                        .background(
-                                                            LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
-                                                        )
-                                                        .cornerRadius(18)
-                                                }.alert("アクション確認", isPresented: $showingAlert){
-                                                    Button("キャンセル"){
-                                                        //何もしない
-                                                    }
-                                                    Button("OK"){
-                                                        //アクション実行
-                                                        baseData.game.players[baseData.nowIndex].yakushoku!.action2(name:baseData.game.players[selectIndex].name, delegate:baseData )
-                                                        
-                                                        
-                                                        //次の人物へ
-                                                        baseData.isKakuninFrag.toggle()
-                                                        baseData.next()
-                                                        baseData.selectindex = nil
-                                                    }
-                                                } message: {
-                                                    Text("\(baseData.game.players[selectIndex].name)\(baseData.game.players[baseData.nowIndex].yakushoku!.yoruActionMessage)")
+                                                        .foregroundColor(Color(.red))
                                                 }
-                                            }else{
-                                                Text("死亡").font(.system(size: 22, design: .serif))
-                                                    .fontWeight(.semibold)
-                                                    .frame(width: 120, height: 32)
-                                                    .foregroundColor(Color(.red))
                                             }
                                         }
-                                    }else if(baseData.getasaOryoru() == GameConst.YORU && baseData.game.turnCount == 1){
+                                        //初夜の場合
+                                    }else if(baseData.game.turnCount == 1){
                                         HStack{
                                             Text(baseData.game.players[index].name).font(.system(size: 24, design: .serif)).foregroundColor(Color(.white))
                                                 .fontWeight(.semibold)
@@ -179,7 +238,7 @@ struct GameView: View {
                                                         //次の人物へ
                                                         baseData.isKakuninFrag.toggle()
                                                         baseData.next()
-                                                        baseData.selectindex = nil
+                                                        selectIndex = 0
                                                     }
                                                 } message: {
                                                     Text("\(baseData.game.players[selectIndex].name)\(YoruActionMessageConst.SIMIN)")
@@ -196,7 +255,6 @@ struct GameView: View {
                             }
                         }.padding()
                     }
-                    
                 }
             }
             //ゲームビュー表示状態　かつ　未確認の場合

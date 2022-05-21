@@ -19,7 +19,7 @@ struct BaseView: View {
             .overlay(AppInfoView().environmentObject(baseData))
             .overlay(DeveloperView().environmentObject(baseData))
             .overlay(CustomAlertView().environmentObject(baseData))
-            .overlay(YakusyokuSettingView().environmentObject(baseData))
+//            .overlay(YakusyokuSettingView().environmentObject(baseData))
             .overlay(GameView().environmentObject(baseData))
             .overlay(ActionResultView1().environmentObject(baseData))
             .overlay(ActionResultView2().environmentObject(baseData))
@@ -27,8 +27,6 @@ struct BaseView: View {
             .overlay(ResultView().environmentObject(baseData))
             .overlay(YakushokuConfirmationView().environmentObject(baseData))
             .overlay(MyAlertView().environmentObject(baseData))
-           
-        
     }
 }
 
