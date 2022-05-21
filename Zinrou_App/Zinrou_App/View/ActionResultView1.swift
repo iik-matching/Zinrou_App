@@ -17,7 +17,7 @@ struct ActionResultView1: View {
           
             VStack{
                 VStack(){
-                       Text("The 1ST Morning")
+                    Text("The \(baseData.game.turnCount)ST Morning")
                             .font(.largeTitle)
                             .frame(width: 400)
                             .foregroundColor(Color(.white))
