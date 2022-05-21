@@ -33,13 +33,21 @@ struct ActionResultView2: View {
                 if baseData.getasaOryoru() == GameConst.ASA {  //朝の場合
                     if baseData.finalVoteFlg == false{//通常投票である場合
                         ScrollView {
-                            VStack(spacing:8){
-                                Text("【Game Masterからの報告】").foregroundColor(Color(.black)).padding(3).font(.title2)
-                                Text("投票の結果、本日処刑されるプレイヤーは、、、").foregroundColor(Color(.black)).padding(8)
-                                Text(baseData.boteDeathMessage).foregroundColor(Color(.red)).padding(3).font(.title3)
-                                
-                            }.padding()
-                                .frame(width: 350.0)
+                            if baseData.currentMaxCount != 1{ //プレイヤー全員の投票数が同じ出ない場合
+                                VStack(spacing:8){
+                                    Text("【Game Masterからの報告】").foregroundColor(Color(.black)).padding(3).font(.title2)
+                                    Text("投票の結果、本日処刑されるプレイヤーは、、、").foregroundColor(Color(.black)).padding(8)
+                                    Text(baseData.boteDeathMessage).foregroundColor(Color(.red)).padding(3).font(.title3)
+                                    
+                                }.padding()
+                                    .frame(width: 350.0)
+                            }else{ //プレイヤー全員の投票数が同じだった場合
+                                VStack(spacing:8){
+                                    Text("【Game Masterからの報告】").foregroundColor(Color(.black)).padding(3).font(.title2)
+                                    Text("投票の結果同票となり結果が出ませんでした。。\n再投票を行います。").foregroundColor(Color(.black)).padding(8)
+                                }.padding()
+                                    .frame(width: 350.0)
+                            }
                         }
                     }else{//決戦投票である場合
                         ScrollView {
@@ -70,10 +78,15 @@ struct ActionResultView2: View {
                 
                 Button(action: {
                     withAnimation{
-                        baseData.meetingAlert.toggle()
-                        //朝夜チェンジ
-                        baseData.game.switchAsaYoru()
-                        
+                        if baseData.currentMaxCount != 1{ //プレイヤー全員の投票数が同じ出ない場合
+                            baseData.meetingAlert.toggle()
+                            //朝夜チェンジ
+                            baseData.game.switchAsaYoru()
+                            print("プレイヤー全員の投票数が同じ出ない場合")
+                        }else{ //プレイヤー全員の投票数が同じだった場合
+                            print("プレイヤー全員の投票数が同じだった場合")
+                            baseData.isActionResultView2.toggle()
+                        }
                     }
                 }){
                     Text("OK")
