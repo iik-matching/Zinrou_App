@@ -178,22 +178,25 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 
                 //初夜の場合
                 if(CheckShoya()){
+                    print("初夜のattackDeathMessage:\(attackDeathMessage)")
                     attackDeathMessage = "いませんでした。\n(第１夜は襲撃されません)"
                 }else{
                     for i in 0...game.players.count-1{
                         if(game.players[i].isShuugeki == true){
                             if game.players[i].isGuard == false{
                                 attackDeathMessage = game.players[i].name+"さんです。"
+                                print("初夜以外かつ守られた場合のattackDeathMessage:\(attackDeathMessage)")
                                 print(game.players[i].name+"が食べられました。")
                                 game.players[i].isDeath = true
                             }else{
                                 attackDeathMessage = "いませんでした。"
+                                print("初夜以外かつ守られてない場合のattackDeathMessage:\(attackDeathMessage)")
                                 print("騎士が守りました。")
                             }
                         }
+                    }
                 }
-            }
-            
+                game.turnIncrement()
                 if game.endHantei() == GameConst.KEIZOKU {
                     timeCount = 100
                     isActionResultView1.toggle()
@@ -358,7 +361,9 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         //一番多い人をきる
         var max = 0
         for player in game.players{
-            if player.count > max && player.isShuugeki != true{
+            if player.count > max && player.isShuugeki == false{
+                max = player.count
+            }else if(player.count > max && player.isShuugeki && player.isGuard){
                 max = player.count
             }
             print("\(player.name)の投票数：\(player.count)")
@@ -372,7 +377,9 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         //一番多い人をきる
         for player in game.players{
             if player.count == max && player.isShuugeki != true{
-                    NameList.append(player.name)
+                NameList.append(player.name)
+            }else if(player.count == max && player.isShuugeki && player.isGuard){
+                NameList.append(player.name)
             }
         }
 

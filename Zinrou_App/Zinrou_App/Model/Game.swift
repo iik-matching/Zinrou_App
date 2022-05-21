@@ -45,8 +45,6 @@ struct Game{
             asaOrYoru = GameConst.ASA
         }else{
             asaOrYoru = GameConst.YORU
-            
-            turnIncrement() //ターン数を増やす
         }
     }
 }
