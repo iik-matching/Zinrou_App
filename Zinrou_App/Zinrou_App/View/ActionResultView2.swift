@@ -60,7 +60,7 @@ struct ActionResultView2: View {
                             Text(baseData.attackDeathMessage).foregroundColor(Color(.red)).padding(3).font(.title3)
                             Text("それに加え、最も人狼だと疑われている方は、、、").foregroundColor(Color(.black)).padding(8)
                             ForEach(0..<baseData.suspectNameList.count,id: \.self){ index in
-                                Text(baseData.suspectNameList[index]).foregroundColor(Color(.red)).padding(3).font(.title3)
+                                Text("\(baseData.suspectNameList[index])さん").foregroundColor(Color(.red)).padding(3).font(.title3)
                             }
                             
                         }.padding()
