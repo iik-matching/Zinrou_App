@@ -29,13 +29,18 @@ struct KakuninView:View{
 
                 Button(action:{
                     baseData.isKakuninFrag.toggle()
-                    print("isKakuninFrag", baseData.isKakuninFrag)
                     if delegate != nil{
                         delegate!.nextPage()
-                        baseData.isActionResultView1.toggle()
-                        print("isActionResultView1", baseData.isActionResultView1)
+                        if baseData.getasaOryoru() == GameConst.ASA {
+                            baseData.isActionResultView1.toggle()
+                        }
                         baseData.isActionResultView2.toggle()
-                        print("isActionResultView2", baseData.isActionResultView2)
+                        
+                        //決選投票だったら決選投票のフラグをFalseにし夜からの行動スタート
+                        if baseData.finalVoteFlg==true {
+                            baseData.finalVoteFlg = false
+                            baseData.game.asaOrYoru = GameConst.YORU
+                        }
                     }
                 }){
                     Spacer()
