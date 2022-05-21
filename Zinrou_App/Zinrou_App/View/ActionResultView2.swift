@@ -13,23 +13,24 @@ struct ActionResultView2: View {
     
     var body: some View {
         if baseData.isActionResultView2{
-            if baseData.getasaOryoru() == GameConst.ASA {
-                Image(decorative:"ゲーム説明画面")     // 画像指定
-                    .resizable()    // 画像サイズをフレームサイズに合わせる
-                    .ignoresSafeArea()
+            Image(decorative:"ゲーム説明画面")     // 画像指定
+                .resizable()    // 画像サイズをフレームサイズに合わせる
+                .ignoresSafeArea()
+            
+            VStack{
+                VStack(){
+                    Text("The \(baseData.game.turnCount)ST Morning")
+                        .font(.largeTitle)
+                        .frame(width: 400)
+                        .foregroundColor(Color(.white))
+                        .background(
+                            // 線形グラデーション（青→黒）を生成
+                            LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
+                        ).padding(.top, 20)
+                }
+            
                 
-                VStack{
-                    VStack(){
-                        Text("The 1ST Morning")
-                            .font(.largeTitle)
-                            .frame(width: 400)
-                            .foregroundColor(Color(.white))
-                            .background(
-                                // 線形グラデーション（青→黒）を生成
-                                LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
-                            ).padding(.top, 20)
-                    }
-                    
+                if baseData.getasaOryoru() == GameConst.ASA {  //朝の場合
                     if baseData.finalVoteFlg == false{//通常投票である場合
                         ScrollView {
                             VStack(spacing:8){
@@ -51,38 +52,7 @@ struct ActionResultView2: View {
                                 .frame(width: 350.0)
                         }
                     }
-                    Button(action: {
-                        withAnimation{
-                            baseData.meetingAlert.toggle()
-                            baseData.game.switchAsaYoru()
-                            
-                        }
-                    }){
-                        Text("OK")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                            .frame(width: 320, height: 48)
-                            .foregroundColor(Color(.white))
-                            .background(Color(.black))
-                            .cornerRadius(24)
-                    }
-                }
-            }else{
-                Image(decorative:"ゲーム説明画面")     // 画像指定
-                    .resizable()    // 画像サイズをフレームサイズに合わせる
-                    .ignoresSafeArea()
-                VStack{
-                    VStack(){
-                        Text("The 1ST Morning")
-                            .font(.largeTitle)
-                            .frame(width: 400)
-                            .foregroundColor(Color(.white))
-                            .background(
-                                // 線形グラデーション（青→黒）を生成
-                                LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .bottom, endPoint: .top)
-                            ).padding(.top, 20)
-                    }
-                    
+                }else{ //夜の場合
                     ScrollView {
                         VStack(spacing:8){
                             Text("【Game Masterからの報告】").foregroundColor(Color(.black)).padding(3).font(.title2)
@@ -96,23 +66,23 @@ struct ActionResultView2: View {
                         }.padding()
                             .frame(width: 350.0)
                     }
-                    
-                    Button(action: {
-                        withAnimation{
-                            baseData.meetingAlert.toggle()
-                            //朝夜チェンジ
-                            baseData.game.switchAsaYoru()
-                            
-                        }
-                    }){
-                        Text("OK")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                            .frame(width: 320, height: 48)
-                            .foregroundColor(Color(.white))
-                            .background(Color(.black))
-                            .cornerRadius(24)
+                }
+                
+                Button(action: {
+                    withAnimation{
+                        baseData.meetingAlert.toggle()
+                        //朝夜チェンジ
+                        baseData.game.switchAsaYoru()
+                        
                     }
+                }){
+                    Text("OK")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                        .frame(width: 320, height: 48)
+                        .foregroundColor(Color(.white))
+                        .background(Color(.black))
+                        .cornerRadius(24)
                 }
             }
         }
