@@ -350,7 +350,7 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         //一番多い人をきる
         var max = 0
         for player in game.players{
-            if player.count > max{
+            if player.count > max && player.isShuugeki != true{
                 max = player.count
             }
         }
@@ -361,8 +361,8 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
         var NameList:[String] = []
         //一番多い人をきる
         for player in game.players{
-            if player.count == max{
-                NameList.append(player.name)
+            if player.count == max && player.isShuugeki != true{
+                    NameList.append(player.name)
             }
         }
         print("NameList",NameList)
