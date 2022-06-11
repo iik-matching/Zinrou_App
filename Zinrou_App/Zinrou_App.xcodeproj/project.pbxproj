@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B33D6172854681C00FB9EFB /* オオカミの遠吠え.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B33D6162854681C00FB9EFB /* オオカミの遠吠え.mp3 */; };
+		0B33D61928546E3400FB9EFB /* 振り子時計（エコー入り）.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B33D61828546E3400FB9EFB /* 振り子時計（エコー入り）.mp3 */; };
+		0B33D61B28546FDF00FB9EFB /* 投票音.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B33D61A28546FDF00FB9EFB /* 投票音.mp3 */; };
+		0B33D61D2854713E00FB9EFB /* シーン切り替え.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B33D61C2854713E00FB9EFB /* シーン切り替え.mp3 */; };
+		0B33D61F285472C600FB9EFB /* レクイエム.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B33D61E285472C600FB9EFB /* レクイエム.mp3 */; };
+		0B33D6232854766F00FB9EFB /* ゲーム終了敗北音.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B33D6222854766F00FB9EFB /* ゲーム終了敗北音.mp3 */; };
+		0B33D6252854791400FB9EFB /* ファンファーレ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B33D6242854791400FB9EFB /* ファンファーレ.mp3 */; };
+		0B33D62728547AE400FB9EFB /* 拳銃を撃つ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B33D62628547AE400FB9EFB /* 拳銃を撃つ.mp3 */; };
+		0B33D62928547C0200FB9EFB /* 決定ボタン.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B33D62828547C0200FB9EFB /* 決定ボタン.mp3 */; };
 		0B808DFC281F8B61005BBD08 /* GameExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B808DFB281F8B61005BBD08 /* GameExplanationView.swift */; };
 		0B808DFE281F94FC005BBD08 /* PositionExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B808DFD281F94FC005BBD08 /* PositionExplanationView.swift */; };
 		0B808E00281F9FA1005BBD08 /* DeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B808DFF281F9FA1005BBD08 /* DeveloperView.swift */; };
@@ -61,6 +70,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B33D6162854681C00FB9EFB /* オオカミの遠吠え.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "オオカミの遠吠え.mp3"; sourceTree = "<group>"; };
+		0B33D61828546E3400FB9EFB /* 振り子時計（エコー入り）.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "振り子時計（エコー入り）.mp3"; sourceTree = "<group>"; };
+		0B33D61A28546FDF00FB9EFB /* 投票音.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "投票音.mp3"; sourceTree = "<group>"; };
+		0B33D61C2854713E00FB9EFB /* シーン切り替え.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "シーン切り替え.mp3"; sourceTree = "<group>"; };
+		0B33D61E285472C600FB9EFB /* レクイエム.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "レクイエム.mp3"; sourceTree = "<group>"; };
+		0B33D6222854766F00FB9EFB /* ゲーム終了敗北音.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ゲーム終了敗北音.mp3"; sourceTree = "<group>"; };
+		0B33D6242854791400FB9EFB /* ファンファーレ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ファンファーレ.mp3"; sourceTree = "<group>"; };
+		0B33D62628547AE400FB9EFB /* 拳銃を撃つ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "拳銃を撃つ.mp3"; sourceTree = "<group>"; };
+		0B33D62828547C0200FB9EFB /* 決定ボタン.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "決定ボタン.mp3"; sourceTree = "<group>"; };
 		0B808DFB281F8B61005BBD08 /* GameExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameExplanationView.swift; sourceTree = "<group>"; };
 		0B808DFD281F94FC005BBD08 /* PositionExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionExplanationView.swift; sourceTree = "<group>"; };
 		0B808DFF281F9FA1005BBD08 /* DeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperView.swift; sourceTree = "<group>"; };
@@ -125,6 +143,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B33D6152854674D00FB9EFB /* music */ = {
+			isa = PBXGroup;
+			children = (
+				0B33D62828547C0200FB9EFB /* 決定ボタン.mp3 */,
+				0B33D62628547AE400FB9EFB /* 拳銃を撃つ.mp3 */,
+				0B33D6242854791400FB9EFB /* ファンファーレ.mp3 */,
+				0B33D6222854766F00FB9EFB /* ゲーム終了敗北音.mp3 */,
+				0B33D61E285472C600FB9EFB /* レクイエム.mp3 */,
+				0B33D61C2854713E00FB9EFB /* シーン切り替え.mp3 */,
+				0B33D61A28546FDF00FB9EFB /* 投票音.mp3 */,
+				0B33D61828546E3400FB9EFB /* 振り子時計（エコー入り）.mp3 */,
+				0B33D6162854681C00FB9EFB /* オオカミの遠吠え.mp3 */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
 		7BC20ACC273F8B5C00794A32 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +222,7 @@
 		7BC20B02273F8BAF00794A32 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0B33D6152854674D00FB9EFB /* music */,
 				17B440B1279BD7E2001A5F2C /* BaseView.swift */,
 				17927E44274100C4006AAACE /* PlayerSettingView.swift */,
 				171735E2274B4E9000D73990 /* YakushokuConfirmationView.swift */,
@@ -336,7 +371,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B33D61928546E3400FB9EFB /* 振り子時計（エコー入り）.mp3 in Resources */,
+				0B33D6232854766F00FB9EFB /* ゲーム終了敗北音.mp3 in Resources */,
+				0B33D6252854791400FB9EFB /* ファンファーレ.mp3 in Resources */,
+				0B33D6172854681C00FB9EFB /* オオカミの遠吠え.mp3 in Resources */,
+				0B33D62728547AE400FB9EFB /* 拳銃を撃つ.mp3 in Resources */,
+				0B33D61B28546FDF00FB9EFB /* 投票音.mp3 in Resources */,
+				0B33D62928547C0200FB9EFB /* 決定ボタン.mp3 in Resources */,
 				7BC20AE0273F8B5D00794A32 /* Preview Assets.xcassets in Resources */,
+				0B33D61F285472C600FB9EFB /* レクイエム.mp3 in Resources */,
+				0B33D61D2854713E00FB9EFB /* シーン切り替え.mp3 in Resources */,
 				7BC20ADD273F8B5D00794A32 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct GameView: View {
     @EnvironmentObject var baseData: BaseViewModel
@@ -73,6 +74,14 @@ struct GameView: View {
                                                     Button(action: {
                                                         self.showingAlert = true
                                                         selectIndex = index
+                                                        if let soundURL = Bundle.main.url(forResource: "投票音", withExtension: "mp3") {
+                                                            do {
+                                                                player = try AVAudioPlayer(contentsOf: soundURL)
+                                                                player?.play()
+                                                            } catch {
+                                                                print("error")
+                                                            }
+                                                        }
                                                     }) {
                                                         Text("投票する")
                                                             .font(.system(size: 22, design: .serif))
@@ -126,6 +135,14 @@ struct GameView: View {
                                                     Button(action: {
                                                         self.showingAlert = true
                                                         selectIndex = index
+                                                        if let soundURL = Bundle.main.url(forResource: "投票音", withExtension: "mp3") {
+                                                            do {
+                                                                player = try AVAudioPlayer(contentsOf: soundURL)
+                                                                player?.play()
+                                                            } catch {
+                                                                print("error")
+                                                            }
+                                                        }
                                                     }) {
                                                         Text("投票する")
                                                             .font(.system(size: 22, design: .serif))
@@ -171,6 +188,14 @@ struct GameView: View {
                                                     Button(action: {
                                                         self.showingAlert = true
                                                         selectIndex = index
+                                                        if let soundURL = Bundle.main.url(forResource: "投票音", withExtension: "mp3") {
+                                                            do {
+                                                                player = try AVAudioPlayer(contentsOf: soundURL)
+                                                                player?.play()
+                                                            } catch {
+                                                                print("error")
+                                                            }
+                                                        }
                                                     }) {
                                                         Text(baseData.game.players[baseData.nowIndex].yakushoku!.actionText)
                                                             .font(.system(size: 22, design: .serif))

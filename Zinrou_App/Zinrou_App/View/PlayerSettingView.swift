@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 struct PlayerSettingView: View {
     @EnvironmentObject var baseData: BaseViewModel
@@ -146,6 +147,14 @@ struct PlayerSettingView: View {
 //                        }
                         Button(action: {
                                 baseData.allocateJobTitle()
+                            if let soundURL = Bundle.main.url(forResource: "オオカミの遠吠え", withExtension: "mp3") {
+                                do {
+                                    player = try AVAudioPlayer(contentsOf: soundURL)
+                                    player?.play()
+                                } catch {
+                                    print("error")
+                                }
+                            }
                           withAnimation{
                               //ゲーム画面へ
                                 baseData.isShowGameView.toggle()
@@ -162,6 +171,14 @@ struct PlayerSettingView: View {
                         Button(action: {
                             withAnimation{
                                 baseData.isPlayerSettingView.toggle()
+                            }
+                            if let soundURL = Bundle.main.url(forResource: "シーン切り替え", withExtension: "mp3") {
+                                do {
+                                    player = try AVAudioPlayer(contentsOf: soundURL)
+                                    player?.play()
+                                } catch {
+                                    print("error")
+                                }
                             }
                         }){
                         

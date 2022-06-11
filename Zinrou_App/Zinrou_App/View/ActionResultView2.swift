@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AVFoundation
+var player: AVAudioPlayer?
 
 struct ActionResultView2: View {
     @EnvironmentObject var baseData: BaseViewModel
@@ -82,6 +84,27 @@ struct ActionResultView2: View {
                             baseData.meetingAlert.toggle()
                             //朝夜チェンジ
                             baseData.game.switchAsaYoru()
+                            
+                            //昼から夜に代わったタイミングオオカミの遠吠えを鳴らす
+                            if baseData.game.asaOrYoru == GameConst.YORU{
+                                if let soundURL = Bundle.main.url(forResource: "オオカミの遠吠え", withExtension: "mp3") {
+                                    do {
+                                        player = try AVAudioPlayer(contentsOf: soundURL)
+                                        player?.play()
+                                    } catch {
+                                        print("error")
+                                    }
+                                }
+                            }else{ //昼から夜に代わったタイミングオオカミの遠吠えを鳴らす
+                                if let soundURL = Bundle.main.url(forResource: "振り子時計（エコー入り）", withExtension: "mp3") {
+                                    do {
+                                        player = try AVAudioPlayer(contentsOf: soundURL)
+                                        player?.play()
+                                    } catch {
+                                        print("error")
+                                    }
+                                }
+                            }
                             print("プレイヤー全員の投票数が同じ出ない場合")
                         }else{ //プレイヤー全員の投票数が同じだった場合
                             print("プレイヤー全員の投票数が同じだった場合")

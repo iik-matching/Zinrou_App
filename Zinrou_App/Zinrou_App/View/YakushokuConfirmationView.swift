@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import AVFoundation
 
 struct YakushokuConfirmationView: View {
     @EnvironmentObject var baseData: BaseViewModel
