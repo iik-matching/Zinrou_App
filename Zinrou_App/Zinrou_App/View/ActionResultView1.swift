@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ActionResultView1: View {
     @EnvironmentObject var baseData: BaseViewModel
@@ -39,6 +40,14 @@ struct ActionResultView1: View {
                 Button(action: {
                     withAnimation{
                         baseData.isActionResultView2.toggle()
+                    }
+                    if let soundURL = Bundle.main.url(forResource: "拳銃を撃つ", withExtension: "mp3") {
+                        do {
+                            player = try AVAudioPlayer(contentsOf: soundURL)
+                            player?.play()
+                        } catch {
+                            print("error")
+                        }
                     }
                 }){
                     Text("OK")

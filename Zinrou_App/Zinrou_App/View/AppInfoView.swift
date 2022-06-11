@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct AppInfoView: View {
     @EnvironmentObject var baseData: BaseViewModel
@@ -51,6 +52,14 @@ struct AppInfoView: View {
                         Button(action: {
                             withAnimation{
                                 baseData.initializeGame()
+                            }
+                            if let soundURL = Bundle.main.url(forResource: "シーン切り替え", withExtension: "mp3") {
+                                do {
+                                    player = try AVAudioPlayer(contentsOf: soundURL)
+                                    player?.play()
+                                } catch {
+                                    print("error")
+                                }
                             }
                         }){
                             Text("ホーム画面へ")

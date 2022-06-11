@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 class BaseViewModel: ObservableObject ,SelectProtocol{
     
@@ -218,11 +219,27 @@ class BaseViewModel: ObservableObject ,SelectProtocol{
                 //isShowResultView.toggle()
                 resultMessage = GameConst.ZINROUSHOURI
                 isShowYakushokuView.toggle()
+                if let soundURL = Bundle.main.url(forResource: "ゲーム終了敗北音", withExtension: "mp3") {
+                    do {
+                        player = try AVAudioPlayer(contentsOf: soundURL)
+                        player?.play()
+                    } catch {
+                        print("error")
+                    }
+                }
             }else if(HANTEI == GameConst.SIMINSHOURI){
                 //print(GameConst.SIMINSHOURI)
                 //isShowResultView.toggle()
                 resultMessage = GameConst.SIMINSHOURI
                 isShowYakushokuView.toggle()
+                if let soundURL = Bundle.main.url(forResource: "ファンファーレ", withExtension: "mp3") {
+                    do {
+                        player = try AVAudioPlayer(contentsOf: soundURL)
+                        player?.play()
+                    } catch {
+                        print("error")
+                    }
+                }
             }else if HANTEI == GameConst.KEIZOKU {
                 print(GameConst.KEIZOKU)
                 var count = 0;

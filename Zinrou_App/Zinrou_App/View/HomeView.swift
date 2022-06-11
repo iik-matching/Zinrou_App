@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AVFoundation
+
 
 struct Story {
     let id: Int
@@ -42,6 +44,15 @@ struct HomeView: View {
                                            VStack(spacing: 0) {
                                                ZStack {
                                                    Button(action: {
+                                                       if let soundURL = Bundle.main.url(forResource: "シーン切り替え", withExtension: "mp3") {
+                                                           do {
+                                                               player = try AVAudioPlayer(contentsOf: soundURL)
+                                                               player?.play()
+                                                           } catch {
+                                                               print("error")
+                                                           }
+                                                       }
+                                                       
                                                          self.isFavorite.toggle()
                                                            switch story.id {
                                                                    case 0:
@@ -88,6 +99,14 @@ struct HomeView: View {
                                     withAnimation {
                                     self.trigger.toggle()
                                     }
+                                        if let soundURL = Bundle.main.url(forResource: "シーン切り替え", withExtension: "mp3") {
+                                            do {
+                                                player = try AVAudioPlayer(contentsOf: soundURL)
+                                                player?.play()
+                                            } catch {
+                                                print("error")
+                                            }
+                                        }
                                     }) {
                                       Text("人狼ゲームへようこそ")
                                           .font(.system(size: 30, design: .serif))
@@ -100,6 +119,14 @@ struct HomeView: View {
                                             withAnimation{
                                                 //プレイヤ設定画面へ
                                                 baseData.isPlayerSettingView.toggle()
+                                            }
+                                            if let soundURL = Bundle.main.url(forResource: "レクイエム", withExtension: "mp3") {
+                                                do {
+                                                    player = try AVAudioPlayer(contentsOf: soundURL)
+                                                    player?.play()
+                                                } catch {
+                                                    print("error")
+                                                }
                                             }
                                         }){
                                            Text("ゲームを始める")

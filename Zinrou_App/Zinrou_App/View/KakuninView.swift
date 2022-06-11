@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 struct KakuninView:View{
     
@@ -42,6 +43,15 @@ struct KakuninView:View{
                             baseData.game.asaOrYoru = GameConst.YORU
                         }
                     }
+                    if let soundURL = Bundle.main.url(forResource: "決定ボタン", withExtension: "mp3") {
+                        do {
+                            player = try AVAudioPlayer(contentsOf: soundURL)
+                            player?.play()
+                        } catch {
+                            print("error")
+                        }
+                    }
+
                 }){
                     Spacer()
                     Text("OK")
