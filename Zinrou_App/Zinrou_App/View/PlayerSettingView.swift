@@ -84,12 +84,14 @@ struct PlayerSettingView: View {
                                                       Text("削除")
                                                           .font(.system(size: 22, design: .serif))
                                                           .fontWeight(.semibold)
-                                                          .frame(width: 120, height: 32)
+                                                          .frame(width: 80, height: 32)
                                                           .foregroundColor(Color(.white))
-                                                          .background(
-                                                            LinearGradient(gradient: Gradient(colors: [.red, .black]), startPoint: .bottom, endPoint: .top)
-                                                          )
+                                                          .background(Color(.black))
                                                           .cornerRadius(18)
+                                                          .overlay(
+                                                              RoundedRectangle(cornerRadius: 24)
+                                                                  .stroke(Color(.orange), lineWidth: 2.0)
+                                                          )
                                                   }.alert("削除確認", isPresented: $baseData.playerDeleteAlert){
                                                       Button("Cancel"){
 
